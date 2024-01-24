@@ -24,7 +24,7 @@ function LoginPage() {
                     <a href="#">Forgot Password?</a>
                 </div>
 
-                <button type="submit">Login</button>
+                <button type="submit" onClick={""}>Login</button>
 
                 <div className="signup">
                     <p>

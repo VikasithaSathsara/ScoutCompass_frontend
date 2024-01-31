@@ -1,19 +1,19 @@
-:root{
-    /* --secondary: #FF4057; */
+/* :root{
+    --secondary: #FF4057;
     --secondary: rgb(255, 213, 0);
     --background: #00000efc;
     --primaryFont: seashell;
-}
+} */
 
-* {
-    /* margin: 0;
-    padding: 0; */
+/* * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    color: var(--primaryFont);
+    color: var(--primaryFont); 
     font-family: sans-serif,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
-}
+} */
 
 /* html{
     scroll-behavior: smooth;
@@ -46,14 +46,14 @@
   padding: 20px 0;
   width: 100%;
   height: 60px;
-  background-color: rgba(0, 0, 0, 0.834);
+  background-color: rgba(0, 0, 0, 0.9);
   transition: all 0.4s ease-out;
 }
 
-.sticky {
+/* .sticky {
   padding: 15px 0;
   background-color: rgba(2, 3, 24, 95%);
-}
+} */
 
 .max-width {
   display: flex;
@@ -78,24 +78,28 @@
 }
 
 .menu li a:hover {
-  color: var(--secondary);
+  color: rgb(255, 213, 0);
   border-radius: 6px;
   padding: 0 0px 5px;
-  border-bottom: 3px solid var(--secondary);
+  border-bottom: 3px solid rgb(255, 213, 0);
 }
 .menu a {
+  color:seashell;
+  text-decoration: none;
   transition: color 0.3s ease;
+  font-size: 23px;
+  font-weight: 700;
 }
 .menu-btn i {
   transition: color 0.3s ease;
   visibility: hidden;
 }
 .menu-btn i:hover {
-  color: var(--secondary);
+  color: rgb(255, 213, 0);
 }
 .active-page {
-  color: var(--secondary);
+  color: rgb(255, 213, 0);
   border-radius: 6px;
   padding: 0 0px 5px;
-  border-bottom: 3px solid var(--secondary);
+  border-bottom: 3px solid rgb(255, 213, 0);
 }

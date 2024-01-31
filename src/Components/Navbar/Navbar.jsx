@@ -1,8 +1,9 @@
-import "./Navbar.css"
+import "./Navbar.css";
+import { NavLink } from 'react-router-dom';
+
 
 function Navbar() {
     return ( 
-
         <nav class="navbar">
             <div class="max-width">
                 <div class="logo">
@@ -10,18 +11,14 @@ function Navbar() {
                 </div>
 
                 <ul class="menu">
-                    <li><a href="home.html" class="nav-link">Events</a></li>
-                    <li><a href="products.html" class="nav-link">Login</a></li>
-                    <li><a href="queries.html" class="nav-link">Sign Up</a></li>
-                    {/* <li><a href="quiz.html" class="nav-link">Quiz</a></li>
-                    <li><a href="about.html" class="nav-link">About Us</a></li>
-                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-                    <li><a href="sitemap.html" class="nav-link">Site Map</a></li> */}
+                    <li><NavLink to="/" className="nav-link">Home</NavLink></li>
+                    <li><NavLink to="/login" className="nav-link">Login</NavLink></li>
+                    <li><NavLink to="/signup" className="nav-link">Sign Up</NavLink></li>       
                 </ul>
 
-                <div class="menu-btn">
+                {/* <div class="menu-btn">
                     <i class="fas fa-bars"></i>
-                </div>
+                </div> */}
             </div>
         </nav>
     );

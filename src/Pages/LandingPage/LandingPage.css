@@ -1,0 +1,201 @@
+/* **********slides******** */
+.slider{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    
+}
+.slides{
+    width: 500%;
+    height: 100vh;
+    display: flex;
+}
+
+.slides input{
+    display: none;
+}
+.slide{
+    width: 20%;
+    height: 100vh;
+    transition: 1s;
+    display: flex;
+    
+}
+.slide img{
+    width: 100%;
+    height: 100vh;
+    
+
+}
+
+/* *********navigation-manual********** */
+.navigation-manual{
+    position: absolute;
+    width: 100%;
+    bottom: 10%;
+    display:flex;
+    justify-content: center;
+}
+.manual-btn{
+    border: 2px solid #FF4057;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+  .manual-btn:not(:last-child){
+    margin-right: 40px;
+  }
+  
+  .manual-btn:hover{
+    background: #FF4057;
+    padding-left: 20px;
+  }
+  
+  #radio1:checked ~ .slide1{
+    margin-left: 0;
+  }
+  
+  #radio2:checked ~ .slide1{
+    margin-left: -20%;
+  }
+  
+  #radio3:checked ~ .slide1{
+    margin-left: -40%;
+  }
+  
+  #radio4:checked ~ .slide1{
+    margin-left: -60%;
+  }
+
+/* #radio1:checked ~ .navigation-manual #btn1 {
+    background-color: #FF4057;
+    padding-left: 20px;
+}
+#radio2:checked ~ .navigation-manual #btn2 {
+    background-color: #FF4057;
+    padding-left: 20px;
+}
+#radio3:checked ~ .navigation-manual #btn3 {
+    background-color: #FF4057;
+    padding-left: 20px;
+}
+#radio4:checked ~ .navigation-manual #btn4 {
+    background-color: #FF4057;
+    padding-left: 20px;
+} */
+
+
+
+/* slide 2 inner content */
+
+.slide-content{
+    width: 70%;
+    height: 100%;
+    margin: 0 0 0 25%;
+    margin-top: -100vh;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex-direction: column;
+
+}
+.slide-content h2{
+    text-align: center;
+    display: flex;
+    font-size: 60px;
+    margin-bottom: 60px;
+    background: rgba(0, 0, 0, 30%);
+    padding: 10px 20px;
+    border-radius: 20px;
+   
+}
+.slide-content a{
+    background-color: var(--secondary);
+    border: 5px double #000000;
+    color: var(--primaryFont);
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-align: center;  
+    font-weight: 900;
+    
+    transition: .3s ease-out;
+}
+
+.slide-content a:hover{
+    
+    color: var(--secondary);
+    border: 5px double var(--secondary);
+    background: none;
+   
+}
+
+
+
+/* ****************************************** */
+
+#blogs{
+    width: 80%;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 5px 0 0 0;
+    text-align: center; 
+}
+
+#blogs h1{
+    font-size: 45px;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+#blogs .blog-content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card{
+    border: var(--primaryFont) 2px solid;
+    border-radius: 5px;
+    width: 500px;
+    height: 300px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+.card .text{
+    width: 100%;
+    height: 100%;
+    font-size: 60px;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 30%);
+    transition: .5s ease;
+    overflow: hidden;
+}
+.card .text:hover{
+    background: rgba(0, 0, 0, 80%);
+    font-size: 80px;
+}
+
+/* .card-1{
+    background: url(../imgs/blog1.png) no-repeat center;
+    background-size: cover;   
+}
+.card-2{
+    background: url(../imgs/blog2.jpg) no-repeat center;
+    background-size: cover;   
+}
+.card-3{
+    background: url(../imgs/blog3.jpg) no-repeat center;
+    background-size: cover;   
+}
+.card-4{
+    background: url(../imgs/pic1.jpg) no-repeat center;
+    background-size: cover;   
+} */

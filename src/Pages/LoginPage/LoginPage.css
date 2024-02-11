@@ -1,18 +1,21 @@
 .background {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: end;
+ 
+  align-items:center;
   min-height: 100vh;
-  background-image: url("/src/Assests/background.jpg");
-  background-size: cover;
+  background-image: url("/src/Assests/Login.jpg");
+  background-size:cover;
+  background-repeat: no-repeat;
   background-position: center;
+  
 }
 
 .warp {
+  margin-right: 230px;
+  margin-top: 90px;
   width: 420px;
-  background-color: rgba(0, 0, 0, 0.75);
-  /*background: transparent;
-    backdrop-filter: blur(5px);*/
+  background-color: rgba(0, 0, 0, 0.65);
   border-radius: 20px;
   color: white;
   padding: 30px 40px;
@@ -41,7 +44,7 @@
   color: white;
   padding: 20px 45px 20px 20px;
   background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.7);
+  border: 2px solid rgba(255, 255, 255);
 }
 
 .input-box input::placeholder {
@@ -87,6 +90,12 @@ font-size: 20px;
   font-weight: 700;
 }
 
+.login:hover {
+  background: rgb(255, 55, 0);
+  color: white;
+  border: 2px solid rgb(255, 255, 255);
+
+}
 .signup {
   font-size: 15px;
   text-align: center;

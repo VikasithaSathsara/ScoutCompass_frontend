@@ -11,6 +11,8 @@ import {
   Outlet,
   useLocation,
 } from "react-router-dom";
+import ScoutHistory from "./Pages/Blogs/ScoutHistory";
+
 
 function RootLayout() {
   return (
@@ -36,6 +38,9 @@ const router = createBrowserRouter(
       <Route path="/" element={<RootLayout />}>
       <Route index element={<LandingPage/>} />
       <Route path="login" element={<LoginPage/>} />
+
+      <Route path="history" element={<ScoutHistory/>} />
+      {/* <Route path="home" element={<HomePage/>} /> */}
        
       </Route>
     </>

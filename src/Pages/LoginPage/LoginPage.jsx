@@ -5,7 +5,6 @@ import "./LoginPage.css";
 
 
 
-
 function LoginPage() {
 
  
@@ -30,7 +29,7 @@ function LoginPage() {
                 'Origin': 'http://localhost:3000',
                 'Content-Length': '<calculated when request is sent>',
                 'Host': '<calculated when request is sent>',
-                'Accept': '/',
+                'Accept': '*/*',
                 'Accept-Encoding': 'gzip, deflate, br',
                 'Connection': 'keep-alive',
               },

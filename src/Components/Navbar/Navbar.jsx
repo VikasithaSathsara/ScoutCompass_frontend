@@ -1,24 +1,29 @@
 import "./Navbar.css";
 import { NavLink } from 'react-router-dom';
+import L1 from "../../Assests/logo.png";
+
+
 
 
 function Navbar() {
+
+        
+
     return ( 
         <nav class="navbar">
             <div class="max-width">
                 <div class="logo">
-                    {/* <a href="home.html"><img src="../imgs/logo-no-background.png" alt="PlayZona"></a> */}
+                <a href="/"><img src={L1} alt=""/></a>
                 </div>
+                
 
                 <ul class="menu">
-                    <li><NavLink to="/" className="nav-link">Home</NavLink></li>
+                
+                    <li><NavLink to="/" activeClassName="active-page" >Home</NavLink></li>
+                    {/* <li><NavLink className="nav-link" onClick={scrollToBlogs}>Blogs</NavLink></li> */}
                     <li><NavLink to="/login" className="nav-link">Login</NavLink></li>
                     <li><NavLink to="/signup" className="nav-link">Sign Up</NavLink></li>       
                 </ul>
-
-                {/* <div class="menu-btn">
-                    <i class="fas fa-bars"></i>
-                </div> */}
             </div>
         </nav>
     );

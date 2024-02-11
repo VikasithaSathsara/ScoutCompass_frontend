@@ -1,42 +1,46 @@
 /* **********slides******** */
-.slider{
+.slider {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    
+
 }
-.slides{
+
+.slides {
     width: 500%;
     height: 100vh;
     display: flex;
 }
 
-.slides input{
+.slides input {
     display: none;
 }
-.slide{
+
+.slide {
     width: 20%;
     height: 100vh;
-    transition: 1s;
+    transition: 4s;
     display: flex;
-    
+
 }
-.slide img{
+
+.slide img {
     width: 100%;
     height: 100vh;
-    
+
 
 }
 
 /* *********navigation-manual********** */
-.navigation-manual{
+.navigation-manual {
     position: absolute;
     width: 100%;
     bottom: 10%;
-    display:flex;
+    display: flex;
     justify-content: center;
 }
-.manual-btn{
+
+.manual-btn {
     border: 2px solid #FF4057;
     padding: 5px;
     border-radius: 10px;
@@ -44,53 +48,55 @@
     transition: .3s;
 }
 
-  .manual-btn:not(:last-child){
+.manual-btn:not(:last-child) {
     margin-right: 40px;
-  }
-  
-  .manual-btn:hover{
+}
+
+.manual-btn:hover {
     background: #FF4057;
     padding-left: 20px;
-  }
-  
-  #radio1:checked ~ .slide1{
+}
+
+#radio1:checked~.slide1 {
     margin-left: 0;
-  }
-  
-  #radio2:checked ~ .slide1{
+}
+
+#radio2:checked~.slide1 {
     margin-left: -20%;
-  }
-  
-  #radio3:checked ~ .slide1{
+}
+
+#radio3:checked~.slide1 {
     margin-left: -40%;
-  }
-  
-  #radio4:checked ~ .slide1{
+}
+
+#radio4:checked~.slide1 {
     margin-left: -60%;
-  }
+}
 
-/* #radio1:checked ~ .navigation-manual #btn1 {
+#radio1:checked~.navigation-manual #btn1 {
     background-color: #FF4057;
     padding-left: 20px;
 }
-#radio2:checked ~ .navigation-manual #btn2 {
-    background-color: #FF4057;
-    padding-left: 20px;
-}
-#radio3:checked ~ .navigation-manual #btn3 {
-    background-color: #FF4057;
-    padding-left: 20px;
-}
-#radio4:checked ~ .navigation-manual #btn4 {
-    background-color: #FF4057;
-    padding-left: 20px;
-} */
 
+#radio2:checked~.navigation-manual #btn2 {
+    background-color: #FF4057;
+    padding-left: 20px;
+}
+
+#radio3:checked~.navigation-manual #btn3 {
+    background-color: #FF4057;
+    padding-left: 20px;
+}
+
+#radio4:checked~.navigation-manual #btn4 {
+    background-color: #FF4057;
+    padding-left: 20px;
+}
 
 
 /* slide 2 inner content */
 
-.slide-content{
+.slide-content {
     width: 70%;
     height: 100%;
     margin: 0 0 0 25%;
@@ -101,7 +107,8 @@
     flex-direction: column;
 
 }
-.slide-content h2{
+
+.slide-content h2 {
     text-align: center;
     display: flex;
     font-size: 60px;
@@ -109,56 +116,57 @@
     background: rgba(0, 0, 0, 30%);
     padding: 10px 20px;
     border-radius: 20px;
-   
+
 }
-.slide-content a{
+
+.slide-content a {
     background-color: var(--secondary);
     border: 5px double #000000;
     color: var(--primaryFont);
     border-radius: 10px;
     padding: 10px 20px;
-    text-align: center;  
+    text-align: center;
     font-weight: 900;
-    
+
     transition: .3s ease-out;
 }
 
-.slide-content a:hover{
-    
+.slide-content a:hover {
+
     color: var(--secondary);
     border: 5px double var(--secondary);
     background: none;
-   
+
 }
 
 
 
 /* ****************************************** */
 
-#blogs{
+#blogs {
     width: 80%;
     margin: auto;
     margin-bottom: 30px;
     padding: 5px 0 0 0;
-    text-align: center; 
+    text-align: center;
 }
 
-#blogs h1{
+#blogs h1 {
     font-size: 45px;
     margin-top: 100px;
     margin-bottom: 60px;
 }
 
-#blogs .blog-content{
+#blogs .blog-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
 
-.card{
-    border: var(--primaryFont) 2px solid;
-    border-radius: 5px;
+.card {
+    border: seashell 3px solid;
+    border-radius: 10px;
     width: 500px;
     height: 300px;
     flex-wrap: wrap;
@@ -166,7 +174,8 @@
     justify-content: space-between;
 }
 
-.card .text{
+.card .text {
+    color: seashell;
     width: 100%;
     height: 100%;
     font-size: 60px;
@@ -177,25 +186,60 @@
     background: rgba(0, 0, 0, 30%);
     transition: .5s ease;
     overflow: hidden;
+    border-radius: 10px;
 }
-.card .text:hover{
+
+.card .text:hover {
     background: rgba(0, 0, 0, 80%);
     font-size: 80px;
 }
 
-/* .card-1{
-    background: url(../imgs/blog1.png) no-repeat center;
-    background-size: cover;   
+.card-1 {
+    background: url(/src/Assests/Promise1.jpg) no-repeat center;
+    background-size: cover;
 }
-.card-2{
-    background: url(../imgs/blog2.jpg) no-repeat center;
-    background-size: cover;   
+
+.card-2 {
+    background: url(/src/Assests/history.png) no-repeat center;
+    background-size: cover;
 }
-.card-3{
-    background: url(../imgs/blog3.jpg) no-repeat center;
-    background-size: cover;   
+
+.card-3 {
+    background: url(/src/Assests/types.jpg) no-repeat center;
+    background-size: cover;
 }
-.card-4{
-    background: url(../imgs/pic1.jpg) no-repeat center;
-    background-size: cover;   
-} */
+
+.card-4 {
+    background: url(/src/Assests/uniform.JPG) no-repeat center;
+    background-size: cover;
+}
+
+
+
+.footer{
+    color: seashell;
+    background: #111;
+    height: 130px;
+    padding: 30px 50px;
+    text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.footer div{
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+.footer span{
+    color: #FF4057;
+}
+.social a{
+    margin-left: 20px;
+    font-size: 20px;
+    transition: all 0.3s ease-in-out;
+}
+.social a:hover i{
+    color: #FF4057;
+}
+
+span a {
+    color: #FF4057;
+}

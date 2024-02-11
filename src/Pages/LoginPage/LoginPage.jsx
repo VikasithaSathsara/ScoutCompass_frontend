@@ -2,6 +2,7 @@ import React ,{ useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import "./LoginPage.css";
+import { Link } from "react-router-dom";
 
 
 
@@ -85,7 +86,8 @@ function LoginPage() {
 
                 <div className="signup">
                     <p>
-                        Don't have an Account? <br /><br/> <a href="#">Sign up</a>
+                        Don't have an Account? <br /><br/> <a href="#"><Link className = "btn btn-success" to={'/signup'}>Sign up</Link></a>
+                        
                     </p>
                 </div>
             </form>

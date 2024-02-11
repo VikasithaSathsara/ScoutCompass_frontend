@@ -1,4 +1,5 @@
 import "./LandingPage.css";
+
 import S1 from "../../Assests/Slide1.jpg";
 import S2 from "../../Assests/Slide3.jpg";
 import S3 from "../../Assests/Slide4.png";
@@ -88,6 +89,10 @@ function LandingPage() {
             <img src={S4} alt="" />
           </div>
 
+          {/* <div class="slide slide5">
+            <img src={S5} alt="" />
+          </div> */}
+
           <div class="navigation-manual">
             <label for="radio1" class="manual-btn" id="btn1"></label>
             <label for="radio2" class="manual-btn" id="btn2"></label>
@@ -106,7 +111,7 @@ function LandingPage() {
             </a>
           </div>
           <div class="card card-2">
-            <a href="history">
+            <a href="">
               <div class="text">Scout History</div>
             </a>
           </div>
@@ -124,23 +129,35 @@ function LandingPage() {
       </div>
 
       <footer class="footer">
-        <div>Coppyright &copy; 2024 | <span>ScoutCompass</span> ######</div>
-        <div class="social">
-            <a href="#" target="_blank">
-                <i class="fab fa-facebook"></i>
-            </a>
-            <a href="#" target="_blank">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" target="_blank">
-                <i class="fab fa-discord"></i>
-            </a>
-            <a href="" target="_blank">
-                <i class="fab fa-instagram"></i>
-            </a>
+        <div>
+          Coppyright &copy; 2024 | <span>ScoutCompass</span> ######
         </div>
-        <div>Developed By <span><a href="./about.html">ScoutCompass</a></span> | ###### <span> <a href="">#######</a> </span></div>
-    </footer>
+        <div class="social">
+          <a href="#" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="#" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" target="_blank">
+            <i class="fab fa-discord"></i>
+          </a>
+          <a href="" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <div>
+          Developed By{" "}
+          <span>
+            <a href="./about.html">ScoutCompass</a>
+          </span>{" "}
+          | ######{" "}
+          <span>
+            {" "}
+            <a href="">#######</a>{" "}
+          </span>
+        </div>
+      </footer>
     </div>
   );
 }

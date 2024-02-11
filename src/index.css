@@ -1,34 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
 /* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+<<<<<<< Updated upstream
   font-family: 'Poppins', sans-serif;
  
 } */
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
   color: var(--primaryFont);
-  font-family: sans-serif,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  
+  font-family: sans-serif, "Franklin Gothic Medium", "Arial Narrow", Arial,
+    sans-serif;
+
+  /* font-family: 'Poppins', sans-serif; */
+  /* font-family: sans-serif, "Franklin Gothic Medium", "Arial Narrow", Arial,
+    sans-serif; */
 }
 
-body { 
+body {
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; 
-  background: linear-gradient(-45deg, #00000efc, #020236fc, #30308afc, #1261d8fc);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
+
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(
+    -45deg,
+    #00000efc,
+    #020236fc,
+    #30308afc,
+    #1261d8fc
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   /* text-decoration: none;  */
 }
 
 /* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(
+    -45deg,
+    #00000efc,
+    #020236fc,
+    #30308afc,
+    #1261d8fc
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  text-decoration: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+>>>>>>> Stashed changes
     monospace;
 } */

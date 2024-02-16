@@ -1,7 +1,6 @@
 .background {
   display: flex;
   justify-content: end;
- 
   align-items:center;
   min-height: 100vh;
   background-image: url("/src/Assests/Login.jpg");
@@ -24,8 +23,9 @@
 }
 
 .heading {
-  font-size: 36px;
+  font-size: 40px;
   text-align: center;
+  font-weight: 600;
 }
 
 .input-box {
@@ -93,7 +93,7 @@ font-size: 20px;
 .login:hover {
   background: rgb(255, 55, 0);
   color: white;
-  border: 2px solid rgb(255, 255, 255);
+  border: 3px solid rgb(255, 255, 255);
 
 }
 .signup {

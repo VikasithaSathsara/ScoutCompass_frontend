@@ -143,6 +143,30 @@
 
 /* ****************************************** */
 
+
+.content h2{
+    width: 650px;
+    border-bottom:6px solid #FF4057;
+    border-radius: 30px;
+    margin-top: 40px;
+    padding: 10px;
+    color: seashell;
+    font-size: 42px;
+    font-weight: 600;
+    margin-left: auto;
+    margin-right: auto;
+   
+}
+
+.content p{
+    margin-top: 40px;
+    color: seashell;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 80px;
+}
+
+
 #blogs {
     width: 80%;
     margin: auto;

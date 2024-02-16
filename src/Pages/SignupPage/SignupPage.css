@@ -2,5 +2,6 @@
   min-height: 100vh;
   display: grid;
   place-content: center;
-  background-color: #242742;
+  background-image:url("/src/Assests/Signup.jpg");
+  background-size: cover;
 }

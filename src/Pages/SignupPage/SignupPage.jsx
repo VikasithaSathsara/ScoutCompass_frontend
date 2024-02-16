@@ -42,6 +42,7 @@ function SignupPage() {
   const [confirmPass, setConfirmPass] = useState("");
   const [passwordMissMatch, setpasswordMissMatch] = useState(false);
   const [doB, setDoB] = useState(new Date());
+  const [scoutDob, setScoutDob] = useState(new Date());
   const selectedRole = formData.role;
   const stackDirection = selectedRole ? "row" : "column";
 
@@ -226,6 +227,77 @@ function SignupPage() {
                       {selectedRole === "scout" && (
                         <Stack>
                           <Heading size="md">Scout Details</Heading>
+                          <FormControl isRequired>
+                            <FormLabel className="!font-semibold" fontSize="sm">
+                              Date of Birth
+                            </FormLabel>
+                            <DatePicker
+                              selected={scoutDob}
+                              onChange={(date) => setScoutDob(date)}
+                            />
+                          </FormControl>
+                          <FormControl>
+                            <FormLabel className="!font-semibold" fontSize="sm">
+                              Gender
+                            </FormLabel>
+                            <Select
+                              placeholder="Select Gender"
+                              onChange={onDropdownValueChange("scoutGender")}
+                            >
+                              <option value="male">Male</option>
+                              <option value="female">Female</option>
+                              <option value="other">Other</option>
+                            </Select>
+                          </FormControl>
+                          <FormControl isRequired>
+                            <FormLabel className="!font-semibold" fontSize="sm">
+                              Phone Number
+                            </FormLabel>
+                            <InputGroup>
+                              <InputLeftAddon>+94</InputLeftAddon>
+                              <Input
+                                type="tel"
+                                placeholder="Phone Number"
+                                onChange={onValueChange("scoutMobNum")}
+                              />
+                            </InputGroup>
+                          </FormControl>
+                          <FormControl className="!gap-1" isRequired>
+                            <FormLabel className="!font-semibold" fontSize="sm">
+                              School
+                            </FormLabel>
+                            <Input
+                              type="text"
+                              placeholder="School"
+                              size="sm"
+                              onChange={onValueChange("scoutSchool")}
+                            />
+                          </FormControl>
+                          {/* <FormControl className="!gap-1" isRequired>
+                            <FormLabel className="!font-semibold" fontSize="sm">
+                              Instructor
+                            </FormLabel>
+                            <Input
+                              type="text"
+                              placeholder="Instructor"
+                              size="sm"
+                              onChange={onValueChange("instructor")}
+                            />
+                          </FormControl> */}
+                          <FormControl isRequired>
+                            <FormLabel className="!font-semibold" fontSize="sm">
+                              Instructor
+                            </FormLabel>
+                            <Select
+                              placeholder="Select a instructor"
+                              onChange={onDropdownValueChange("instructor")}
+                            >
+                              <option value="instructor1">0001</option>
+                              <option value="instructor2">0002</option>
+                              <option value="instructor3">0003</option>
+                              <option value="instructor4">0004</option>
+                            </Select>
+                          </FormControl>
                         </Stack>
                       )}
                       {selectedRole === "instructor" && (

@@ -9,6 +9,7 @@ import PassingPage from "./Views/PassingPage/PassingPage";
 import EventPage from "./Views/EventPage/EventPage";
 import ResourcePage from "./Views/ResourcePage/ResourcePage";
 import ProfilePage from "./Views/ProfilePage/ProfilePage";
+
 import {
   Route,
   createBrowserRouter,
@@ -43,12 +44,12 @@ const router = createBrowserRouter(
         <Route index element={<LandingPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="signup" element={<SignupPage />} />
-        <Route path="home" element={<HomePage/>} />
-        <Route path="passing" element={<PassingPage/>} />
-        <Route path="resource" element={<ResourcePage/>} />
-        <Route path="event" element={<EventPage/>} />
-        <Route path="profile" element={<ProfilePage/>} />
 
+        <Route path="home" element={<HomePage />} />
+        <Route path="passing" element={<PassingPage />} />
+        <Route path="resource" element={<ResourcePage />} />
+        <Route path="event" element={<EventPage />} />
+        <Route path="profile" element={<ProfilePage />} />
       </Route>
     </>
   )

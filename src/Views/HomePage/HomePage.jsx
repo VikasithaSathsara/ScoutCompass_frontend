@@ -1,10 +1,98 @@
-function HomePage() {
-    return ( 
-    <div>
-        <h1>Home Page</h1>
-        <h2>Login Successful</h2>
+import "./HomePage.css";
+import Menu from "../../Components/Menu/Menu";
+import S1 from "../../Assests/Slide1.jpg";
+import S2 from "../../Assests/Slide3.jpg";
+import S3 from "../../Assests/Slide4.png";
+import S4 from "../../Assests/Hiking.jpg";
+import React, { useState, useEffect } from "react";
 
-    </div> 
+function HomePage() {
+    // Set the default checked radio button
+    const [selectedSlide, setSelectedSlide] = useState("radio1");
+
+    // Event handler for radio button changes
+    const handleSlideChange = (event) => {
+        setSelectedSlide(event.target.id);
+    };
+
+    // Auto slider functionality
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            // Determine the next slide ID based on the current selection
+            const nextSlide = getNextSlideId(selectedSlide);
+            setSelectedSlide(nextSlide);
+        }, 6000); // Change slide every 6 seconds (adjust as needed)
+
+        // Clear the interval when the component unmounts or changes
+        return () => clearInterval(intervalId);
+    }, [selectedSlide]);
+
+    const getNextSlideId = (currentSlide) => {
+        switch (currentSlide) {
+            case "radio1":
+                return "radio2";
+            case "radio2":
+                return "radio3";
+            case "radio3":
+                return "radio4";
+            case "radio4":
+                return "radio1";
+        }
+    };
+
+    return (
+        <div>
+            <Menu />
+            <h1>Home Page</h1>
+            <div class="homeslider">
+                <div class="homeslides">
+                    <input
+                        type="radio"
+                        name="radio-btn"
+                        id="radio1"
+                        checked={selectedSlide === "radio1"}
+                        onChange={handleSlideChange}
+                    />
+                    <input
+                        type="radio"
+                        name="radio-btn"
+                        id="radio2"
+                        checked={selectedSlide === "radio2"}
+                        onChange={handleSlideChange}
+                    />
+                    <input
+                        type="radio"
+                        name="radio-btn"
+                        id="radio3"
+                        checked={selectedSlide === "radio3"}
+                        onChange={handleSlideChange}
+                    />
+                    <input
+                        type="radio"
+                        name="radio-btn"
+                        id="radio4"
+                        checked={selectedSlide === "radio4"}
+                        onChange={handleSlideChange}
+                    />
+
+                    <div class="homeslide slide1">
+                        <img src={S1} alt="" />
+                    </div>
+
+                    <div class="homeslide slide2">
+                        <img src={S2} alt="" />
+                    </div>
+
+                    <div class="homeslide slide3">
+                        <img src={S3} alt="" />
+                    </div>
+
+                    <div class="homeslide slide4">
+                        <img src={S4} alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
 

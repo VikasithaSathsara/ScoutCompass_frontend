@@ -1,5 +1,5 @@
 import "./LandingPage.css";
-
+import Navbar from "../../Components/Navbar/Navbar";
 import S1 from "../../Assests/Slide1.jpg";
 import S2 from "../../Assests/Slide3.jpg";
 import S3 from "../../Assests/Slide4.png";
@@ -42,6 +42,7 @@ function LandingPage() {
 
     return (
         <div>
+            <Navbar />
             <div class="slider">
                 <div class="slides">
                     <input
@@ -88,10 +89,6 @@ function LandingPage() {
                     <div class="slide slide4">
                         <img src={S4} alt="" />
                     </div>
-
-                    {/* <div class="slide slide5">
-            <img src={S5} alt="" />
-          </div> */}
 
                     <div class="navigation-manual">
                         <label
@@ -172,7 +169,8 @@ function LandingPage() {
 
             <footer class="footer">
                 <div>
-                    Coppyright &copy; 2024 | <span>ScoutCompass</span> ######
+                    Coppyright &copy; 2024 | <span>ScoutCompass</span> Learning
+                    Management System
                 </div>
                 <div class="social">
                     <a href="#" target="_blank">

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./SignupPage.css";
 import { ChakraProvider } from "@chakra-ui/react";
+import { toast, ToastContainer } from "react-toastify";
 
 import Navbar from "../../Components/Navbar/Navbar";
 
@@ -29,12 +30,22 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function SignupPage() {
   const [formData, setFormData] = useState({
-    firstName: undefined,
-    lastName: undefined,
-    username: undefined,
-    email: undefined,
-    password: undefined,
-    role: undefined,
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    confirmPassword: "",
+    role: "",
+    scout_dob: new Date(),
+    instruct_dob: new Date(),
+    district: "",
+    instruct_gender: "",
+    instruct_mobNum: "",
+    instruct_school: "",
+    instruct_warrentId: "",
+    scout_gender: "",
+    scout_school: "",
+    scout_mobNum: "",
   });
 
   //Create a method to initialize scout and Instructor values to undefined. And call that methods when dropdown value changes.
@@ -83,6 +94,98 @@ function SignupPage() {
       if (pass !== confirmPass) {
         setpasswordMissMatch(true);
         return;
+      } else {
+
+
+        if (formData.role === 'instructor') {
+
+          const instruct_reg_requestBody = {
+            instructFirstName: formData.firstName,
+            instructLastName: formData.lastName,
+            instructEmail: formData.email,
+            instructPassword: confirmPass,
+            instructDob: formData.instruct_dob,
+            instructDistrict: formData.district,
+            instructWarrantId: formData.instruct_warrentId,
+            instructGender: formData.instruct_gender,
+            instructMobNum: formData.instruct_mobNum,
+            instructSchool: formData.instruct_school,
+
+          };
+
+
+          // Sending POST request
+          const response = await fetch(
+            "http://localhost:8081/api/scoutcompass/auth/instruct/register",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Origin: "http://localhost:3000",
+                "Content-Length": "<calculated when request is sent>",
+                Host: "<calculated when request is sent>",
+                Accept: "*/*",
+                "Accept-Encoding": "gzip, deflate, br",
+                Connection: "keep-alive",
+              },
+              body: JSON.stringify(instruct_reg_requestBody),
+            }
+          );
+          if (response.ok) {
+            console.log("Instructor Registration successful!");
+            toast.success("Instructor Registration successful!");
+            // navigate("/home");
+            //  window.location.href = "/home";
+          } else {
+            console.error("Instructor Registration Fail!");
+            toast.error("Instructor Registration Fail!");
+          }
+        } else if (formData.role === 'scout') {
+
+
+          const scout_reg_requestBody = {
+            scoutFirstName: formData.firstName,
+            scoutLastname: formData.lastName,
+            scoutEmail: formData.email,
+            scoutPassword: formData.confirmPassword,
+            scoutDob: formData.instruct_dob,
+            scoutDistrict: formData.district,
+            scoutGender: formData.scout_gender,
+            scoutMobNum: formData.scout_mobNum,
+            scoutSchool: formData.scout_school,
+            instructorId: '2',
+          };
+
+
+          // Sending POST request
+          const response = await fetch(
+            "http://localhost:8081/api/scoutcompass/auth/scout/register",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Origin: "http://localhost:3000",
+                "Content-Length": "<calculated when request is sent>",
+                Host: "<calculated when request is sent>",
+                Accept: "*/*",
+                "Accept-Encoding": "gzip, deflate, br",
+                Connection: "keep-alive",
+              },
+              body: JSON.stringify(scout_reg_requestBody),
+            }
+          );
+          if (response.ok) {
+            console.log("Scout Registration successful!");
+            toast.success("Scout Registration successful!");
+            // navigate("/home");
+            //  window.location.href = "/home";
+          } else {
+            console.error("Scout Registration Fail!");
+            toast.error("Scout Registration Fail!");
+          }
+
+
+        }
       }
       setpasswordMissMatch(false);
       setFormData({
@@ -257,7 +360,7 @@ function SignupPage() {
                             </FormLabel>
                             <DatePicker
                               selected={scoutDob}
-                              onChange={(date) => setScoutDob(date)}
+                              onChange={(scout_dob) => setScoutDob(scout_dob)}
                             />
                           </FormControl>
                           <FormControl>
@@ -266,7 +369,7 @@ function SignupPage() {
                             </FormLabel>
                             <Select
                               placeholder="Select Gender"
-                              onChange={onDropdownValueChange("scoutGender")}
+                              onChange={onDropdownValueChange("scout_gender")}
                             >
                               <option value="male">Male</option>
                               <option value="female">Female</option>
@@ -282,7 +385,7 @@ function SignupPage() {
                               <Input
                                 type="tel"
                                 placeholder="Phone Number"
-                                onChange={onValueChange("scoutMobNum")}
+                                onChange={onValueChange("scout_mobNum")}
                               />
                             </InputGroup>
                           </FormControl>
@@ -294,7 +397,7 @@ function SignupPage() {
                               type="text"
                               placeholder="School"
                               size="sm"
-                              onChange={onValueChange("scoutSchool")}
+                              onChange={onValueChange("scout_school")}
                             />
                           </FormControl>
 
@@ -317,7 +420,7 @@ function SignupPage() {
                       {selectedRole === "instructor" && (
                         <Stack>
                           <Heading size="md">Instructor Details</Heading>
-                          <FormControl className="!gap-1" isRequired>
+                          <FormControl htmlFor="instruct_school" className="!gap-1" isRequired>
                             <FormLabel className="!font-semibold" fontSize="sm">
                               School
                             </FormLabel>
@@ -325,7 +428,7 @@ function SignupPage() {
                               type="text"
                               placeholder="School"
                               size="sm"
-                              onChange={onValueChange("School")}
+                              onChange={onValueChange("instruct_school")}
                             />
                           </FormControl>
                           <FormControl
@@ -333,13 +436,13 @@ function SignupPage() {
                             htmlFor="username"
                             isRequired
                           >
-                            <FormLabel className="!font-semibold" fontSize="sm">
+                            <FormLabel className="!font-semibold" fontSize="sm" htmlFor="instruct_warrentId">
                               Warrent Id
                             </FormLabel>
                             <Input
                               placeholder="Warrent Id"
                               size="sm"
-                              onChange={onValueChange("warrentid")}
+                              onChange={onValueChange("instruct_warrentId")}
                             />
                           </FormControl>
                           <FormControl isRequired>
@@ -349,16 +452,16 @@ function SignupPage() {
 
                             <DatePicker
                               selected={doB}
-                              onChange={(date) => setDoB(date)}
+                              onChange={(instruct_dob) => setDoB(instruct_dob)}
                             />
                           </FormControl>
-                          <FormControl>
+                          <FormControl htmlFor="instruct_gender">
                             <FormLabel className="!font-semibold" fontSize="sm">
                               Gender
                             </FormLabel>
                             <Select
                               placeholder="Select a Role"
-                              onChange={onDropdownValueChange("gender")}
+                              onChange={onDropdownValueChange("instruct_gender")}
                             >
                               <option value="male">Male</option>
                               <option value="female">Female</option>
@@ -371,7 +474,10 @@ function SignupPage() {
                             </FormLabel>
                             <InputGroup>
                               <InputLeftAddon>+94</InputLeftAddon>
-                              <Input type="tel" placeholder="phone number" />
+                              <Input
+                                type="tel"
+                                placeholder="phone number"
+                                onChange={onValueChange("instruct_mobNum")} />
                             </InputGroup>
                           </FormControl>
                         </Stack>

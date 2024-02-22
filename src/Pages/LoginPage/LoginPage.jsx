@@ -24,7 +24,7 @@ function LoginPage() {
         try {
             // Sending POST request
             const response = await fetch(
-                "http://localhost:8081/api/v1/auth/user/authenticate",
+                "http://localhost:8081/api/scoutcompass/auth/user/authenticate",
                 {
                     method: "POST",
                     headers: {

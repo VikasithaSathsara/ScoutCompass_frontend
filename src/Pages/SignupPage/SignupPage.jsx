@@ -147,13 +147,13 @@ function SignupPage() {
             scoutFirstName: formData.firstName,
             scoutLastname: formData.lastName,
             scoutEmail: formData.email,
-            scoutPassword: formData.confirmPassword,
+            scoutPassword: formData.confirmPass,
             scoutDob: formData.instruct_dob,
             scoutDistrict: formData.district,
             scoutGender: formData.scout_gender,
             scoutMobNum: formData.scout_mobNum,
             scoutSchool: formData.scout_school,
-            instructorId: '2',
+            instructorId: '1',
           };
 
 

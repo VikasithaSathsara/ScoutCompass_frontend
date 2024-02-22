@@ -147,7 +147,7 @@ function SignupPage() {
             scoutFirstName: formData.firstName,
             scoutLastname: formData.lastName,
             scoutEmail: formData.email,
-            scoutPassword: formData.confirmPass,
+            scoutPassword: confirmPass,
             scoutDob: formData.instruct_dob,
             scoutDistrict: formData.district,
             scoutGender: formData.scout_gender,

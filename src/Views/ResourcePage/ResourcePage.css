@@ -1,16 +1,18 @@
 .bg1 {
-  display: grid;
+  /* display: grid;
   background-image: url("/src/Assests/Login.jpg");
   justify-content: end;
   align-items: center;
   min-height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center; */
+  background-color: ghostwhite;
 }
 
-.wrap1 {
+/* .wrap1 {
   margin-right: 0px;
+  margin-left: 50px;
   margin-top: 90px;
   width: 1550px;
   height: 2000px;
@@ -20,14 +22,14 @@
   padding: 30px 40px;
   border: 2px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
+} */
 
 .box1 {
   width: 200px;
   height: 220px;
   margin-left: 30px;
   border-radius: 20px;
-  border: 2px solid rgb(250, 250, 250);
+  border: 2px solid rgb(10, 10, 10);
 }
 
 .box1_1 {
@@ -43,7 +45,7 @@
   margin-top: 130px;
   margin-left: -30px;
   width: 200px;
-  color: yellow;
+  color: black;
   font-size: 15px;
 }
 
@@ -53,7 +55,7 @@
   margin-left: 420px;
   margin-top: -215px;
   border-radius: 20px;
-  border: 2px solid rgb(250, 250, 250);
+  border: 2px solid rgb(10, 10, 10);
 }
 
 .box2_1 {
@@ -69,17 +71,17 @@
   margin-top: 130px;
   margin-left: -30px;
   width: 200px;
-  color: yellow;
+  color: black;
   font-size: 15px;
 }
 
 .box3 {
   width: 200px;
   height: 220px;
-  margin-left: 1100px;
+  margin-left: 820px;
   margin-top: -215px;
   border-radius: 20px;
-  border: 2px solid rgb(250, 250, 250);
+  border: 2px solid rgb(10, 10, 10);
 }
 
 .box3_1 {
@@ -95,95 +97,95 @@
   margin-top: 130px;
   margin-left: -30px;
   width: 400px;
-  color: yellow;
+  color: black;
   font-size: 15px;
 }
 
 .box4 {
   width: 200px;
   height: 220px;
-  margin-left: 30px;
-  margin-top: 150px;
+  margin-left: 1220px;
+  margin-top: -215px;
   border-radius: 20px;
-  border: 2px solid rgb(250, 250, 250);
+  border: 2px solid rgb(10, 10, 10);
 }
 
 .box4_1 {
   width: 100px;
   height: 121.5px;
-  margin-left: 35px;
-  margin-top: 15px;
+  margin-left: 45px;
+  margin-top: -20px;
   background-image: url("/src/Assests/PDF_file_icon.png");
   background-size: 100px;
 }
 
 .name4 {
-  margin-top: 20px;
-  margin-left: 120px;
-  width: 400px;
-  color: yellow;
+  margin-top: 130px;
+  margin-left: -30px;
+  width: 200px;
+  color: black;
   font-size: 15px;
 }
 
 .box5 {
   width: 200px;
   height: 220px;
-  margin-left: 550px;
-  margin-top: -220px;
+  margin-left: 30px;
+  margin-top: 30px;
   border-radius: 20px;
-  border: 2px solid rgb(250, 250, 250);
+  border: 2px solid rgb(10, 10, 10);
 }
 
 .box5_1 {
   width: 100px;
   height: 121.5px;
-  margin-left: 35px;
-  margin-top: 15px;
+  margin-left: 45px;
+  margin-top: -20px;
   background-image: url("/src/Assests/PDF_file_icon.png");
   background-size: 100px;
 }
 
 .name5 {
-  margin-top: 20px;
-  margin-left: 120px;
-  width: 400px;
-  color: yellow;
+  margin-top: 130px;
+  margin-left: -30px;
+  width: 200px;
+  color: black;
   font-size: 15px;
 }
 
 .box6 {
   width: 200px;
   height: 220px;
-  margin-left: 1100px;
+  margin-left: 420px;
   margin-top: -220px;
   border-radius: 20px;
-  border: 2px solid rgb(250, 250, 250);
+  border: 2px solid rgb(10, 10, 10);
 }
 
 .box6_1 {
   width: 100px;
   height: 121.5px;
-  margin-left: 35px;
-  margin-top: 15px;
+  margin-left: 45px;
+  margin-top: -20px;
   background-image: url("/src/Assests/PDF_file_icon.png");
   background-size: 100px;
 }
 
 .name6 {
-  margin-top: 20px;
-  margin-left: 120px;
-  width: 400px;
-  color: yellow;
-  font-size: 12px;
+  margin-top: 130px;
+  margin-left: -30px;
+  width: 200px;
+  color: black;
+  font-size: 15px;
 }
 
 .box7 {
   width: 200px;
   height: 220px;
-  margin-left: 30px;
-  margin-top: 160px;
+  margin-left: 820px;
+  margin-top: -220px;
   border-radius: 20px;
-  border: 2px solid rgb(250, 250, 250);
+  border: 2px solid rgb(10, 10, 10);
 
   /* image: url("/src/Assests/PDF_file_icon.png"); */
 }
@@ -191,79 +193,79 @@
 .box7_1 {
   width: 100px;
   height: 121.5px;
-  margin-left: 35px;
-  margin-top: 15px;
+  margin-left: 45px;
+  margin-top: -20px;
   background-image: url("/src/Assests/PDF_file_icon.png");
   background-size: 100px;
 }
 
 .name7 {
-  margin-top: 20px;
-  margin-left: 140px;
+  margin-top: 130px;
+  margin-left: -30px;
   width: 200px;
-  color: yellow;
+  color: black;
   font-size: 15px;
 }
 
 .box8 {
   width: 200px;
   height: 220px;
-  margin-left: 550px;
-  margin-top: -115px;
+  margin-left: 1220px;
+  margin-top: -220px;
   border-radius: 20px;
-  border: 2px solid rgb(250, 250, 250);
+  border: 2px solid rgb(10, 10, 10);
 }
 
 .box8_1 {
   width: 100px;
   height: 121.5px;
-  margin-left: 35px;
-  margin-top: 15px;
+  margin-left: 45px;
+  margin-top: -20px;
   background-image: url("/src/Assests/PDF_file_icon.png");
   background-size: 100px;
 }
 
 .name8 {
-  margin-top: 20px;
-  margin-left: 120px;
-  width: 400px;
-  color: yellow;
+  margin-top: 130px;
+  margin-left: -30px;
+  width: 200px;
+  color: black;
   font-size: 15px;
 }
 
 .box9 {
   width: 200px;
   height: 220px;
-  margin-left: 1100px;
-  margin-top: -150px;
+  margin-left: 30px;
+  margin-top: 50px;
   border-radius: 20px;
-  border: 2px solid rgb(250, 250, 250);
+  border: 2px solid rgb(10, 10, 10);
 }
 
 .box9_1 {
   width: 100px;
   height: 121.5px;
-  margin-left: 35px;
-  margin-top: 15px;
+  margin-left: 45px;
+  margin-top: -20px;
   background-image: url("/src/Assests/PDF_file_icon.png");
   background-size: 100px;
 }
 
 .name9 {
-  margin-top: 20px;
-  margin-left: 120px;
-  width: 400px;
-  color: yellow;
-  font-size: 12px;
+  margin-top: 130px;
+  margin-left: -30px;
+  width: 200px;
+  color: black;
+  font-size: 15px;
 }
 
 .box10 {
   width: 200px;
   height: 220px;
-  margin-left: 30px;
-  margin-top: 30px;
+  margin-left: 420px;
+  margin-top: -220px;
   border-radius: 20px;
-  border: 2px solid rgb(250, 250, 250);
+  border: 2px solid rgb(10, 10, 10);
 
   /* image: url("/src/Assests/PDF_file_icon.png"); */
 }
@@ -271,21 +273,21 @@
 .box10_1 {
   width: 100px;
   height: 121.5px;
-  margin-left: 35px;
-  margin-top: 15px;
+  margin-left: 45px;
+  margin-top: -20px;
   background-image: url("/src/Assests/PDF_file_icon.png");
   background-size: 100px;
 }
 
 .name10 {
-  margin-top: 20px;
-  margin-left: 140px;
+  margin-top: 130px;
+  margin-left: -30px;
   width: 200px;
-  color: yellow;
+  color: black;
   font-size: 15px;
 }
 
-.box11 {
+/* .box11 {
   width: 200px;
   height: 220px;
   margin-left: 550px;
@@ -595,4 +597,4 @@
   width: 400px;
   color: yellow;
   font-size: 15px;
-}
+} */

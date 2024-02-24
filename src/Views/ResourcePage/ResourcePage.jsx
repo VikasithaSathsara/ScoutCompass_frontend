@@ -39,6 +39,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 function ResourcePage() {
   const [isOpen, setIsOpen] = useState(false);
+  const [error, setError] = useState(null);
   const handleOpen = () => {
     setIsOpen(!isOpen);
   };
@@ -59,6 +60,32 @@ function ResourcePage() {
     }
   };
 
+  // Inside your functional component or class component
+  
+    const handleDownload = () => {
+      const url = 'http://localhost:8081/api/scoutcompass/resource/download/week_03(1).pdf';
+  
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.blob();
+        })
+        .then((blob) => {
+          const url = window.URL.createObjectURL(new Blob([blob]));
+          const link = document.createElement('a');
+          link.href = url;
+          link.setAttribute('download', 'week_03(1).pdf');
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        })
+        .catch((error) => {
+          console.error('Error downloading file:', error);
+        });
+    };
+  
   // Add resources part
 
   const [numPages, setNumPages] = useState(null);
@@ -81,11 +108,7 @@ function ResourcePage() {
     setPageNumber(1);
   };
 
-  const handleDownload = () => {
-    if (file) {
-      saveAs(file, "downloaded.pdf");
-    }
-  };
+
   return (
     <div>
       {/* <Menu /> */}
@@ -209,14 +232,11 @@ function ResourcePage() {
                 >
                   View Resource
                 </MenuItem>
-                <a
-                  href="SINGITHI SCOUT PROGRAME.pdf"
-                  Download="Singithi Scout Programe.pdf"
-                >
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}>
+
+                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
                     Download Resource
                   </MenuItem>
-                </a>
+      
                 <MenuItem
                   icon={<DeleteIcon />}
                   bgColor={"whiteAlpha"}
@@ -253,14 +273,11 @@ function ResourcePage() {
                 <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"}>
                   View Resource
                 </MenuItem>
-                <a
-                  href="SINGITHI SCOUT PROGRAME.pdf"
-                  Download="Singithi Scout Programe.pdf"
-                >
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}>
+     
+                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
                     Download Resource
                   </MenuItem>
-                </a>
+              
                 <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
                   Delete Resource
                 </MenuItem>
@@ -292,14 +309,11 @@ function ResourcePage() {
                 <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"}>
                   View Resource
                 </MenuItem>
-                <a
-                  href="SINGITHI SCOUT PROGRAME.pdf"
-                  Download="Singithi Scout Programe.pdf"
-                >
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}>
+
+                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
                     Download Resource
                   </MenuItem>
-                </a>
+              
                 <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
                   Delete Resource
                 </MenuItem>
@@ -331,14 +345,11 @@ function ResourcePage() {
                 <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"}>
                   View Resource
                 </MenuItem>
-                <a
-                  href="SINGITHI SCOUT PROGRAME.pdf"
-                  Download="Singithi Scout Programe.pdf"
-                >
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}>
+     
+                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
                     Download Resource
                   </MenuItem>
-                </a>
+          
                 <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
                   Delete Resource
                 </MenuItem>
@@ -367,17 +378,14 @@ function ResourcePage() {
                 marginTop={2.5}
               />
               <MenuList marginRight={1} bgColor={"yellow"}>
-                <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"}>
+                <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"} >
                   View Resource
                 </MenuItem>
-                <a
-                  href="SINGITHI SCOUT PROGRAME.pdf"
-                  Download="Singithi Scout Programe.pdf"
-                >
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}>
+  
+                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
                     Download Resource
                   </MenuItem>
-                </a>
+      
                 <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
                   Delete Resource
                 </MenuItem>
@@ -409,14 +417,11 @@ function ResourcePage() {
                 <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"}>
                   View Resource
                 </MenuItem>
-                <a
-                  href="SINGITHI SCOUT PROGRAME.pdf"
-                  Download="Singithi Scout Programe.pdf"
-                >
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}>
+        
+                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
                     Download Resource
                   </MenuItem>
-                </a>
+             
                 <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
                   Delete Resource
                 </MenuItem>
@@ -447,15 +452,11 @@ function ResourcePage() {
               <MenuList marginRight={1} bgColor={"yellow"}>
                 <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"}>
                   View Resource
-                </MenuItem>
-                <a
-                  href="SINGITHI SCOUT PROGRAME.pdf"
-                  Download="Singithi Scout Programe.pdf"
-                >
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}>
+                  </MenuItem>
+                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
                     Download Resource
                   </MenuItem>
-                </a>
+  
                 <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
                   Delete Resource
                 </MenuItem>
@@ -487,14 +488,11 @@ function ResourcePage() {
                 <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"}>
                   View Resource
                 </MenuItem>
-                <a
-                  href="SINGITHI SCOUT PROGRAME.pdf"
-                  Download="Singithi Scout Programe.pdf"
-                >
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}>
+     
+                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
                     Download Resource
                   </MenuItem>
-                </a>
+         
                 <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
                   Delete Resource
                 </MenuItem>
@@ -526,14 +524,11 @@ function ResourcePage() {
                 <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"}>
                   View Resource
                 </MenuItem>
-                <a
-                  href="SINGITHI SCOUT PROGRAME.pdf"
-                  Download="Singithi Scout Programe.pdf"
-                >
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}>
+      
+                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
                     Download Resource
                   </MenuItem>
-                </a>
+                
                 <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
                   Delete Resource
                 </MenuItem>
@@ -565,14 +560,11 @@ function ResourcePage() {
                 <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"}>
                   View Resource
                 </MenuItem>
-                <a
-                  href="SINGITHI SCOUT PROGRAME.pdf"
-                  Download="Singithi Scout Programe.pdf"
-                >
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}>
+            
+                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
                     Download Resource
                   </MenuItem>
-                </a>
+           
                 <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
                   Delete Resource
                 </MenuItem>

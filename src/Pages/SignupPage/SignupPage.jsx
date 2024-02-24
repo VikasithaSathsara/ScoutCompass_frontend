@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./SignupPage.css";
 import { ChakraProvider } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import { toast, ToastContainer } from "react-toastify";
 
 import Navbar from "../../Components/Navbar/Navbar";
@@ -87,9 +88,12 @@ function SignupPage() {
       [fieldName]: e.currentTarget.value,
     });
   };
-
+  const toast = useToast();
+  const [loading, setLoading] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
   const onSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       if (pass !== confirmPass) {
         setpasswordMissMatch(true);
@@ -176,9 +180,22 @@ function SignupPage() {
           );
           if (response.ok) {
             console.log("Scout Registration successful!");
-            toast.success("Scout Registration successful!");
+       
+           
             // navigate("/home");
             //  window.location.href = "/home";
+        const examplePromise = new Promise((resolve, reject) => {
+          setTimeout(() => resolve(200), 800)
+        })
+
+        // Will display the loading toast until the promise is either resolved
+        // or rejected.
+        toast.promise(examplePromise, {
+          success: { title: 'Instructor Successfully Registered!', description: 'Looks great' , position: "top" },
+          error: { title: 'Promise rejected', description: 'Something wrong' ,  position: "top-right"},
+          loading: { title: 'Request Proccessing', description: 'Please wait' ,  position: "top-right"},
+        
+        })
           } else {
             console.error("Scout Registration Fail!");
             toast.error("Scout Registration Fail!");
@@ -187,6 +204,7 @@ function SignupPage() {
 
         }
       }
+      setSubmitSuccess(true);
       setpasswordMissMatch(false);
       setFormData({
         ...formData,
@@ -195,6 +213,7 @@ function SignupPage() {
       console.log("sdsdsdsd" + formData);
     } catch (error) {
       // handle server errors
+      setLoading(false);
     }
   };
 
@@ -486,7 +505,7 @@ function SignupPage() {
                   </Stack>
                   {/* set condition to isFormFilled to Disable Button till form is filled*/}
                   {true && (
-                    <Button variant="solid" colorScheme="blue" type="submit">
+                    <Button variant="solid" colorScheme="blue" type="submit"  isDisabled={loading} >
                       Create Account
                     </Button>
                   )}
@@ -495,7 +514,7 @@ function SignupPage() {
                       variant="solid"
                       colorScheme="blue"
                       type="submit"
-                      isDisabled
+                      isDisabled={loading}
                     >
                       Create Account
                     </Button>

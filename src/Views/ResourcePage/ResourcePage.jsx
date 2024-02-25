@@ -1,5 +1,5 @@
 import "./ResourcePage.css";
-import SideMenu from "../../Components/SideMenu/SideMenu";
+// import Menu from "../../Components/Menu/Menu";
 import React, { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import { saveAs } from "file-saver";
@@ -38,6 +38,38 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 function ResourcePage() {
+    const [file_, setFile_] = useState(null);
+
+    const handleFileChange = (e) => {
+        setFile_(e.target.files[0]);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!file_) {
+            alert("Please select a file");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("resource", file_);
+
+        try {
+            const response = await fetch(
+                "http://localhost:8081/api/scoutcompass/resource/upload",
+                {
+                    method: "POST",
+                    body: formData,
+                }
+            );
+
+            // Handle the response accordingly
+            console.log("Response:", response);
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
     const [isOpen, setIsOpen] = useState(false);
     const [error, setError] = useState(null);
     const handleOpen = () => {
@@ -64,7 +96,7 @@ function ResourcePage() {
 
     const handleDownload = () => {
         const url =
-            "http://localhost:8081/api/scoutcompass/resource/download/Vikasitha Liyanage_52143400.pdf";
+            "http://localhost:8081/api/scoutcompass/resource/download/week_03(1).pdf";
 
         fetch(url)
             .then((response) => {
@@ -77,10 +109,7 @@ function ResourcePage() {
                 const url = window.URL.createObjectURL(new Blob([blob]));
                 const link = document.createElement("a");
                 link.href = url;
-                link.setAttribute(
-                    "download",
-                    "Vikasitha Liyanage_52143400.pdf"
-                );
+                link.setAttribute("download", "week_03(1).pdf");
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -114,7 +143,7 @@ function ResourcePage() {
 
     return (
         <div>
-            <SideMenu />
+            {/* <Menu /> */}
             {/* <h1>Resource Page</h1> */}
 
             <div className="bg1">
@@ -205,9 +234,23 @@ function ResourcePage() {
                                 <PopoverCloseButton />
                                 <PopoverBody>
                                     <div className="add">
-                                        <p className="add_title">
-                                            Add Resource
-                                        </p>
+                                        <form onSubmit={handleSubmit}>
+                                            <div>
+                                                <label htmlFor="fileInput">
+                                                    Select a PDF file:
+                                                </label>
+                                                <input
+                                                    type="file"
+                                                    id="fileInput"
+                                                    onChange={handleFileChange}
+                                                />
+                                            </div>
+                                            <div>
+                                                <button type="submit">
+                                                    Upload File
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </PopoverBody>
                                 <PopoverFooter

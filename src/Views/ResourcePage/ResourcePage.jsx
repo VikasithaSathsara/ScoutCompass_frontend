@@ -38,6 +38,35 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 function ResourcePage() {
+  const [file_, setFile_] = useState(null);
+
+  const handleFileChange = (e) => {
+    setFile_(e.target.files[0]);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!file_) {
+      alert('Please select a file');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('resource', file_);
+
+    try {
+      const response = await fetch('http://localhost:8081/api/scoutcompass/resource/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      // Handle the response accordingly
+      console.log('Response:', response);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
   const [isOpen, setIsOpen] = useState(false);
   const [error, setError] = useState(null);
   const handleOpen = () => {
@@ -191,7 +220,15 @@ function ResourcePage() {
                 <PopoverCloseButton />
                 <PopoverBody>
                   <div className="add">
-                    <p className="add_title">Add Resource</p>
+                          <form onSubmit={handleSubmit}>
+                          <div>
+                            <label htmlFor="fileInput">Select a PDF file:</label>
+                            <input type="file" id="fileInput" onChange={handleFileChange} />
+                          </div>
+                          <div>
+                            <button type="submit">Upload File</button>
+                          </div>
+                        </form>
                   </div>
                 </PopoverBody>
                 <PopoverFooter

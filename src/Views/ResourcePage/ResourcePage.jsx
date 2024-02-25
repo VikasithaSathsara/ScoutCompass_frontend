@@ -1,5 +1,5 @@
 import "./ResourcePage.css";
-// import Menu from "../../Components/Menu/Menu";
+import SideMenu from "../../Components/SideMenu/SideMenu";
 import React, { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import { saveAs } from "file-saver";
@@ -143,7 +143,7 @@ function ResourcePage() {
 
     return (
         <div>
-            {/* <Menu /> */}
+            <SideMenu />
             {/* <h1>Resource Page</h1> */}
 
             <div className="bg1">

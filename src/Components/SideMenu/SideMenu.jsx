@@ -1,8 +1,8 @@
-import "./Menu.css";
+import "./SideMenu.css";
 import React from "react";
 import L1 from "../../Assests/logo.png";
 
-function Menu() {
+function SideMenu() {
     return (
         <div className="page">
             <link
@@ -59,4 +59,4 @@ function Menu() {
     );
 }
 
-export default Menu;
+export default SideMenu;

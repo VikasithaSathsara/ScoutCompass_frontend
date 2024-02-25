@@ -1,158 +1,172 @@
 import "./ResourcePage.css";
-// import Menu from "../../Components/Menu/Menu";
+import SideMenu from "../../Components/SideMenu/SideMenu";
 import React, { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import { saveAs } from "file-saver";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import {
-  Box,
-  ButtonGroup,
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  IconButton,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverHeader,
-  PopoverBody,
-  PopoverFooter,
-  PopoverArrow,
-  PopoverCloseButton,
+    Box,
+    ButtonGroup,
+    Button,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    IconButton,
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverHeader,
+    PopoverBody,
+    PopoverFooter,
+    PopoverArrow,
+    PopoverCloseButton,
 } from "@chakra-ui/react";
 import { Stack } from "@chakra-ui/react";
 import {
-  AddIcon,
-  DeleteIcon,
-  HamburgerIcon,
-  DownloadIcon,
-  ViewIcon,
+    AddIcon,
+    DeleteIcon,
+    HamburgerIcon,
+    DownloadIcon,
+    ViewIcon,
 } from "@chakra-ui/icons";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  "pdfjs-dist/build/pdf.worker.min.js",
-  import.meta.url
+    "pdfjs-dist/build/pdf.worker.min.js",
+    import.meta.url
 ).toString();
 
 function ResourcePage() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [error, setError] = useState(null);
-  const handleOpen = () => {
-    setIsOpen(!isOpen);
-  };
-  const initialFocusRef = React.useRef();
-
-  // View,delete resources part
-
-  const handleViewResource = () => {
-    alert("Viewing Resource");
-  };
-
-  const handleDeleteResource = () => {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this resource?"
-    );
-    if (confirmed) {
-      alert("Resource Deleted");
-    }
-  };
-
-  // Inside your functional component or class component
-  
-    const handleDownload = () => {
-      const url = 'http://localhost:8081/api/scoutcompass/resource/download/week_03(1).pdf';
-  
-      fetch(url)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-          return response.blob();
-        })
-        .then((blob) => {
-          const url = window.URL.createObjectURL(new Blob([blob]));
-          const link = document.createElement('a');
-          link.href = url;
-          link.setAttribute('download', 'week_03(1).pdf');
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        })
-        .catch((error) => {
-          console.error('Error downloading file:', error);
-        });
+    const [isOpen, setIsOpen] = useState(false);
+    const [error, setError] = useState(null);
+    const handleOpen = () => {
+        setIsOpen(!isOpen);
     };
-  
-  // Add resources part
+    const initialFocusRef = React.useRef();
 
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [file, setFile] = useState(null);
+    // View,delete resources part
 
-  const onFileChange = (e) => {
-    const selectedFile = e.target.files[0];
-    setFile(selectedFile);
-    setPageNumber(1);
-  };
+    const handleViewResource = () => {
+        alert("Viewing Resource");
+    };
 
-  const onDocumentLoadSuccess = ({ numPages }) => {
-    setNumPages(numPages);
-  };
+    const handleDeleteResource = () => {
+        const confirmed = window.confirm(
+            "Are you sure you want to delete this resource?"
+        );
+        if (confirmed) {
+            alert("Resource Deleted");
+        }
+    };
 
-  const handleDelete = () => {
-    setFile(null);
-    setNumPages(null);
-    setPageNumber(1);
-  };
+    // Inside your functional component or class component
 
+    const handleDownload = () => {
+        const url =
+            "http://localhost:8081/api/scoutcompass/resource/download/Vikasitha Liyanage_52143400.pdf";
 
-  return (
-    <div>
-      {/* <Menu /> */}
-      {/* <h1>Resource Page</h1> */}
+        fetch(url)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.blob();
+            })
+            .then((blob) => {
+                const url = window.URL.createObjectURL(new Blob([blob]));
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute(
+                    "download",
+                    "Vikasitha Liyanage_52143400.pdf"
+                );
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            })
+            .catch((error) => {
+                console.error("Error downloading file:", error);
+            });
+    };
 
-      <div className="bg1">
-        {/* <div className="wrap1"> */}
-        <ChakraProvider>
-          <Stack direction="row" spacing={5} marginLeft={1200} marginBottom={5}>
-            <Popover
-              initialFocusRef={initialFocusRef}
-              placement="bottom"
-              closeOnBlur={false}
-              isOpen={isOpen} // Pass isOpen to control the popover visibility
-              onClose={handleOpen} // Use onClose to handle popover close
-            >
-              <PopoverTrigger>
-                <Button
-                  onClick={handleOpen}
-                  leftIcon={<AddIcon />}
-                  colorScheme="blackAlpha"
-                  variant="solid"
-                  marginTop={5}
-                  marginLeft={100}
-                >
-                  Add Resources
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent
-                color="black"
-                bg="white"
-                borderColor="yellow"
-                marginRight={150}
-              >
-                <PopoverHeader pt={4} fontWeight="bold" border="0">
-                  <Document
-                    file="SINGITHI SCOUT PROGRAME.pdf"
-                    onLoadSuccess={(event) => {
-                      console.log("Document loaded successfully!");
-                    }}
-                  >
-                    <Page />
-                  </Document>
-                  {/* <h1>PDF Viewer</h1>
+    // Add resources part
+
+    const [numPages, setNumPages] = useState(null);
+    const [pageNumber, setPageNumber] = useState(1);
+    const [file, setFile] = useState(null);
+
+    const onFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+        setFile(selectedFile);
+        setPageNumber(1);
+    };
+
+    const onDocumentLoadSuccess = ({ numPages }) => {
+        setNumPages(numPages);
+    };
+
+    const handleDelete = () => {
+        setFile(null);
+        setNumPages(null);
+        setPageNumber(1);
+    };
+
+    return (
+        <div>
+            <SideMenu />
+            {/* <h1>Resource Page</h1> */}
+
+            <div className="bg1">
+                {/* <div className="wrap1"> */}
+                <ChakraProvider>
+                    <Stack
+                        direction="row"
+                        spacing={5}
+                        marginLeft={1200}
+                        marginBottom={5}
+                    >
+                        <Popover
+                            initialFocusRef={initialFocusRef}
+                            placement="bottom"
+                            closeOnBlur={false}
+                            isOpen={isOpen} // Pass isOpen to control the popover visibility
+                            onClose={handleOpen} // Use onClose to handle popover close
+                        >
+                            <PopoverTrigger>
+                                <Button
+                                    onClick={handleOpen}
+                                    leftIcon={<AddIcon />}
+                                    colorScheme="blackAlpha"
+                                    variant="solid"
+                                    marginTop={5}
+                                    marginLeft={100}
+                                >
+                                    Add Resources
+                                </Button>
+                            </PopoverTrigger>
+                            <PopoverContent
+                                color="black"
+                                bg="white"
+                                borderColor="yellow"
+                                marginRight={150}
+                            >
+                                <PopoverHeader
+                                    pt={4}
+                                    fontWeight="bold"
+                                    border="0"
+                                >
+                                    <Document
+                                        file="SINGITHI SCOUT PROGRAME.pdf"
+                                        onLoadSuccess={(event) => {
+                                            console.log(
+                                                "Document loaded successfully!"
+                                            );
+                                        }}
+                                    >
+                                        <Page />
+                                    </Document>
+                                    {/* <h1>PDF Viewer</h1>
                   <input type="file" onChange={onFileChange} />
                   {file && (
                     <div>
@@ -186,401 +200,497 @@ function ResourcePage() {
                       <button onClick={handleDelete}>Delete</button>
                     </div>
                   )} */}
-                </PopoverHeader>
-                <PopoverArrow bg="white" />
-                <PopoverCloseButton />
-                <PopoverBody>
-                  <div className="add">
-                    <p className="add_title">Add Resource</p>
-                  </div>
-                </PopoverBody>
-                <PopoverFooter
-                  border="0"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="space-between"
-                  pb={4}
-                >
-                  <Box fontSize="sm"></Box>
-                  {/* <ButtonGroup size="sm">
+                                </PopoverHeader>
+                                <PopoverArrow bg="white" />
+                                <PopoverCloseButton />
+                                <PopoverBody>
+                                    <div className="add">
+                                        <p className="add_title">
+                                            Add Resource
+                                        </p>
+                                    </div>
+                                </PopoverBody>
+                                <PopoverFooter
+                                    border="0"
+                                    display="flex"
+                                    alignItems="center"
+                                    justifyContent="space-between"
+                                    pb={4}
+                                >
+                                    <Box fontSize="sm"></Box>
+                                    {/* <ButtonGroup size="sm">
                     <Button colorScheme="green">Add</Button>
                     <Button colorScheme="blue" ref={initialFocusRef}>
                       Cancel
                     </Button>
                   </ButtonGroup> */}
-                </PopoverFooter>
-              </PopoverContent>
-            </Popover>
-          </Stack>
+                                </PopoverFooter>
+                            </PopoverContent>
+                        </Popover>
+                    </Stack>
 
-          <div className="box1">
-            <Menu>
-              <MenuButton
-                as={IconButton}
-                aria-label="Options"
-                icon={<HamburgerIcon />}
-                colorScheme="white"
-                variant="outline"
-                marginLeft={150}
-                marginTop={2.5}
-              />
-              <MenuList marginRight={1} bgColor={"yellow"}>
-                <MenuItem
-                  icon={<ViewIcon />}
-                  bgColor={"whiteAlpha"}
-                  onClick={handleViewResource}
-                >
-                  View Resource
-                </MenuItem>
+                    <div className="box1">
+                        <Menu>
+                            <MenuButton
+                                as={IconButton}
+                                aria-label="Options"
+                                icon={<HamburgerIcon />}
+                                colorScheme="white"
+                                variant="outline"
+                                marginLeft={150}
+                                marginTop={2.5}
+                            />
+                            <MenuList marginRight={1} bgColor={"yellow"}>
+                                <MenuItem
+                                    icon={<ViewIcon />}
+                                    bgColor={"whiteAlpha"}
+                                    onClick={handleViewResource}
+                                >
+                                    View Resource
+                                </MenuItem>
 
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
-                    Download Resource
-                  </MenuItem>
-      
-                <MenuItem
-                  icon={<DeleteIcon />}
-                  bgColor={"whiteAlpha"}
-                  onClick={handleDeleteResource}
-                >
-                  Delete Resource
-                </MenuItem>
-              </MenuList>
-            </Menu>
+                                <MenuItem
+                                    icon={<DownloadIcon />}
+                                    bgColor={"whiteAlpha"}
+                                    onClick={handleDownload}
+                                >
+                                    Download Resource
+                                </MenuItem>
 
-            <div className="box1_1">
-              <img
-                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
-                alt=""
-              />
-              <div className="name1">
-                <label>Singithi Scout Programe</label>
-              </div>
-            </div>
-          </div>
+                                <MenuItem
+                                    icon={<DeleteIcon />}
+                                    bgColor={"whiteAlpha"}
+                                    onClick={handleDeleteResource}
+                                >
+                                    Delete Resource
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
 
-          <div className="box2">
-            <Menu>
-              <MenuButton
-                as={IconButton}
-                aria-label="Options"
-                icon={<HamburgerIcon />}
-                colorScheme="white"
-                variant="outline"
-                marginLeft={150}
-                marginTop={2.5}
-              />
-              <MenuList marginRight={1} bgColor={"yellow"}>
-                <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"}>
-                  View Resource
-                </MenuItem>
-     
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
-                    Download Resource
-                  </MenuItem>
-              
-                <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
-                  Delete Resource
-                </MenuItem>
-              </MenuList>
-            </Menu>
-            <div className="box2_1">
-              <img
-                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
-                alt=""
-              />
-              <div className="name2">
-                <label>Singithi Scout Programe</label>
-              </div>
-            </div>
-          </div>
+                        <div className="box1_1">
+                            <img
+                                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
+                                alt=""
+                            />
+                            <div className="name1">
+                                <label>Singithi Scout Programe</label>
+                            </div>
+                        </div>
+                    </div>
 
-          <div className="box3">
-            <Menu>
-              <MenuButton
-                as={IconButton}
-                aria-label="Options"
-                icon={<HamburgerIcon />}
-                colorScheme="white"
-                variant="outline"
-                marginLeft={150}
-                marginTop={2.5}
-              />
-              <MenuList marginRight={1} bgColor={"yellow"}>
-                <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"}>
-                  View Resource
-                </MenuItem>
+                    <div className="box2">
+                        <Menu>
+                            <MenuButton
+                                as={IconButton}
+                                aria-label="Options"
+                                icon={<HamburgerIcon />}
+                                colorScheme="white"
+                                variant="outline"
+                                marginLeft={150}
+                                marginTop={2.5}
+                            />
+                            <MenuList marginRight={1} bgColor={"yellow"}>
+                                <MenuItem
+                                    icon={<ViewIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    View Resource
+                                </MenuItem>
 
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
-                    Download Resource
-                  </MenuItem>
-              
-                <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
-                  Delete Resource
-                </MenuItem>
-              </MenuList>
-            </Menu>
-            <div className="box3_1">
-              <img
-                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
-                alt=""
-              />
-              <div className="name3">
-                <label>Singithi Scout Programe</label>
-              </div>
-            </div>
-          </div>
+                                <MenuItem
+                                    icon={<DownloadIcon />}
+                                    bgColor={"whiteAlpha"}
+                                    onClick={handleDownload}
+                                >
+                                    Download Resource
+                                </MenuItem>
 
-          <div className="box4">
-            <Menu>
-              <MenuButton
-                as={IconButton}
-                aria-label="Options"
-                icon={<HamburgerIcon />}
-                colorScheme="white"
-                variant="outline"
-                marginLeft={150}
-                marginTop={2.5}
-              />
-              <MenuList marginRight={1} bgColor={"yellow"}>
-                <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"}>
-                  View Resource
-                </MenuItem>
-     
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
-                    Download Resource
-                  </MenuItem>
-          
-                <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
-                  Delete Resource
-                </MenuItem>
-              </MenuList>
-            </Menu>
-            <div className="box4_1">
-              <img
-                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
-                alt=""
-              />
-              <div className="name4">
-                <label>Singithi Scout Programe</label>
-              </div>
-            </div>
-          </div>
+                                <MenuItem
+                                    icon={<DeleteIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    Delete Resource
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
+                        <div className="box2_1">
+                            <img
+                                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
+                                alt=""
+                            />
+                            <div className="name2">
+                                <label>Singithi Scout Programe</label>
+                            </div>
+                        </div>
+                    </div>
 
-          <div className="box5">
-            <Menu>
-              <MenuButton
-                as={IconButton}
-                aria-label="Options"
-                icon={<HamburgerIcon />}
-                colorScheme="white"
-                variant="outline"
-                marginLeft={150}
-                marginTop={2.5}
-              />
-              <MenuList marginRight={1} bgColor={"yellow"}>
-                <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"} >
-                  View Resource
-                </MenuItem>
-  
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
-                    Download Resource
-                  </MenuItem>
-      
-                <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
-                  Delete Resource
-                </MenuItem>
-              </MenuList>
-            </Menu>
-            <div className="box5_1">
-              <img
-                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
-                alt=""
-              />
-              <div className="name5">
-                <label>Singithi Scout Programe</label>
-              </div>
-            </div>
-          </div>
+                    <div className="box3">
+                        <Menu>
+                            <MenuButton
+                                as={IconButton}
+                                aria-label="Options"
+                                icon={<HamburgerIcon />}
+                                colorScheme="white"
+                                variant="outline"
+                                marginLeft={150}
+                                marginTop={2.5}
+                            />
+                            <MenuList marginRight={1} bgColor={"yellow"}>
+                                <MenuItem
+                                    icon={<ViewIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    View Resource
+                                </MenuItem>
 
-          <div className="box6">
-            <Menu>
-              <MenuButton
-                as={IconButton}
-                aria-label="Options"
-                icon={<HamburgerIcon />}
-                colorScheme="white"
-                variant="outline"
-                marginLeft={150}
-                marginTop={2.5}
-              />
-              <MenuList marginRight={1} bgColor={"yellow"}>
-                <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"}>
-                  View Resource
-                </MenuItem>
-        
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
-                    Download Resource
-                  </MenuItem>
-             
-                <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
-                  Delete Resource
-                </MenuItem>
-              </MenuList>
-            </Menu>
-            <div className="box6_1">
-              <img
-                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
-                alt=""
-              />
-              <div className="name6">
-                <label>Singithi Scout Programe</label>
-              </div>
-            </div>
-          </div>
+                                <MenuItem
+                                    icon={<DownloadIcon />}
+                                    bgColor={"whiteAlpha"}
+                                    onClick={handleDownload}
+                                >
+                                    Download Resource
+                                </MenuItem>
 
-          <div className="box7">
-            <Menu>
-              <MenuButton
-                as={IconButton}
-                aria-label="Options"
-                icon={<HamburgerIcon />}
-                colorScheme="white"
-                variant="outline"
-                marginLeft={150}
-                marginTop={2.5}
-              />
-              <MenuList marginRight={1} bgColor={"yellow"}>
-                <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"}>
-                  View Resource
-                  </MenuItem>
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
-                    Download Resource
-                  </MenuItem>
-  
-                <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
-                  Delete Resource
-                </MenuItem>
-              </MenuList>
-            </Menu>
-            <div className="box7_1">
-              <img
-                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
-                alt=""
-              />
-              <div className="name7">
-                <label>Singithi Scout Programe</label>
-              </div>
-            </div>
-          </div>
+                                <MenuItem
+                                    icon={<DeleteIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    Delete Resource
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
+                        <div className="box3_1">
+                            <img
+                                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
+                                alt=""
+                            />
+                            <div className="name3">
+                                <label>Singithi Scout Programe</label>
+                            </div>
+                        </div>
+                    </div>
 
-          <div className="box8">
-            <Menu>
-              <MenuButton
-                as={IconButton}
-                aria-label="Options"
-                icon={<HamburgerIcon />}
-                colorScheme="white"
-                variant="outline"
-                marginLeft={150}
-                marginTop={2.5}
-              />
-              <MenuList marginRight={1} bgColor={"yellow"}>
-                <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"}>
-                  View Resource
-                </MenuItem>
-     
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
-                    Download Resource
-                  </MenuItem>
-         
-                <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
-                  Delete Resource
-                </MenuItem>
-              </MenuList>
-            </Menu>
-            <div className="box8_1">
-              <img
-                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
-                alt=""
-              />
-              <div className="name8">
-                <label>Singithi Scout Programe</label>
-              </div>
-            </div>
-          </div>
+                    <div className="box4">
+                        <Menu>
+                            <MenuButton
+                                as={IconButton}
+                                aria-label="Options"
+                                icon={<HamburgerIcon />}
+                                colorScheme="white"
+                                variant="outline"
+                                marginLeft={150}
+                                marginTop={2.5}
+                            />
+                            <MenuList marginRight={1} bgColor={"yellow"}>
+                                <MenuItem
+                                    icon={<ViewIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    View Resource
+                                </MenuItem>
 
-          <div className="box9">
-            <Menu>
-              <MenuButton
-                as={IconButton}
-                aria-label="Options"
-                icon={<HamburgerIcon />}
-                colorScheme="white"
-                variant="outline"
-                marginLeft={150}
-                marginTop={2.5}
-              />
-              <MenuList marginRight={1} bgColor={"yellow"}>
-                <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"}>
-                  View Resource
-                </MenuItem>
-      
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
-                    Download Resource
-                  </MenuItem>
-                
-                <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
-                  Delete Resource
-                </MenuItem>
-              </MenuList>
-            </Menu>
-            <div className="box9_1">
-              <img
-                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
-                alt=""
-              />
-              <div className="name9">
-                <label>Singithi Scout Programe</label>
-              </div>
-            </div>
-          </div>
+                                <MenuItem
+                                    icon={<DownloadIcon />}
+                                    bgColor={"whiteAlpha"}
+                                    onClick={handleDownload}
+                                >
+                                    Download Resource
+                                </MenuItem>
 
-          <div className="box10">
-            <Menu>
-              <MenuButton
-                as={IconButton}
-                aria-label="Options"
-                icon={<HamburgerIcon />}
-                colorScheme="white"
-                variant="outline"
-                marginLeft={150}
-                marginTop={2.5}
-              />
-              <MenuList marginRight={1} bgColor={"yellow"}>
-                <MenuItem icon={<ViewIcon />} bgColor={"whiteAlpha"}>
-                  View Resource
-                </MenuItem>
-            
-                  <MenuItem icon={<DownloadIcon />} bgColor={"whiteAlpha"}  onClick={handleDownload}>
-                    Download Resource
-                  </MenuItem>
-           
-                <MenuItem icon={<DeleteIcon />} bgColor={"whiteAlpha"}>
-                  Delete Resource
-                </MenuItem>
-              </MenuList>
-            </Menu>
-            <div className="box10_1">
-              <img
-                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
-                alt=""
-              />
-              <div className="name10">
-                <label>Singithi Scout Programe</label>
-              </div>
-            </div>
-          </div>
-          {/* 
+                                <MenuItem
+                                    icon={<DeleteIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    Delete Resource
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
+                        <div className="box4_1">
+                            <img
+                                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
+                                alt=""
+                            />
+                            <div className="name4">
+                                <label>Singithi Scout Programe</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="box5">
+                        <Menu>
+                            <MenuButton
+                                as={IconButton}
+                                aria-label="Options"
+                                icon={<HamburgerIcon />}
+                                colorScheme="white"
+                                variant="outline"
+                                marginLeft={150}
+                                marginTop={2.5}
+                            />
+                            <MenuList marginRight={1} bgColor={"yellow"}>
+                                <MenuItem
+                                    icon={<ViewIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    View Resource
+                                </MenuItem>
+
+                                <MenuItem
+                                    icon={<DownloadIcon />}
+                                    bgColor={"whiteAlpha"}
+                                    onClick={handleDownload}
+                                >
+                                    Download Resource
+                                </MenuItem>
+
+                                <MenuItem
+                                    icon={<DeleteIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    Delete Resource
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
+                        <div className="box5_1">
+                            <img
+                                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
+                                alt=""
+                            />
+                            <div className="name5">
+                                <label>Singithi Scout Programe</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="box6">
+                        <Menu>
+                            <MenuButton
+                                as={IconButton}
+                                aria-label="Options"
+                                icon={<HamburgerIcon />}
+                                colorScheme="white"
+                                variant="outline"
+                                marginLeft={150}
+                                marginTop={2.5}
+                            />
+                            <MenuList marginRight={1} bgColor={"yellow"}>
+                                <MenuItem
+                                    icon={<ViewIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    View Resource
+                                </MenuItem>
+
+                                <MenuItem
+                                    icon={<DownloadIcon />}
+                                    bgColor={"whiteAlpha"}
+                                    onClick={handleDownload}
+                                >
+                                    Download Resource
+                                </MenuItem>
+
+                                <MenuItem
+                                    icon={<DeleteIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    Delete Resource
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
+                        <div className="box6_1">
+                            <img
+                                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
+                                alt=""
+                            />
+                            <div className="name6">
+                                <label>Singithi Scout Programe</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="box7">
+                        <Menu>
+                            <MenuButton
+                                as={IconButton}
+                                aria-label="Options"
+                                icon={<HamburgerIcon />}
+                                colorScheme="white"
+                                variant="outline"
+                                marginLeft={150}
+                                marginTop={2.5}
+                            />
+                            <MenuList marginRight={1} bgColor={"yellow"}>
+                                <MenuItem
+                                    icon={<ViewIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    View Resource
+                                </MenuItem>
+                                <MenuItem
+                                    icon={<DownloadIcon />}
+                                    bgColor={"whiteAlpha"}
+                                    onClick={handleDownload}
+                                >
+                                    Download Resource
+                                </MenuItem>
+
+                                <MenuItem
+                                    icon={<DeleteIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    Delete Resource
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
+                        <div className="box7_1">
+                            <img
+                                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
+                                alt=""
+                            />
+                            <div className="name7">
+                                <label>Singithi Scout Programe</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="box8">
+                        <Menu>
+                            <MenuButton
+                                as={IconButton}
+                                aria-label="Options"
+                                icon={<HamburgerIcon />}
+                                colorScheme="white"
+                                variant="outline"
+                                marginLeft={150}
+                                marginTop={2.5}
+                            />
+                            <MenuList marginRight={1} bgColor={"yellow"}>
+                                <MenuItem
+                                    icon={<ViewIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    View Resource
+                                </MenuItem>
+
+                                <MenuItem
+                                    icon={<DownloadIcon />}
+                                    bgColor={"whiteAlpha"}
+                                    onClick={handleDownload}
+                                >
+                                    Download Resource
+                                </MenuItem>
+
+                                <MenuItem
+                                    icon={<DeleteIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    Delete Resource
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
+                        <div className="box8_1">
+                            <img
+                                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
+                                alt=""
+                            />
+                            <div className="name8">
+                                <label>Singithi Scout Programe</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="box9">
+                        <Menu>
+                            <MenuButton
+                                as={IconButton}
+                                aria-label="Options"
+                                icon={<HamburgerIcon />}
+                                colorScheme="white"
+                                variant="outline"
+                                marginLeft={150}
+                                marginTop={2.5}
+                            />
+                            <MenuList marginRight={1} bgColor={"yellow"}>
+                                <MenuItem
+                                    icon={<ViewIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    View Resource
+                                </MenuItem>
+
+                                <MenuItem
+                                    icon={<DownloadIcon />}
+                                    bgColor={"whiteAlpha"}
+                                    onClick={handleDownload}
+                                >
+                                    Download Resource
+                                </MenuItem>
+
+                                <MenuItem
+                                    icon={<DeleteIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    Delete Resource
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
+                        <div className="box9_1">
+                            <img
+                                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
+                                alt=""
+                            />
+                            <div className="name9">
+                                <label>Singithi Scout Programe</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="box10">
+                        <Menu>
+                            <MenuButton
+                                as={IconButton}
+                                aria-label="Options"
+                                icon={<HamburgerIcon />}
+                                colorScheme="white"
+                                variant="outline"
+                                marginLeft={150}
+                                marginTop={2.5}
+                            />
+                            <MenuList marginRight={1} bgColor={"yellow"}>
+                                <MenuItem
+                                    icon={<ViewIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    View Resource
+                                </MenuItem>
+
+                                <MenuItem
+                                    icon={<DownloadIcon />}
+                                    bgColor={"whiteAlpha"}
+                                    onClick={handleDownload}
+                                >
+                                    Download Resource
+                                </MenuItem>
+
+                                <MenuItem
+                                    icon={<DeleteIcon />}
+                                    bgColor={"whiteAlpha"}
+                                >
+                                    Delete Resource
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
+                        <div className="box10_1">
+                            <img
+                                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
+                                alt=""
+                            />
+                            <div className="name10">
+                                <label>Singithi Scout Programe</label>
+                            </div>
+                        </div>
+                    </div>
+                    {/* 
           <div className="box11">
             <Menu>
               <MenuButton
@@ -1048,11 +1158,11 @@ function ResourcePage() {
               </div>
             </div>
           </div> */}
-        </ChakraProvider>
-        {/* </div> */}
-      </div>
-    </div>
-  );
+                </ChakraProvider>
+                {/* </div> */}
+            </div>
+        </div>
+    );
 }
 
 export default ResourcePage;

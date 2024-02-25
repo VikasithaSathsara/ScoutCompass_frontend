@@ -1,5 +1,5 @@
 import "./HomePage.css";
-import Menu from "../../Components/Menu/Menu";
+import SideMenu from "../../Components/SideMenu/SideMenu";
 import S1 from "../../Assests/Slide1.jpg";
 import S2 from "../../Assests/Slide3.jpg";
 import S3 from "../../Assests/Slide4.png";
@@ -42,7 +42,7 @@ function HomePage() {
 
     return (
         <div>
-            <Menu />
+            <SideMenu />
             <h1>Home Page</h1>
             <div class="homeslider">
                 <div class="homeslides">
@@ -90,6 +90,48 @@ function HomePage() {
                     <div class="homeslide slide4">
                         <img src={S4} alt="" />
                     </div>
+                </div>
+            </div>
+
+            <div id="homecontainer">
+                <div id="home-products-container">
+                    <a href="#">
+                        <div class="homeproduct" id="">
+                            <span className="material-symbols-outlined">
+                                groups
+                            </span>
+                            <div className="number">1777</div>
+                            <div className="intro">Scouts</div>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="homeproduct" id="">
+                            <span className="material-symbols-outlined">
+                                interactive_space
+                            </span>
+                            <div className="number">1777</div>
+                            <div className="intro">Instructors</div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="homeproduct" id="">
+                            <span className="material-symbols-outlined">
+                                camping
+                            </span>
+                            <div className="number">1777</div>
+                            <div className="intro">Events nearby</div>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="homeproduct" id="">
+                            <span className="material-symbols-outlined">
+                                description
+                            </span>
+                            <div className="number">1777</div>
+                            <div className="intro">MCQ'S</div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

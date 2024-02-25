@@ -1,146 +1,214 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap");
 
-* {
-    transition: all 0.2s linear;
-}
-/* :root {
-    --h2: 14px;
-    --h3: 20px;
-    --des: 16px;
-} */
-
-
-
-/* .controls{
-  display: flex;
-  padding: 100px 30px 10px 30px;
-  justify-content: space-between;
-  margin-bottom: 0;
-
-} */
-
-
-/* hr{
-  width: 80%;
-  margin: auto;
-  height: 1px;
-  border-color: #FF4057;
-} */
-
-/* h3 {
-    text-align: center;
-    font-family: Georgia, "Times New Roman", Times, serif;
-} */
-
-p {
-    padding: 1.7rem;
-    text-align: justify;
-    font-family: "Nunito", sans-serif;
-}
-
-#container1 {
-    padding: 3rem 1rem;
-    margin-top: 30px;
-    margin-left: 110px;
-    font-family: "Nunito", sans-serif;
-   
-}
-
-#container2 {
-    padding: 3rem 1rem;
-    margin-top: 20px;
-    font-family: "Nunito", sans-serif;
-}
-
-#products-container1 {
-    margin: auto;
-    display: grid;
-    width: 75%;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
- 
-   
-}
-
-#products-container2 {
-    margin: auto;
-    display: grid;
-    width: 45%;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.product {
-    outline: 4px solid  seashell;
-    border-radius: 15%;
-    text-align: center;
-    width: 285px;
-    height: 230px;
-    padding: 5px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-}
-
-.product:hover {
-    outline: 4px solid seashell;
-    transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -o-transform: scale(1.1);
-}
-
-/* .product h3 {
-    color: white;
+.container {
+    margin-left: 240px;
+    width: 1100px;
     display: flex;
     justify-content: center;
     align-items: center;
-} */
-
-.awardname {
-    font-size: 32px;
-    padding: 4px;
-    color: seashell;
-    font-weight: 700;
+    flex-wrap: wrap;
 }
 
-.amount {
-    /* font-size: var(--h2); */
+
+
+.container .passingcard {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 380px;
+    background: #0e015a;
+    margin: 30px;
+    box-shadow: 0 20px 30px #00000033;
+    overflow: hidden;
+    border-radius: 20px;
+    /* outline: 1px solid white; */
+}
+
+.container .passingcard:hover {
+    opacity: 0.3;
+}
+
+.badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: opacity 0.5s;
+}
+
+#badge1 {
+    background-image: url("/src/Assests/Membership.png");
+}
+#badge2 {
+    background-image: url("/src/Assests/ScoutAward.png");
+}
+#badge3 {
+    background-image: url("/src/Assests/ChiefCommissioners.png");
+}
+#badge4 {
+    background-image: url("/src/Assests/PrimeMinisters.png");
+}
+#badge5 {
+    background-image: url("/src/Assests/PresidentsAward.png");
+}
+
+.passingcard:hover .badge {
+    opacity: 0.3;
+}
+
+
+.container .passingcard .innercontent {
+    padding: 30px;
+    text-align: center;
     color: white;
+}
+
+.container .passingcard .innercontent * {
+    margin: 0;
+}
+
+.container .passingcard .innercontent a {
+    display: inline-block;
     margin-top: 15px;
-    
+    padding: 8px 15px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.container .passingcard .innercontent a:hover{
+    background:goldenrod;
 }
 
-#first{
-    background-color: green;
-}
-#first:hover{
-    background-color: transparent;
-}
-
-#second{
-    background-color: rgb(55, 0, 172);
-}
-#second:hover{
-    background-color: transparent;
-}
-#third{
-    background-color: purple;
-}
-#third:hover{
-    background-color: transparent;
-}
-#fourth{
-    background-color: orange;
-}
-#fourth:hover{
-    background-color: transparent;
-}
-#fifth{
-    background-color: red;
-}
-#fifth:hover{
-    background-color: transparent;
+.container .passingcard .innercontent h2 {
+    position: absolute;
+    right: 30px;
+    font-size: 4em;
+    font-weight: 800;
+    color: #1779ff;
+    opacity: 0;
+    transition: 0.5s;
 }
 
+.container .passingcard:hover .innercontent h2 {
+    transform: translateY(-80px);
+}
+
+.container .passingcard .innercontent h3 {
+    position: relative;
+    font-size: 1.8em;
+    letter-spacing: 1px;
+    font-weight: 600;
+    z-index: 1;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.container .passingcard .innercontent p {
+    position: relative;
+    padding: 20px 5px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container .passingcard .innercontent a {
+    position: relative;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container .passingcard:hover,
+.container .passingcard:hover .innercontent h2,
+.container .passingcard:hover .innercontent h3,
+.container .passingcard:hover .innercontent p,
+.container .passingcard:hover .innercontent a,
+.container .passingcard:hover span {
+    opacity: 1;
+}
+
+.container .passingcard span {
+    position: absolute;
+    transition: 0;
+    opacity: 0;
+}
+
+.container .passingcard span:nth-child(1) {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to right, transparent, goldenrod);
+    animation: borderTop 1s linear infinite;
+}
+
+.container .passingcard span:nth-child(2) {
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, goldenrod);
+    animation: borderRight 1s linear infinite;
+    animation-delay: 0.5s;
+}
+
+.container .passingcard span:nth-child(3) {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to left, transparent, goldenrod);
+    animation: borderBottom 1s linear infinite;
+}
+
+.container .passingcard span:nth-child(4) {
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    background: linear-gradient(to top, transparent, goldenrod);
+    animation: borderLeft 1s linear infinite;
+    animation-delay: 0.5s;
+}
+
+@keyframes borderTop {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes borderRight {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes borderBottom {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes borderLeft {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}

@@ -1,10 +1,10 @@
-import Menu from "../../Components/Menu/Menu";
+import SideMenu from "../../Components/SideMenu/SideMenu";
 import "./ProfilePage.css";
 
 function ProfilePage() {
     return (
         <div>
-            <Menu />
+            <SideMenu />
             <h1>My Profile</h1>
         </div>
     );

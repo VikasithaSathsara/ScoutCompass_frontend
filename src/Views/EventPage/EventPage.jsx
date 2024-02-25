@@ -1,9 +1,9 @@
-import Menu from "../../Components/Menu/Menu";
+import SideMenu from "../../Components/SideMenu/SideMenu";
 
 function EventPage() {
     return (
         <div>
-            <Menu />
+            <SideMenu />
             <h1>Event Page</h1>
         </div>
     );

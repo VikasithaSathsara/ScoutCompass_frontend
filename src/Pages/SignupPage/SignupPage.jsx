@@ -133,9 +133,37 @@ function SignupPage() {
                     );
                     if (response.ok) {
                         console.log("Instructor Registration successful!");
-                        toast.success("Instructor Registration successful!");
+                      
                         // navigate("/home");
                         //  window.location.href = "/home";
+
+                                                // navigate("/home");
+                        //  window.location.href = "/home";
+                        const examplePromise = new Promise(
+                            (resolve, reject) => {
+                                setTimeout(() => resolve(200), 800);
+                            }
+                        );
+
+                        // Will display the loading toast until the promise is either resolved
+                        // or rejected.
+                        toast.promise(examplePromise, {
+                            success: {
+                                title: "Instructor Successfully Registered!",
+                                description: "Looks great",
+                                position: "top",
+                            },
+                            error: {
+                                title: "Promise rejected",
+                                description: "Something wrong",
+                                position: "top-right",
+                            },
+                            loading: {
+                                title: "Request Proccessing",
+                                description: "Please wait",
+                                position: "top-right",
+                            },
+                        });
                     } else {
                         console.error("Instructor Registration Fail!");
                         toast.error("Instructor Registration Fail!");
@@ -187,7 +215,7 @@ function SignupPage() {
                         // or rejected.
                         toast.promise(examplePromise, {
                             success: {
-                                title: "Instructor Successfully Registered!",
+                                title: "Scout Successfully Registered!",
                                 description: "Looks great",
                                 position: "top",
                             },

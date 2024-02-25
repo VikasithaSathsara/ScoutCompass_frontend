@@ -38,6 +38,13 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 function ResourcePage() {
+  const handleViewResource_ = () => {
+    // Replace the URL with your actual API endpoint
+    const pdfUrl = 'http://localhost:8081/api/scoutcompass/resource/download/week_03(1).pdf';
+
+    // Open the PDF in a new tab
+    window.open(pdfUrl, '_blank');
+  };
     const [file_, setFile_] = useState(null);
 
     const handleFileChange = (e) => {
@@ -79,9 +86,6 @@ function ResourcePage() {
 
     // View,delete resources part
 
-    const handleViewResource = () => {
-        alert("Viewing Resource");
-    };
 
     const handleDeleteResource = () => {
         const confirmed = window.confirm(
@@ -287,7 +291,7 @@ function ResourcePage() {
                                 <MenuItem
                                     icon={<ViewIcon />}
                                     bgColor={"whiteAlpha"}
-                                    onClick={handleViewResource}
+                                    onClick={handleViewResource_}
                                 >
                                     View Resource
                                 </MenuItem>
@@ -336,6 +340,7 @@ function ResourcePage() {
                                 <MenuItem
                                     icon={<ViewIcon />}
                                     bgColor={"whiteAlpha"}
+                                    onClick={handleViewResource_}
                                 >
                                     View Resource
                                 </MenuItem>
@@ -382,6 +387,7 @@ function ResourcePage() {
                                 <MenuItem
                                     icon={<ViewIcon />}
                                     bgColor={"whiteAlpha"}
+                                    onClick={handleViewResource_}
                                 >
                                     View Resource
                                 </MenuItem>
@@ -428,6 +434,7 @@ function ResourcePage() {
                                 <MenuItem
                                     icon={<ViewIcon />}
                                     bgColor={"whiteAlpha"}
+                                    onClick={handleViewResource_}
                                 >
                                     View Resource
                                 </MenuItem>
@@ -474,6 +481,7 @@ function ResourcePage() {
                                 <MenuItem
                                     icon={<ViewIcon />}
                                     bgColor={"whiteAlpha"}
+                                    onClick={handleViewResource_}
                                 >
                                     View Resource
                                 </MenuItem>
@@ -520,6 +528,7 @@ function ResourcePage() {
                                 <MenuItem
                                     icon={<ViewIcon />}
                                     bgColor={"whiteAlpha"}
+                                    onClick={handleViewResource_}
                                 >
                                     View Resource
                                 </MenuItem>
@@ -566,6 +575,7 @@ function ResourcePage() {
                                 <MenuItem
                                     icon={<ViewIcon />}
                                     bgColor={"whiteAlpha"}
+                                    onClick={handleViewResource_}
                                 >
                                     View Resource
                                 </MenuItem>
@@ -611,6 +621,7 @@ function ResourcePage() {
                                 <MenuItem
                                     icon={<ViewIcon />}
                                     bgColor={"whiteAlpha"}
+                                    onClick={handleViewResource_}
                                 >
                                     View Resource
                                 </MenuItem>
@@ -657,6 +668,7 @@ function ResourcePage() {
                                 <MenuItem
                                     icon={<ViewIcon />}
                                     bgColor={"whiteAlpha"}
+                                    onClick={handleViewResource_}
                                 >
                                     View Resource
                                 </MenuItem>
@@ -703,6 +715,7 @@ function ResourcePage() {
                                 <MenuItem
                                     icon={<ViewIcon />}
                                     bgColor={"whiteAlpha"}
+                                    onClick={handleViewResource_}
                                 >
                                     View Resource
                                 </MenuItem>

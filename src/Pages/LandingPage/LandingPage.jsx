@@ -7,23 +7,15 @@ import S4 from "../../Assests/Hiking.jpg";
 import React, { useState, useEffect } from "react";
 
 function LandingPage() {
-    // Set the default checked radio button
     const [selectedSlide, setSelectedSlide] = useState("radio1");
-
-    // Event handler for radio button changes
     const handleSlideChange = (event) => {
         setSelectedSlide(event.target.id);
     };
-
-    // Auto slider functionality
     useEffect(() => {
         const intervalId = setInterval(() => {
-            // Determine the next slide ID based on the current selection
             const nextSlide = getNextSlideId(selectedSlide);
             setSelectedSlide(nextSlide);
-        }, 6000); // Change slide every 6 seconds (adjust as needed)
-
-        // Clear the interval when the component unmounts or changes
+        }, 6000);
         return () => clearInterval(intervalId);
     }, [selectedSlide]);
 

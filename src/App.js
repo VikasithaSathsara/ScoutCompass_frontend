@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import "./App.css";
-import Navbar from "./Components/Navbar/Navbar";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import SignupPage from "./Pages/SignupPage/SignupPage";
@@ -9,6 +8,7 @@ import PassingPage from "./Views/PassingPage/PassingPage";
 import EventPage from "./Views/EventPage/EventPage";
 import ResourcePage from "./Views/ResourcePage/ResourcePage";
 import ProfilePage from "./Views/ProfilePage/ProfilePage";
+import MembershipAward from "./Views/Awards/MembershipAward";
 
 import {
   Route,
@@ -50,6 +50,8 @@ const router = createBrowserRouter(
         <Route path="resource" element={<ResourcePage />} />
         <Route path="event" element={<EventPage />} />
         <Route path="profile" element={<ProfilePage />} />
+
+        <Route path="membershipaward" element={<MembershipAward />} />
       </Route>
     </>
   )

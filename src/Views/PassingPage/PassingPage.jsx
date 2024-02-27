@@ -17,7 +17,7 @@ function PassingPage() {
                         <h2>01</h2>
                         <h3>MEMBERSHIP AWARD</h3>
                         <p>14 Requirments</p>
-                        <a href="#">Start Passing</a>
+                        <a href="/membershipaward">Start Passing</a>
                     </div>
                 </div>
                 <div class="passingcard" id="passingcard2">

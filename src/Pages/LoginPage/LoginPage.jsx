@@ -14,15 +14,12 @@ function LoginPage() {
 
     const handleLogin = async (event) => {
         event.preventDefault();
-
-        // Constructing the JSON body
         const requestBody = {
             email: username,
             password: password,
         };
 
         try {
-            // Sending POST request
             const response = await fetch(
                 "http://localhost:8081/api/scoutcompass/auth/user/authenticate",
                 {

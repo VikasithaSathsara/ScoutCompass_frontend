@@ -30,7 +30,7 @@ function PassingPage() {
                         <h2>02</h2>
                         <h3>SCOUT AWARD</h3>
                         <p>23 Requirments</p>
-                        <a href="#">Start Passing</a>
+                        <a href="./scoutaward">Start Passing</a>
                     </div>
                 </div>
                 <div class="passingcard" id="passingcard3">
@@ -43,7 +43,7 @@ function PassingPage() {
                         <h2>03</h2>
                         <h3>CHIEF COMMISIONER AWARD</h3>
                         <p>23 Requirments</p>
-                        <a href="#">Start Passing</a>
+                        <a href="./chiefcommissioneraward">Start Passing</a>
                     </div>
                 </div>
                 <br />
@@ -57,7 +57,7 @@ function PassingPage() {
                         <h2>04</h2>
                         <h3>PRIME MINISTER AWARD</h3>
                         <p>22 Requirments</p>
-                        <a href="#">Start Passing</a>
+                        <a href="./primeministeraward">Start Passing</a>
                     </div>
                 </div>
 
@@ -71,7 +71,7 @@ function PassingPage() {
                         <h2>05</h2>
                         <h3>PRESIDENT'S AWARD</h3>
                         <p>13 Requirments</p>
-                        <a href="#">Start Passing</a>
+                        <a href="./presidentaward">Start Passing</a>
                     </div>
                 </div>
             </div>

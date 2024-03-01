@@ -9,6 +9,10 @@ import EventPage from "./Views/EventPage/EventPage";
 import ResourcePage from "./Views/ResourcePage/ResourcePage";
 import ProfilePage from "./Views/ProfilePage/ProfilePage";
 import MembershipAward from "./Views/Awards/MembershipAward";
+import ScoutAward from "./Views/Awards/ScoutAward";
+import ChiefCommissionerAward from "./Views/Awards/ChiefCommissionerAward";
+import PrimeMinisterAward from "./Views/Awards/PrimeMinisterAward";
+import PresidentAward from "./Views/Awards/PresidentAward";
 
 import {
   Route,
@@ -52,6 +56,10 @@ const router = createBrowserRouter(
         <Route path="profile" element={<ProfilePage />} />
 
         <Route path="membershipaward" element={<MembershipAward />} />
+        <Route path="scoutaward" element={<ScoutAward />} />
+        <Route path="chiefcommissioneraward" element={<ChiefCommissionerAward />} />
+        <Route path="primeministeraward" element={<PrimeMinisterAward />} />
+        <Route path="presidentaward" element={<PresidentAward />} />
       </Route>
     </>
   )

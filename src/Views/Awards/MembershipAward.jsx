@@ -242,6 +242,23 @@ function MembershipAward() {
                     </tbody>
                 </table>
             </section>
+            <table className="sevice">
+                <tbody>
+                    <tr>
+                        <td>***</td>
+                        <td>
+                            2 Months of Service <br />
+                            මාස 2 ක සේවා කාලය
+                        </td>
+                        <td> 17 Dec, 2022 </td>
+                        <td>
+                            <a href="#" class="status completed">
+                                Completed
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 }

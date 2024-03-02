@@ -1,5 +1,5 @@
 import "./Award.css";
-import B1 from "../../Assests/Membership.png";
+import B5 from "../../Assests/PresidentsAward.png";
 import { Button } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
 
@@ -24,7 +24,7 @@ function PresidentAward() {
                 </Button>
 
                 <div className="image">
-                    <img src={B1} alt="" />
+                    <img src={B5} alt="" />
                 </div>
                 <h1>President's Award</h1>
             </section>
@@ -117,8 +117,9 @@ function PresidentAward() {
                             <td> 6</td>
                             <td>
                                 {" "}
-                                Leadership in Emergencies and Natural Disasters  <br />
-                                හදිසි අවස්ථාවකදී ස්වභාවික විපතකදී  නායකත්වය දැරීම
+                                Leadership in Emergencies and Natural Disasters{" "}
+                                <br />
+                                හදිසි අවස්ථාවකදී ස්වභාවික විපතකදී නායකත්වය දැරීම
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
@@ -160,7 +161,7 @@ function PresidentAward() {
                             <td>
                                 {" "}
                                 Link Language Skills 4 <br />
-                                සම්බන්ධීකරන  භාෂා කුසලතා 4
+                                සම්බන්ධීකරන භාෂා කුසලතා 4
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
@@ -187,8 +188,10 @@ function PresidentAward() {
                             <td> 11</td>
                             <td>
                                 {" "}
-                                Organising a Hike including Scout Skills and Challenges  <br />
-                                බාලදක්ෂ ශිල්පිය දක්ශතා සහ අභියෝග ඇතුළුව පාගමනක් සංවිධානය කිරීම
+                                Organising a Hike including Scout Skills and
+                                Challenges <br />
+                                බාලදක්ෂ ශිල්පිය දක්ශතා සහ අභියෝග ඇතුළුව පාගමනක්
+                                සංවිධානය කිරීම
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
@@ -202,7 +205,7 @@ function PresidentAward() {
                             <td>
                                 {" "}
                                 Community Service Project <br />
-                                ප්‍රජා සේවා ව්‍යාපෘතිය 
+                                ප්‍රජා සේවා ව්‍යාපෘතිය
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
@@ -228,6 +231,23 @@ function PresidentAward() {
                     </tbody>
                 </table>
             </section>
+            <table className="sevice">
+                <tbody>
+                    <tr>
+                        <td>***</td>
+                        <td>
+                            9 Months of Service <br />
+                            මාස 9 ක සේවා කාලය
+                        </td>
+                        <td> 17 Dec, 2022 </td>
+                        <td>
+                            <a href="#" class="status completed">
+                                Completed
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 }

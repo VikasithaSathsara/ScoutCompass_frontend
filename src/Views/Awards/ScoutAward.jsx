@@ -1,5 +1,5 @@
 import "./Award.css";
-import B1 from "../../Assests/Membership.png";
+import B2 from "../../Assests/ScoutAward.png";
 import { Button } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
 
@@ -16,7 +16,7 @@ function ScoutAward() {
                     leftIcon={<FaArrowLeft />}
                     border="2px solid #ccc"
                     padding="10px"
-                    marginRight="120px"
+                    marginRight="220px"
                     onClick={() => window.history.back()}
                     _hover={{ bg: "yellow", textColor: "black" }}
                 >
@@ -24,7 +24,7 @@ function ScoutAward() {
                 </Button>
 
                 <div className="image">
-                    <img src={B1} alt="" />
+                    <img src={B2} alt="" />
                 </div>
                 <h1>Scout Award</h1>
             </section>
@@ -132,7 +132,7 @@ function ScoutAward() {
                             <td>
                                 {" "}
                                 Know the Area 1 <br />
-                                වපසරිය දැන සිටීම 
+                                වපසරිය දැන සිටීම
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
@@ -229,7 +229,7 @@ function ScoutAward() {
                             <td> 14</td>
                             <td>
                                 {" "}
-                                B.P. Exercises  <br />
+                                B.P. Exercises <br />
                                 බී.පී. ව්‍යායාම
                             </td>
                             <td> 14 Mar, 2023 </td>
@@ -331,7 +331,7 @@ function ScoutAward() {
                             <td>
                                 {" "}
                                 Good Habits 2 <br />
-                                යහපත් පුරුදු 2 
+                                යහපත් පුරුදු 2
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
@@ -368,23 +368,26 @@ function ScoutAward() {
                                 </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td> 24 </td>
-                            <td>
-                                {" "}
-                                Requirements for Sea Scouts and Air Scouts <br />
-                                මුහුදු බාලදක්ෂයින් සහ ගුවන් බාලදක්ෂයින් සඳහා අවශ්‍යතා
-                            </td>
-                            <td> 14 Mar, 2023 </td>
-                            <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </section>
+            <table className="sevice">
+                <tbody>
+                    <tr>
+                        <td>***</td>
+                        <td>
+                            6 Months of Service <br />
+                            මාස 6 ක සේවා කාලය
+                        </td>
+                        <td> 17 Dec, 2022 </td>
+                        <td>
+                            <a href="#" class="status completed">
+                                Completed
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 }

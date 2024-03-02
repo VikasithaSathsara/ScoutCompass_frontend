@@ -1,5 +1,5 @@
 import "./Award.css";
-import B1 from "../../Assests/Membership.png";
+import B3 from "../../Assests/ChiefCommissioners.png";
 import { Button } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
 
@@ -24,9 +24,12 @@ function ChiefCommissionerAward() {
                 </Button>
 
                 <div className="image">
-                    <img src={B1} alt="" />
+                    <img src={B3} alt="" />
                 </div>
-                <h1>Chief Commissioner Award</h1>
+                <h1>
+                    Chief Commissioner <br />
+                    Award
+                </h1>
             </section>
 
             <section class="table__body">
@@ -40,7 +43,7 @@ function ChiefCommissionerAward() {
                         </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                        <tr>
                             <td> 1 </td>
                             <td>
                                 {" "}
@@ -117,8 +120,10 @@ function ChiefCommissionerAward() {
                             <td> 6</td>
                             <td>
                                 {" "}
-                                Identify parts of a human foot print/ shoe print/ animal or bird foot prints <br />
-                                මිනිස් පා සටහනක/ සපත්තු අඩියක/ සත්ව හෝ පක්ෂි පා සටහනක කොටස් හඳුනා ගැනීමට හැකිවීම.
+                                Identify parts of a human foot print/ shoe
+                                print/ animal or bird foot prints <br />
+                                මිනිස් පා සටහනක/ සපත්තු අඩියක/ සත්ව හෝ පක්ෂි පා
+                                සටහනක කොටස් හඳුනා ගැනීමට හැකිවීම.
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
@@ -130,9 +135,9 @@ function ChiefCommissionerAward() {
                         <tr>
                             <td> 7</td>
                             <td>
-                                {" "}                            
+                                {" "}
                                 Compass and Mapping 2 <br />
-                                මාලිමාව හා සිතියම්කරණය 2 
+                                මාලිමාව හා සිතියම්කරණය 2
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
@@ -230,7 +235,7 @@ function ChiefCommissionerAward() {
                             <td> 14</td>
                             <td>
                                 {" "}
-                                Highway Code  <br />
+                                Highway Code <br />
                                 මාර්ග නීති
                             </td>
                             <td> 14 Mar, 2023 </td>
@@ -332,7 +337,7 @@ function ChiefCommissionerAward() {
                             <td>
                                 {" "}
                                 Link Language Skills 2 <br />
-                                සම්බන්ධීකරන  භාෂා කුසලතා 2 
+                                සම්බන්ධීකරන භාෂා කුසලතා 2
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
@@ -369,26 +374,28 @@ function ChiefCommissionerAward() {
                                 </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td> 24 </td>
-                            <td>
-                                {" "}
-                                Requirements for Sea Scouts and Air Scouts <br />
-                                මුහුදු බාලදක්ෂයින් සහ ගුවන් බාලදක්ෂයින් සඳහා අවශ්‍යතා
-                            </td>
-                            <td> 14 Mar, 2023 </td>
-                            <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </section>
+            <table className="sevice">
+                <tbody>
+                    <tr>
+                        <td>***</td>
+                        <td>
+                            9 Months of Service <br />
+                            මාස 9 ක සේවා කාලය
+                        </td>
+                        <td> 17 Dec, 2022 </td>
+                        <td>
+                            <a href="#" class="status completed">
+                                Completed
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 }
 
 export default ChiefCommissionerAward;
-

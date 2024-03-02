@@ -137,22 +137,22 @@ function LandingPage() {
                 </div>
                 <div class="blog-content">
                     <div class="card card-1">
-                        <a href="">
+                        <a href="/scoutpromise">
                             <div class="text">Scout Law and Promise</div>
                         </a>
                     </div>
                     <div class="card card-2">
-                        <a href="">
+                        <a href="/scouthistory">
                             <div class="text">Scout History</div>
                         </a>
                     </div>
                     <div class="card card-3">
-                        <a href="">
+                        <a href="/scoutingstructure">
                             <div class="text">Scouting Structure</div>
                         </a>
                     </div>
                     <div class="card card-4">
-                        <a href="">
+                        <a href="/scoutuniform">
                             <div class="text">Scout Uniform</div>
                         </a>
                     </div>
@@ -163,8 +163,9 @@ function LandingPage() {
                 <div>
                     Coppyright &copy; 2024 | <span>ScoutCompass</span> Learning
                     Management System
-                </div>
-                <div class="social">
+                </div>{" "}
+                <br />
+                {/* <div class="social">
                     <a href="#" target="_blank">
                         <i class="fab fa-facebook"></i>
                     </a>
@@ -177,17 +178,17 @@ function LandingPage() {
                     <a href="" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
-                </div>
+                </div> */}
                 <div>
                     Developed By{" "}
                     <span>
-                        <a href="./about.html">ScoutCompass</a>
+                        <a href="#">Team WayFinders</a>
                     </span>{" "}
-                    | ######{" "}
-                    <span>
+                    | Exploring New Skills{" "}
+                    {/* <span>
                         {" "}
                         <a href="">#######</a>{" "}
-                    </span>
+                    </span> */}
                 </div>
             </footer>
         </div>

@@ -1,5 +1,5 @@
 import "./Award.css";
-import B1 from "../../Assests/Membership.png";
+import B4 from "../../Assests/PrimeMinisters.png";
 import { Button } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
 
@@ -24,7 +24,7 @@ function PrimeMinisterAward() {
                 </Button>
 
                 <div className="image">
-                    <img src={B1} alt="" />
+                    <img src={B4} alt="" />
                 </div>
                 <h1>Prime Minister Award</h1>
             </section>
@@ -86,9 +86,10 @@ function PrimeMinisterAward() {
                             <td> 4</td>
                             <td>
                                 {" "}
-                                Public Consciousness and Protection of Public Property
+                                Public Consciousness and Protection of Public
+                                Property
                                 <br />
-                                යහපත් ප්‍රජා හැගීම් හා පොදු සම්පත්  සුරැකීම
+                                යහපත් ප්‍රජා හැගීම් හා පොදු සම්පත් සුරැකීම
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
@@ -231,7 +232,7 @@ function PrimeMinisterAward() {
                             <td>
                                 {" "}
                                 Link Language Skills 3 <br />
-                                සම්බන්ධීකරන  භාෂා කුසලතා 3
+                                සම්බන්ධීකරන භාෂා කුසලතා 3
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
@@ -245,7 +246,7 @@ function PrimeMinisterAward() {
                             <td>
                                 {" "}
                                 Compass and Mapping 3 <br />
-                                මාලිමාව හා සිතියම්කරණය 3 
+                                මාලිමාව හා සිතියම්කරණය 3
                             </td>
                             <td> 17 Dec, 2022 </td>
                             <td>
@@ -332,7 +333,7 @@ function PrimeMinisterAward() {
                             <td>
                                 {" "}
                                 Community Service Project <br />
-                                ප්‍රජා සේවා ව්‍යාපෘතිය 
+                                ප්‍රජා සේවා ව්‍යාපෘතිය
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
@@ -358,6 +359,23 @@ function PrimeMinisterAward() {
                     </tbody>
                 </table>
             </section>
+            <table className="sevice">
+                <tbody>
+                    <tr>
+                        <td>***</td>
+                        <td>
+                            9 Months of Service <br />
+                            මාස 9 ක සේවා කාලය
+                        </td>
+                        <td> 17 Dec, 2022 </td>
+                        <td>
+                            <a href="#" class="status completed">
+                                Completed
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 }

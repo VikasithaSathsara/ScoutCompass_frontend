@@ -37,6 +37,8 @@ function LoginPage() {
                 }
             );
             if (response.ok) {
+                localStorage.setItem("loggedInUserEmail", username);
+
                 console.log("Login successful!");
                 toast.success("Login Successful");
                 // navigate("/home");

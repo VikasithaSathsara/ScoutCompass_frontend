@@ -1,13 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect , useState } from "react";
+import { DrawerBody } from "@chakra-ui/modal";
 import SideMenu from "../../Components/SideMenu/SideMenu";
 import "./ProfilePage.css";
 
 function ProfilePage() {
+  const [userData, setUserData] = useState({
+   fullName :"",
+   email : "",
+   dob : "",
+   district : "",
+   gender : "",
+   mobNumber : "",
+   school : "",
+   instructor_name : ""
+  });
+  const [userEmail, setUserEmail] = useState(null);
   const [currentTab, setCurrentTab] = useState(0);
   const handleTabClick = (tabIndex) => {
     setCurrentTab(tabIndex);
   };
 
+  useEffect(() => {
+
+  const userEmail = localStorage.getItem('loggedInUserEmail');
+  const fetchUserProfile = async (email) => {
+    console.log("email:",email)
+    
+    try {
+      const response = await fetch(`http://localhost:8081/api/scoutcompass/profile/scout/${email}`);
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch user data');
+      }
+
+      const data = await response.json();
+      setUserData(data);
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
+
+    // Call the fetchUserProfile function when the component mounts
+    fetchUserProfile(userEmail);
+  }, []); // Empty dependency array ensures the effect runs only once
   return (
     <div>
       <SideMenu />
@@ -22,9 +57,9 @@ function ProfilePage() {
             />
           </div>
           <div class="profile-nav-info">
-            <h3> Ashini Rathnapala </h3>
-            <h2 class="school"> Upananda College , Galle </h2>
-            <h2 class="email">ashini.20212042@iit.ac.lk</h2>
+            <h3> {userData.fullName}</h3>
+            <h2 class="school"> {userData.school} </h2>
+            <h2 class="email">{userData.email}</h2>
           </div>
         </div>
 
@@ -40,42 +75,42 @@ function ProfilePage() {
                         <tr>
                           <td>Name</td>
                           <td>:</td>
-                          <td>Ashini Rathnapala</td>
+                          <td>{userData.fullName}</td>
                         </tr>
                         <tr>
                           <td>Email</td>
                           <td>:</td>
-                          <td>ashinieeshika@gmail.com</td>
+                          <td>{userData.email}</td>
                         </tr>
                         <tr>
                           <td>Date Of Birth</td>
                           <td>:</td>
-                          <td>12/02/200</td>
+                          <td>{userData.dob}</td>
                         </tr>
                         <tr>
                           <td>District</td>
                           <td>:</td>
-                          <td>Galle</td>
+                          <td>{userData.district}</td>
                         </tr>
                         <tr>
                           <td>Gender</td>
                           <td>:</td>
-                          <td>Female</td>
+                          <td>{userData.gender}</td>
                         </tr>
                         <tr>
                           <td>Contact Number</td>
                           <td>:</td>
-                          <td>074 1871183</td>
+                          <td>{userData.mobNumber}</td>
                         </tr>
                         <tr>
                           <td>School</td>
                           <td>:</td>
-                          <td>Upananda College , Galle</td>
+                          <td>{userData.school}</td>
                         </tr>
                         <tr>
-                          <td>Assigned Instructor Id</td>
+                          <td>Assigned Instructor</td>
                           <td>:</td>
-                          <td>2</td>
+                          <td>{userData.instructor_name}</td>
                         </tr>
                       </tbody>
                     </table>

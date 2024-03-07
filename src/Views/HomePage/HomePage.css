@@ -1,76 +1,67 @@
+.bg_home {
+  background-image: url("https://wallpaperswide.com/download/minimalist_blue-wallpaper-1600x1200.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .homeslider {
-    width: 60%;
-    height: 50%;
-    overflow: hidden;
-    margin: auto;
-    margin-left: 24%;
-    margin-top: 10px;
-    border-radius: 15px;
-    outline: 4px solid  seashell;
-    
-    
+  width: 60%;
+  height: 50%;
+  overflow: hidden;
+  margin: auto;
+  margin-left: 24%;
+  margin-top: 10px;
+  border-radius: 15px;
+  outline: 4px solid seashell;
 }
 
 .homeslides {
-    width: 500%;
-    height: 50vh;
-    display: flex;
-    
-    
+  width: 500%;
+  height: 50vh;
+  display: flex;
 }
 input[type="radio"] {
-    display: none;
+  display: none;
 }
 
-
 .homeslide {
-    width: 20%;
-    height: 50vh;
-    transition: 4s;
-    display: flex;
-    
-
+  width: 20%;
+  height: 50vh;
+  transition: 4s;
+  display: flex;
 }
 
 .homeslide img {
-    width: 100%;
-    height: 50vh;
-    
+  width: 100%;
+  height: 50vh;
 }
-
-
 
 #homecontainer {
-    padding: 3rem 1rem;
-    margin-top: 10px;
-    margin-left: 140px;
-    font-family: "Nunito", sans-serif;
-   
+  padding: 3rem 1rem;
+  margin-top: 10px;
+  margin-left: 140px;
+  font-family: "Nunito", sans-serif;
 }
 
-
 #home-products-container {
-    margin: auto;
-    display: grid;
-    width: 80%;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 10px;
- 
-   
+  margin: auto;
+  display: grid;
+  width: 80%;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
 }
 
 .homeproduct {
-    outline: 4px solid  seashell;
-    background-color: #0155ca;
-    border-radius: 15%;
-    text-align: center;
-    width: 230px;
-    height: 180px;
-    padding: 5px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: end; */
+  outline: 4px solid seashell;
+  background-color: #0155ca;
+  border-radius: 15%;
+  text-align: center;
+  width: 230px;
+  height: 180px;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: end; */
 }
 
 /* .homeproduct:hover {
@@ -82,23 +73,23 @@ input[type="radio"] {
     -o-transform: scale(1.1);
 } */
 
-.homeproduct .material-symbols-outlined{
-    font-size: 50px;
-    text-align: right;
-    padding: 5px;
+.homeproduct .material-symbols-outlined {
+  font-size: 50px;
+  text-align: right;
+  padding: 5px;
 }
 
-.number{
-    font-size: 35px;
-    text-align: left;
-    padding-left: 10px;
-    margin-top: 20px;
+.number {
+  font-size: 35px;
+  text-align: left;
+  padding-left: 10px;
+  margin-top: 20px;
 }
 
-.intro{
-    color: black;
-    text-align:left ;
-    font-weight: 600;
-    font-size: 25px;
-    padding-left: 10px;
+.intro {
+  color: black;
+  text-align: left;
+  font-weight: 600;
+  font-size: 25px;
+  padding-left: 10px;
 }

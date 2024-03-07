@@ -1,6 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Bree+Serif&display=swap");
 
+.bg_profile {
+  background-image: url("/src/Assests/main_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .profile-header {
   background: #fff;
   width: 100%;
@@ -52,12 +58,14 @@
 
 .profile-side {
   width: 450px;
-  height: 620px;
+  height: 700px;
   background: #fff;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
 
   font-family: "Bree Serif", serif;
   margin-top: 40px;
+  margin-bottom: 100px;
+
   margin-left: -500px;
   z-index: 99;
 }
@@ -101,6 +109,13 @@
   height: 300px;
   width: 150px;
 }
+.right-side {
+  background-color: #fff;
+  margin-left: -50px;
+  margin-bottom: 100px;
+
+  width: 650px;
+}
 
 .nav {
   width: 100%;
@@ -112,26 +127,25 @@
   justify-content: space-around;
   list-style-type: none;
   height: 40px;
-  width: 1100px;
+  width: 1000px;
   background: #fff;
-  margin-left: -500px;
+  margin-left: -450px;
 
   border-radius: 0px;
   border-color: #0a0a0a;
 }
 
 .nav ul li {
-  padding: 10px;
+  padding: 28px;
   width: 100%;
   cursor: pointer;
+  font: bold;
+  font-size: 35px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 900;
   text-align: center;
-  margin-left: 450px;
+  margin-left: 500px;
   transition: all 0.2s ease-in-out;
-}
-
-.nav ul li:hover,
-.nav ul li.active {
-  box-shadow: 0px -3px 0px rgba(288, 0, 70, 0.9) inset;
 }
 
 .profile-body {
@@ -275,44 +289,17 @@
   }
 }
 
-html,
-/* body {
-  margin: 0 auto;
-  padding: 0 auto;
-  font-family: "Times New Roman", arial, Verdana;
-  color: #817a53;
-  background: #7a7972;
-} */
-
-p {
-  margin: 0;
-  padding: 4px;
-}
-
-div {
-  margin: 0;
-  padding: 0;
-}
-
-#wrapper5 {
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 740px;
-  height: 680px; */
-}
-
 /* Label and percentage data start */
 #labels {
   position: absolute;
-  left: 1200px;
+  left: 1175px;
   top: 600px;
   width: 120px;
 }
 
 #percentage_wrapper {
   position: absolute;
-  left: 1400px;
+  left: 1275px;
   top: 600px;
   width: 50px;
   height: 130px;
@@ -402,7 +389,7 @@ div {
 #chart_holder {
   width: 600px;
   height: 200px;
-  margin-left: 80px;
+  margin-left: 150px;
   margin-top: 150px;
   padding: 0;
 }

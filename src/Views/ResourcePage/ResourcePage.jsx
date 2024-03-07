@@ -34,8 +34,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 function ResourcePage() {
-
-
   const [resourceArrayList, setResourceArrayList] = useState([]);
   const [file_, setFile_] = useState(null);
   const [numPages, setNumPages] = useState(null);
@@ -45,19 +43,19 @@ function ResourcePage() {
   const [isOpen, setIsOpen] = useState(false);
   const [error, setError] = useState(null);
 
-
   const handleFileChange = (e) => {
     setFile_(e.target.files[0]);
   };
   const fetchResourceList = async () => {
     try {
-      const response = await fetch('http://localhost:8081/api/scoutcompass/resource/resourceList');
+      const response = await fetch(
+        "http://localhost:8081/api/scoutcompass/resource/resourceList"
+      );
       const data = await response.json();
 
       setResourceArrayList(data);
-
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
   };
   useEffect(() => {
@@ -65,13 +63,12 @@ function ResourcePage() {
   }, []);
 
   const handleViewResource_ = (fileName) => {
-    const baseUrl_ = "http://localhost:8081/api/scoutcompass/resource/download/";
+    const baseUrl_ =
+      "http://localhost:8081/api/scoutcompass/resource/download/";
     const pdfUrl = baseUrl_ + fileName;
 
-   
-    window.open(pdfUrl, '_blank');
+    window.open(pdfUrl, "_blank");
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -98,11 +95,10 @@ function ResourcePage() {
       setFile(null);
       setIsOpen(false);
       fetchResourceList();
-        window.location.href = "/resource";
+      window.location.href = "/resource";
     } catch (error) {
       console.error("Error:", error);
     }
-
   };
 
   const handleOpen = () => {
@@ -110,8 +106,7 @@ function ResourcePage() {
   };
 
   const handleDeleteResource = async (fileName) => {
-    const confirmed = 
-    window.confirm(
+    const confirmed = window.confirm(
       "Are you sure you want to delete this resource?"
     );
     if (confirmed) {
@@ -119,24 +114,22 @@ function ResourcePage() {
       const url = baseUrl + fileName;
       try {
         const response = await fetch(url, {
-          method: 'DELETE',
+          method: "DELETE",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
-      
         });
 
         fetchResourceList();
         window.location.href = "/resource";
 
         if (response.ok) {
-          console.log('File deleted successfully');
-        
+          console.log("File deleted successfully");
         } else {
-          console.error('Failed to delete file');
+          console.error("Failed to delete file");
         }
       } catch (error) {
-        console.error('Error:', error.message);
+        console.error("Error:", error.message);
       }
     }
   };
@@ -177,8 +170,8 @@ function ResourcePage() {
               initialFocusRef={initialFocusRef}
               placement="bottom"
               closeOnBlur={false}
-              isOpen={isOpen} 
-              onClose={handleOpen} 
+              isOpen={isOpen}
+              onClose={handleOpen}
             >
               <PopoverTrigger>
                 <Button
@@ -220,9 +213,7 @@ function ResourcePage() {
                             <br />
                             Drag & Drop
                           </p>
-
                         </button>
-
                       </div>
                       <div className="upload-file">
                         <input
@@ -232,20 +223,18 @@ function ResourcePage() {
                           placeholder="Selected file"
                         />
                       </div>
-                      <div className="upload" >
+                      <div className="upload">
                         <button type="submit">Upload File</button>
                       </div>
                     </form>
                   </div>
-
                 </PopoverBody>
               </PopoverContent>
             </Popover>
           </Stack>
 
           {resourceArrayList.map((item, index) => (
-
-            <div className={`box${index + 1}`}  >
+            <div className={`box${index + 1}`}>
               <Menu>
                 <MenuButton
                   as={IconButton}
@@ -256,7 +245,7 @@ function ResourcePage() {
                   marginLeft={150}
                   marginTop={2.5}
                 />
-                <MenuList marginRight={1} bgColor={"yellow"}>
+                <MenuList marginRight={1} bgColor={"goldenrod"}>
                   <MenuItem
                     icon={<ViewIcon />}
                     bgColor={"whiteAlpha"}
@@ -269,7 +258,6 @@ function ResourcePage() {
                     icon={<DownloadIcon />}
                     bgColor={"whiteAlpha"}
                     onClick={() => handleDownload(item.resourceName)}
-
                   >
                     Download Resource
                   </MenuItem>
@@ -284,7 +272,10 @@ function ResourcePage() {
                 </MenuList>
               </Menu>
 
-              <div className="box1_1" onClick={() => handleViewResource_(item.resourceName)}>
+              <div
+                className="box1_1"
+                onClick={() => handleViewResource_(item.resourceName)}
+              >
                 <img
                   src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3APDF_file_icon.svg&psig=AOvVaw1SSWwqzWzje9d-uWDmO92f&ust=1708097668889000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNivyujVrYQDFQAAAAAdAAAAABAE"
                   alt=""
@@ -293,8 +284,8 @@ function ResourcePage() {
                   <label>{item.resourceName}</label>
                 </div>
               </div>
-            </div>))}
-
+            </div>
+          ))}
         </ChakraProvider>
       </div>
     </div>

@@ -44,7 +44,7 @@ function ProfilePage() {
     fetchUserProfile(userEmail);
   }, []); // Empty dependency array ensures the effect runs only once
   return (
-    <div>
+    <div className="bg_profile">
       <SideMenu />
       <h1>My Profile</h1>
 

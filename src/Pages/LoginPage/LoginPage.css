@@ -1,13 +1,12 @@
 .background {
   display: flex;
   justify-content: end;
-  align-items:center;
+  align-items: center;
   min-height: 100vh;
   background-image: url("/src/Assests/Login.jpg");
-  background-size:cover;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  
 }
 
 .warp {
@@ -59,12 +58,12 @@
   margin: -15px 0 15px;
 }
 
-.icon{
-position: absolute;
-top: 50%;
-right: 18px;
-transform: translateY(-50%);
-font-size: 20px;
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  font-size: 20px;
 }
 
 .forgot a {
@@ -94,7 +93,6 @@ font-size: 20px;
   background: rgb(255, 55, 0);
   color: white;
   border: 3px solid rgb(255, 255, 255);
-
 }
 .signup {
   font-size: 15px;
@@ -106,7 +104,6 @@ font-size: 20px;
   color: white;
   text-decoration: none;
   font-weight: 600;
- 
 }
 
 .signup p a:hover {

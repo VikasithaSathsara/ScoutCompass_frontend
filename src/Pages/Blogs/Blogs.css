@@ -113,19 +113,7 @@
   margin-bottom: 20px;
 }
 
-/* .caption-container {
-    width: 800px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    
-}
-.captions {
-    margin: 0;
-    padding: 0 0px;
-    font-size: 18px;
-    font-weight: 600;
-} */
+
 #blogimage1 img {
   width: 900px;
   padding-left: 150px;
@@ -172,3 +160,4 @@
 #home-btn a {
   color: #ffffff;
 }
+

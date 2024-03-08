@@ -41,8 +41,8 @@ function LoginPage() {
 
                 console.log("Login successful!");
                 toast.success("Login Successful");
-                // navigate("/home");
-                window.location.href = "/home";
+                navigate("/home");
+                //window.location.href = "/home";
             } else {
                 console.error("Login failed");
                 toast.error("Login failed");

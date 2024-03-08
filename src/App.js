@@ -18,7 +18,6 @@ import ScoutHistory from "./Pages/Blogs/ScoutHistory";
 import ScoutUniform from "./Pages/Blogs/ScoutUniform";
 import ScoutingStructure from "./Pages/Blogs/ScoutingStructure";
 
-
 import {
   Route,
   createBrowserRouter,
@@ -27,6 +26,8 @@ import {
   Outlet,
   useLocation,
 } from "react-router-dom";
+import Requirments from "./Views/Exams/Requirments";
+import MCQs from "./Views/Exams/MCQs";
 
 
 function RootLayout() {
@@ -64,6 +65,10 @@ const router = createBrowserRouter(
         <Route path="chiefcommissioneraward" element={<ChiefCommissionerAward />} />
         <Route path="primeministeraward" element={<PrimeMinisterAward />} />
         <Route path="presidentaward" element={<PresidentAward />} />
+
+        <Route path="requirments" element={<Requirments />} />
+
+        <Route path="mcq" element={<MCQs />} />
 
         <Route path="scoutpromise" element={<ScoutPromise/>} />
         <Route path="scouthistory" element={<ScoutHistory/>} />

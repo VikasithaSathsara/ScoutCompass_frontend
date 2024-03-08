@@ -19,9 +19,9 @@
   height: 50vh;
   display: flex;
 }
-input[type="radio"] {
+/* input[type="radio"] {
   display: none;
-}
+} */
 
 .homeslide {
   width: 20%;

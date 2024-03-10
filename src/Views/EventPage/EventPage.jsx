@@ -1,24 +1,10 @@
 import SideMenu from "../../Components/SideMenu/SideMenu";
 import "./EventPage.css";
-import React, { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
-import { Document, Page, pdfjs } from "react-pdf";
-import { saveAs } from "file-saver";
-import { Center, ChakraProvider } from "@chakra-ui/react";
+import React, { useState } from "react";
+
+import { ChakraProvider } from "@chakra-ui/react";
 
 import {
-  // Input,
-  // InputGroup,
-  // InputLeftAddon,
-  // InputRightAddon,
-  // Textarea,
-  // Select,
-  // Box,
-  // Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
   IconButton,
   Popover,
   PopoverTrigger,
@@ -27,33 +13,9 @@ import {
   PopoverArrow,
   PopoverCloseButton,
 } from "@chakra-ui/react";
-import {
-  Button,
-  Drawer,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  DrawerHeader,
-  DrawerBody,
-  DrawerFooter,
-  FormLabel,
-  FormControl,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  InputRightAddon,
-  Select,
-  Textarea,
-  Box,
-} from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { Stack } from "@chakra-ui/react";
-import {
-  AddIcon,
-  DeleteIcon,
-  HamburgerIcon,
-  DownloadIcon,
-  ViewIcon,
-} from "@chakra-ui/icons";
+import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
 
 function EventPage() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -86,20 +48,6 @@ function EventPage() {
         });
     }
   };
-
-  // const onOpen = () => setIsOpen(true);
-
-  const [isOpen, setIsOpen] = useState(true);
-
-  const onClose = () => setIsOpen(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsOpen(false);
-    }, 8000); // Close the drawer after 8 seconds (adjust as needed)
-
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <div>
@@ -205,28 +153,6 @@ function EventPage() {
                 >
                   Register
                 </Button>
-                <Drawer
-                  isOpen={isOpen}
-                  placement="top"
-                  size="sm"
-                  onClose={onClose}
-                >
-                  <DrawerOverlay />
-                  <DrawerContent>
-                    <DrawerCloseButton />
-                    <DrawerHeader borderBottomWidth="1px" textAlign="center">
-                      !!!!!!!!!! Event Reminder !!!!!!!!!!
-                    </DrawerHeader>
-
-                    <DrawerBody>
-                      <Stack spacing="3px"></Stack>
-                      <p>dghjuytr</p>
-                      <p>dghjuytr</p>
-                      <p>dghjuytr</p>
-                      <p>dghjuytr</p>
-                    </DrawerBody>
-                  </DrawerContent>
-                </Drawer>
               </div>
             </div>
           </div>
@@ -248,7 +174,21 @@ function EventPage() {
               <div className="e_name2">
                 <label>vhvjvdjdb</label>
               </div>
-              <div className="reg_btn2"></div>
+              <div className="reg_btn2">
+                {" "}
+                <Button
+                  marginTop={160}
+                  bg="rgb(246, 255, 0)"
+                  // onClick={onOpen}
+                  _hover={{
+                    bg: "rgb(255, 55, 0)",
+                    color: "white",
+                    borderColor: "white",
+                  }}
+                >
+                  Register
+                </Button>
+              </div>
             </div>
           </div>
 
@@ -269,7 +209,21 @@ function EventPage() {
               <div className="e_name3">
                 <label>vhvjvdjdb</label>
               </div>
-              <div className="reg_btn3"></div>
+              <div className="reg_btn3">
+                {" "}
+                <Button
+                  marginTop={160}
+                  bg="rgb(246, 255, 0)"
+                  // onClick={onOpen}
+                  _hover={{
+                    bg: "rgb(255, 55, 0)",
+                    color: "white",
+                    borderColor: "white",
+                  }}
+                >
+                  Register
+                </Button>
+              </div>
             </div>
           </div>
         </ChakraProvider>

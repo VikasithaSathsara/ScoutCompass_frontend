@@ -34,7 +34,7 @@ function ScoutPromise() {
               <a href="/scouthistory">Scout History</a>
             </li>
             <li>
-              <a href="/scoutingstructure">Scouting Structure</a>
+              <a href="/scoutingstructure">Scout Vision and Mission</a>
             </li>
             <li>
               <a href="/scoutuniform">Scout Uniform</a>

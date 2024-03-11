@@ -36,7 +36,7 @@ function ScoutHistory() {
               <a href="/scoutpromise">Scout Law and Promise</a>
             </li>
             <li>
-              <a href="/scoutingstructure">Scouting Structure</a>
+              <a href="/scoutingstructure">Scout Vision and Mission</a>
             </li>
             <li>
               <a href="/scoutuniform">Scout Uniform</a>

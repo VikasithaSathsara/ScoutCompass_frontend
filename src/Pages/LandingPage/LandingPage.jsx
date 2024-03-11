@@ -148,7 +148,7 @@ function LandingPage() {
                     </div>
                     <div class="card card-3">
                         <a href="/scoutingstructure">
-                            <div class="text">Scouting Structure</div>
+                            <div class="text">Vision and Mission</div>
                         </a>
                     </div>
                     <div class="card card-4">

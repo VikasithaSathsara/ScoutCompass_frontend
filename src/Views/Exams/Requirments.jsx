@@ -20,7 +20,6 @@ const Requirments = () => {
                 if (data) {
                     setQuestions(data);
                 }
-                // localStorage.clear();
                 localStorage.removeItem("award_id");
                 localStorage.removeItem("requirment_id");
             } catch (error) {
@@ -30,8 +29,6 @@ const Requirments = () => {
         const requirment_id = localStorage.getItem("requirment_id");
         const award_id = localStorage.getItem("award_id");
         fetchQuestions(award_id, requirment_id);
-        // localStorage.clear("requirment_id");
-        // localStorage.removeItem("award_id");
     }, []);
 
     const handleAnswerSelect = (selectedAnswer, questionIndex) => {

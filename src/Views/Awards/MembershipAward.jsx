@@ -2,14 +2,10 @@ import "./Award.css";
 import B1 from "../../Assests/Membership.png";
 import { Button } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function MembershipAward() {
-    const navigateToAnotherPage = async (requirementId, awardId) => {
-        localStorage.setItem("requirement_id", requirementId);
-        localStorage.setItem("award_id", awardId);
-        window.location.href = "/requirments";
-    };
+    const navigate = useNavigate();
 
     return (
         <div className="bg_awards">
@@ -56,12 +52,19 @@ function MembershipAward() {
                             </td>
                             <td> 17 Dec, 2022 </td>
                             <td>
-                                <button
-                                    onClick={() => navigateToAnotherPage(1, 2)}
+                                <a
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            1
+                                        );
+                                        localStorage.setItem("award_id", 1);
+                                        navigate("/requirments");
+                                    }}
                                     className="status completed"
                                 >
                                     Completed
-                                </button>
+                                </a>
                             </td>
                         </tr>
                         <tr>
@@ -73,9 +76,7 @@ function MembershipAward() {
                             </td>
                             <td> 27 Aug, 2023 </td>
                             <td>
-                                <a href="#" class="status re-attempt">
-                                    Re-Attempt
-                                </a>
+                                <a class="status re-attempt">Re-Attempt</a>
                             </td>
                         </tr>
                         <tr>
@@ -88,7 +89,17 @@ function MembershipAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
+                                <a
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            3
+                                        );
+                                        localStorage.setItem("award_id", 1);
+                                        navigate("/requirments");
+                                    }}
+                                    class="status attempt"
+                                >
                                     Attempt
                                 </a>
                             </td>
@@ -103,7 +114,17 @@ function MembershipAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
+                                <a
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            4
+                                        );
+                                        localStorage.setItem("award_id", 1);
+                                        navigate("/requirments");
+                                    }}
+                                    class="status attempt"
+                                >
                                     Attempt
                                 </a>
                             </td>
@@ -118,9 +139,7 @@ function MembershipAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
+                                <a class="status attempt">Attempt</a>
                             </td>
                         </tr>
                         <tr>
@@ -174,7 +193,17 @@ function MembershipAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
+                                <a
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            9
+                                        );
+                                        localStorage.setItem("award_id", 1);
+                                        navigate("/requirments");
+                                    }}
+                                    class="status attempt"
+                                >
                                     Attempt
                                 </a>
                             </td>
@@ -188,7 +217,17 @@ function MembershipAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
+                                <a
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            10
+                                        );
+                                        localStorage.setItem("award_id", 1);
+                                        navigate("/requirments");
+                                    }}
+                                    class="status attempt"
+                                >
                                     Attempt
                                 </a>
                             </td>
@@ -216,7 +255,17 @@ function MembershipAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
+                                <a
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            12
+                                        );
+                                        localStorage.setItem("award_id", 1);
+                                        navigate("/requirments");
+                                    }}
+                                    class="status attempt"
+                                >
                                     Attempt
                                 </a>
                             </td>
@@ -230,7 +279,17 @@ function MembershipAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
+                                <a
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            13
+                                        );
+                                        localStorage.setItem("award_id", 1);
+                                        navigate("/requirments");
+                                    }}
+                                    class="status attempt"
+                                >
                                     Attempt
                                 </a>
                             </td>

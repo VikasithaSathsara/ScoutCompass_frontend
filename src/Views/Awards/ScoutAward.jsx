@@ -2,13 +2,15 @@ import "./Award.css";
 import B2 from "../../Assests/ScoutAward.png";
 import { Button } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function ScoutAward() {
-    const navigateToAnotherPage = async (awardId, requirementId) => {
-        localStorage.setItem("requirement_id", 1);
-        localStorage.setItem("award_id", 2);
-        window.location.href = "/requirments";
-    };
+    const navigate = useNavigate();
+    // const navigateToAnotherPage = async (awardId, requirementId) => {
+    //     localStorage.setItem("requirement_id", 1);
+    //     localStorage.setItem("award_id", 2);
+    //     window.location.href = "/requirments";
+    // };
 
     return (
         <div className="bg_awards">
@@ -55,12 +57,19 @@ function ScoutAward() {
                             </td>
                             <td> 17 Dec, 2022 </td>
                             <td>
-                                <button
-                                    onClick={() => navigateToAnotherPage(2, 1)}
+                                <a
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            1
+                                        );
+                                        localStorage.setItem("award_id", 2);
+                                        navigate("/requirments");
+                                    }}
                                     class="status attempt"
                                 >
                                     Attempt
-                                </button>
+                                </a>
                             </td>
                         </tr>
                         <tr>
@@ -73,7 +82,14 @@ function ScoutAward() {
                             <td> 27 Aug, 2023 </td>
                             <td>
                                 <button
-                                    onClick={() => navigateToAnotherPage(2, 2)}
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            2
+                                        );
+                                        localStorage.setItem("award_id", 2);
+                                        navigate("/requirments");
+                                    }}
                                     class="status re-attempt"
                                 >
                                     Re-Attempt
@@ -91,7 +107,14 @@ function ScoutAward() {
                             <td> 14 Mar, 2023 </td>
                             <td>
                                 <button
-                                    onClick={() => navigateToAnotherPage(2, 3)}
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            3
+                                        );
+                                        localStorage.setItem("award_id", 2);
+                                        navigate("/requirments");
+                                    }}
                                     class="status attempt"
                                 >
                                     Attempt
@@ -109,8 +132,14 @@ function ScoutAward() {
                             <td> 14 Mar, 2023 </td>
                             <td>
                                 <a
-                                    href="https://forms.gle/Di8R3UmySty8YQeY8"
-                                    target="_blank"
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            4
+                                        );
+                                        localStorage.setItem("award_id", 2);
+                                        navigate("/requirments");
+                                    }}
                                     class="status attempt"
                                 >
                                     Attempt
@@ -128,8 +157,14 @@ function ScoutAward() {
                             <td> 14 Mar, 2023 </td>
                             <td>
                                 <a
-                                    href="https://forms.gle/gAiLcwXXk43XwVTM7"
-                                    target="_blank"
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            5
+                                        );
+                                        localStorage.setItem("award_id", 2);
+                                        navigate("/requirments");
+                                    }}
                                     class="status attempt"
                                 >
                                     Attempt
@@ -146,8 +181,14 @@ function ScoutAward() {
                             <td> 14 Mar, 2023 </td>
                             <td>
                                 <a
-                                    href="https://forms.gle/f3UghHzPQfyrW9Br6"
-                                    target="_blank"
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            6
+                                        );
+                                        localStorage.setItem("award_id", 2);
+                                        navigate("/requirments");
+                                    }}
                                     class="status attempt"
                                 >
                                     Attempt
@@ -164,8 +205,14 @@ function ScoutAward() {
                             <td> 14 Mar, 2023 </td>
                             <td>
                                 <a
-                                    href="https://forms.gle/uyJJn9zaSUXYaPEF8"
-                                    target="_blank"
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            7
+                                        );
+                                        localStorage.setItem("award_id", 2);
+                                        navigate("/requirments");
+                                    }}
                                     class="status attempt"
                                 >
                                     Attempt
@@ -182,8 +229,14 @@ function ScoutAward() {
                             <td> 14 Mar, 2023 </td>
                             <td>
                                 <a
-                                    href="https://forms.gle/eKi56JHgTKacfwzVA"
-                                    target="_blank"
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            8
+                                        );
+                                        localStorage.setItem("award_id", 2);
+                                        navigate("/requirments");
+                                    }}
                                     class="status attempt"
                                 >
                                     Attempt
@@ -200,8 +253,14 @@ function ScoutAward() {
                             <td> 14 Mar, 2023 </td>
                             <td>
                                 <a
-                                    href="https://forms.gle/1vHuqNAzkY1JYdsi8"
-                                    target="_blank"
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            9
+                                        );
+                                        localStorage.setItem("award_id", 2);
+                                        navigate("/requirments");
+                                    }}
                                     class="status attempt"
                                 >
                                     Attempt
@@ -218,8 +277,14 @@ function ScoutAward() {
                             <td> 14 Mar, 2023 </td>
                             <td>
                                 <a
-                                    href="https://forms.gle/mskNzvxak9pWBnaF6"
-                                    target="_blank"
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            10
+                                        );
+                                        localStorage.setItem("award_id", 2);
+                                        navigate("/requirments");
+                                    }}
                                     class="status attempt"
                                 >
                                     Attempt
@@ -272,8 +337,14 @@ function ScoutAward() {
                             <td> 14 Mar, 2023 </td>
                             <td>
                                 <a
-                                    href="https://forms.gle/DNS4RFDRXptZfgYD9"
-                                    target="_blank"
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            13
+                                        );
+                                        localStorage.setItem("award_id", 2);
+                                        navigate("/requirments");
+                                    }}
                                     class="status attempt"
                                 >
                                     Attempt
@@ -289,13 +360,7 @@ function ScoutAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a
-                                    href="https://forms.gle/znr8FTtVVmsNXFsS7"
-                                    target="_blank"
-                                    class="status attempt"
-                                >
-                                    Attempt
-                                </a>
+                                <a class="status attempt">Attempt</a>
                             </td>
                         </tr>
                         <tr>
@@ -307,13 +372,7 @@ function ScoutAward() {
                             </td>
                             <td> 17 Dec, 2022 </td>
                             <td>
-                                <a
-                                    href="https://forms.gle/KNADEr7x5HUpfkXt5"
-                                    target="_blank"
-                                    class="status attempt"
-                                >
-                                    Attempt
-                                </a>
+                                <a class="status attempt">Attempt</a>
                             </td>
                         </tr>
                         <tr>
@@ -326,8 +385,14 @@ function ScoutAward() {
                             <td> 27 Aug, 2023 </td>
                             <td>
                                 <a
-                                    href="https://forms.gle/uk4Tx9JpMs638BCn6"
-                                    target="_blank"
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            16
+                                        );
+                                        localStorage.setItem("award_id", 2);
+                                        navigate("/requirments");
+                                    }}
                                     class="status attempt"
                                 >
                                     Attempt
@@ -344,13 +409,7 @@ function ScoutAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a
-                                    href="https://forms.gle/LDG8SiyQ73h2QDXg9"
-                                    target="_blank"
-                                    class="status attempt"
-                                >
-                                    Attempt
-                                </a>
+                                <a class="status attempt">Attempt</a>
                             </td>
                         </tr>
                         <tr>
@@ -364,8 +423,14 @@ function ScoutAward() {
                             <td> 14 Mar, 2023 </td>
                             <td>
                                 <a
-                                    href="https://forms.gle/8nfstT8R3Xtj8x3TA"
-                                    target="_blank"
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            18
+                                        );
+                                        localStorage.setItem("award_id", 2);
+                                        navigate("/requirments");
+                                    }}
                                     class="status attempt"
                                 >
                                     Attempt
@@ -383,8 +448,14 @@ function ScoutAward() {
                             <td> 14 Mar, 2023 </td>
                             <td>
                                 <a
-                                    href="https://forms.gle/pdckKyeyAGnSLFj6A"
-                                    target="_blank"
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            19
+                                        );
+                                        localStorage.setItem("award_id", 2);
+                                        navigate("/requirments");
+                                    }}
                                     class="status attempt"
                                 >
                                     Attempt
@@ -401,8 +472,14 @@ function ScoutAward() {
                             <td> 14 Mar, 2023 </td>
                             <td>
                                 <a
-                                    href="https://forms.gle/mRQPL8LwpgrJpWhB9"
-                                    target="_blank"
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            20
+                                        );
+                                        localStorage.setItem("award_id", 2);
+                                        navigate("/requirments");
+                                    }}
                                     class="status attempt"
                                 >
                                     Attempt
@@ -419,8 +496,14 @@ function ScoutAward() {
                             <td> 14 Mar, 2023 </td>
                             <td>
                                 <a
-                                    href="https://forms.gle/9whddw3ABaofRrzU7"
-                                    target="_blank"
+                                    onClick={() => {
+                                        localStorage.setItem(
+                                            "requirment_id",
+                                            21
+                                        );
+                                        localStorage.setItem("award_id", 2);
+                                        navigate("/requirments");
+                                    }}
                                     class="status attempt"
                                 >
                                     Attempt
@@ -436,13 +519,7 @@ function ScoutAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a
-                                    href="https://forms.gle/UvoLa3X7zqAKfg697"
-                                    target="_blank"
-                                    class="status attempt"
-                                >
-                                    Attempt
-                                </a>
+                                <a class="status attempt">Attempt</a>
                             </td>
                         </tr>
                         <tr>
@@ -454,13 +531,7 @@ function ScoutAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a
-                                    href="https://forms.gle/aiyfSJHBvcZgocAE6"
-                                    target="_blank"
-                                    class="status attempt"
-                                >
-                                    Attempt
-                                </a>
+                                <a class="status attempt">Attempt</a>
                             </td>
                         </tr>
                     </tbody>

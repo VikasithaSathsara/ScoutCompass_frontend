@@ -1,6 +1,11 @@
+.bg_quiz {
+  background-image: url("/src/Assests/main_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-  .olcards {
-    margin-top: 100px;
+.olcards {
+    
     list-style: none;
     counter-reset: cardCount;
     font-family: sans-serif;
@@ -13,7 +18,7 @@
   .olcards li {
     counter-increment: cardCount;
     display: flex;
-    color: white;
+    color: goldenrod;
     --labelOffset: 1rem;
     --arrowClipSize: 1.5rem;
     margin-top: var(--labelOffset);
@@ -37,7 +42,7 @@
   }
   
   .olcards li .content {
-    background-color: red;
+    background-color: #003153;
     --inlinePadding: 1em;
     --boxPadding: 0.5em;
     display: grid;
@@ -58,7 +63,7 @@
     position: relative;
     width: 600px;
   }
-  .olcards li .content::before {
+  /* .olcards li .content::before {
     content: "";
     position: absolute;
     width: var(--labelOffset);
@@ -77,7 +82,7 @@
     background: linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent 50%);
     left: 0;
     top: 100%;
-  }
+  } */
   .olcards li .icon {
     grid-area: icon;
     align-self: center;
@@ -87,8 +92,12 @@
     grid-area: title;
     font-size: 30px;
     font-weight: 700;
+    color: goldenrod;
   }
   .olcards li .content .text {
     grid-area: text;
   }
   
+  #last{
+    margin-bottom: 50px;
+  }

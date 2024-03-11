@@ -14,7 +14,7 @@ import {
   PopoverCloseButton,
 } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
-import { Stack } from "@chakra-ui/react";
+
 import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
 
 function EventPage() {
@@ -70,7 +70,7 @@ function EventPage() {
             </PopoverTrigger>
             <PopoverContent
               width={475}
-              height={645}
+              height={655}
               color="black"
               bg="white"
               borderColor="black"
@@ -110,6 +110,11 @@ function EventPage() {
                     <textarea class="textarea"></textarea>
                   </div>
                   <div class="inputfield">
+                    <label>Form Link</label>
+                    <input type="link" class="input" />
+                  </div>
+
+                  <div class="inputfield">
                     <label>Add img</label>
                     <input type="file" onChange={handleFileChange} />
                   </div>
@@ -148,7 +153,6 @@ function EventPage() {
                   _hover={{
                     bg: "rgb(255, 55, 0)",
                     color: "white",
-                    borderColor: "white",
                   }}
                 >
                   Register
@@ -183,7 +187,6 @@ function EventPage() {
                   _hover={{
                     bg: "rgb(255, 55, 0)",
                     color: "white",
-                    borderColor: "white",
                   }}
                 >
                   Register
@@ -218,7 +221,6 @@ function EventPage() {
                   _hover={{
                     bg: "rgb(255, 55, 0)",
                     color: "white",
-                    borderColor: "white",
                   }}
                 >
                   Register

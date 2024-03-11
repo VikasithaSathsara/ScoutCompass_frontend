@@ -11,13 +11,14 @@
   font-family: "Montserrat", sans-serif;
 
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.125);
-  height: 640px;
+  height: 650px;
   padding: 30px;
 }
 
 .wrapper6 .title {
   font-size: 24px;
   font-weight: 700;
+  margin-top: -5px;
   margin-bottom: 25px;
   color: #0c0c0c;
   text-transform: uppercase;
@@ -78,11 +79,11 @@
 
 .wrapper6 .form .inputfield .btn {
   width: 100%;
-  margin-top: 35px;
+  margin-top: 5px;
   padding: 8px 10px;
   font-size: 15px;
   font-weight: 700;
-  border: 0px;
+  border: 10px;
   background: rgb(246, 255, 0);
   color: #050505;
   cursor: pointer;
@@ -93,7 +94,6 @@
 .wrapper6 .form .inputfield .btn:hover {
   background: rgb(255, 55, 0);
   color: white;
-  border: 1px solid white(6, 6, 6);
 }
 
 .wrapper6 .form .inputfield:last-child {

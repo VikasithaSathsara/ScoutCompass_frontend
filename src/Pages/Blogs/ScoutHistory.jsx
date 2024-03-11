@@ -49,13 +49,13 @@ function ScoutHistory() {
         <div class="facts">
           <div class="_header2">
             <Button
-              bg="#003153"
-              textColor="white"
+              bg="transparent"
+              textColor="black"
               fontWeight="600"
               width="100px"
               borderRadius="40px"
               leftIcon={<FaArrowLeft />}
-              border="2px solid #ccc"
+              border="2px solid black"
               padding="10px"
               onClick={() => window.history.back()}
               _hover={{ bg: "yellow", textColor: "black" }}

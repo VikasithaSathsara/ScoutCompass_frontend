@@ -3,9 +3,9 @@ import L1 from "../../Assests/logo.png";
 import { Button } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
 import BL1 from "../../Assests/jscout_uniform.png";
-import BL2 from "../../Assests/AirScouting.png";
-import BL3 from "../../Assests/Sea-Scout_002.png";
-import BL4 from "../../Assests/seniorscout_uniform.png";
+import BL2 from "../../Assests/seniorscout_uniform.png";
+import BL3 from "../../Assests/Senior_Air_scout.png";
+import BL4 from "../../Assests/Senior_Sea_Scout.png";
 
 function ScoutUniform() {
   return (
@@ -106,16 +106,6 @@ function ScoutUniform() {
                         ඇඳීමට තෝරා ගැනීම. තොප්පි, හුඩි වැනි විකල්ප උපාංග ද තිබේ.
                         <br /><br /><br />
                         </p>
-                        {/* <h2 class="topic-main">Junior Scout Uniform</h2>
-                        <div id="blogimage1"><img src={BL1} alt="" /></div> */}
-                        {/* <p className="blog2_para">
-                        Junior Scout Section can be started in 10 1/2 – 14 1/2 years. <br /> 
-                        Colour : Green <br /> 
-                        Units : Junior Scout Troop – Each Troop consists Patrols <br /> 
-                        Patrol : Each Patrol consists of 6 – 8 Scouts. <br /> 
-                        </p> */}
-                        
-                        
                         <div id="blogimage2">
                         <figure>
                           <img src={BL1} alt="" />
@@ -129,11 +119,11 @@ function ScoutUniform() {
                         <br /><br /> <br /><br />
                         <div id="blogimage2">
                         <figure>
-                          <img src={BL1} alt="" />
+                          <img src={BL3} alt="" />
                           <figcaption>Air Scout Uniform</figcaption>
                         </figure>
                         <figure>
-                          <img src={BL2} alt="" />
+                          <img src={BL4} alt="" />
                           <figcaption>Sea Scout Uniform</figcaption>
                         </figure>
                         </div>

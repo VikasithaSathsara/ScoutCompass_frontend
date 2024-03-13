@@ -1,7 +1,10 @@
 .main {
   min-height: 100vh;
   display: grid;
+
   place-content: center;
-  background-image: url("/src/Assests/Signup.jpg");
+  background-image: url("/src/Assests/Signup4.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }

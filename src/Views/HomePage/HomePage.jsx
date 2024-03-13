@@ -89,6 +89,26 @@ function HomePage() {
     { label: "Inter-America Region", value: 36, color: "#963D97" },
   ];
 
+  const [latestEvent, setLatestevent] = useState([]);
+
+  const fetchLatestEvent = async () => {
+    try {
+    const response = await fetch(
+        "http://localhost:8081/api/scoutcompass/event/latestEvent"
+    );
+    const data = await response.json();
+
+    setLatestevent(data);
+    } catch (error) {
+    console.error("Error fetching data:", error);
+    }
+};
+
+useEffect(() => {
+    fetchLatestEvent();
+}, []);
+
+
   return (
     <div className="bg_home">
       <ChakraProvider>
@@ -126,7 +146,7 @@ function HomePage() {
                         Event Name
                       </Heading>
                       <Text pt="2" fontSize="sm">
-                        View a summary of all your clients over the last month.
+                      {latestEvent.eventName}
                       </Text>
                     </Box>
                     <Box style={{ marginBottom: "20px" }}>
@@ -138,7 +158,7 @@ function HomePage() {
                         Date
                       </Heading>
                       <Text pt="2" fontSize="sm">
-                        Check out the overview of your clients.
+                      {latestEvent.eventDate}
                       </Text>
                     </Box>
                     <Box>
@@ -150,7 +170,7 @@ function HomePage() {
                         Location
                       </Heading>
                       <Text pt="2" fontSize="sm">
-                        See a detailed analysis of all your business clients.
+                      {latestEvent.eventLocation}
                       </Text>
                     </Box>
                   </Stack>

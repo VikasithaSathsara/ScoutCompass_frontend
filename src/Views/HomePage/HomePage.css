@@ -1,23 +1,23 @@
 .bg_home {
+  width: 100%;
+  padding-left: 260px;
   background-image: url("/src/Assests/main_background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+
 .hm_content {
   width: 100%;
-  padding: 0 4%;
-
-  margin-left: 60px;
-
+  height: 210px;
+  padding: 0;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 }
 
 .hm_card {
-  width: 260px;
-
+  width: 250px;
   height: 190px;
   background-color: darkslateblue;
   margin: 10px;
@@ -122,6 +122,13 @@
   transition: all 0.3s ease;
 }
 
+
+#chart{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
 .simple-bar-chart {
   margin-left: 0;
   --line-count: 8;
@@ -141,8 +148,9 @@
   padding-block: var(--padding-block);
   position: relative;
   isolation: isolate;
-  margin-left: 280px;
+  /* margin-left: 280px; */
   margin-top: 50px;
+ 
 }
 
 .simple-bar-chart::after {
@@ -187,7 +195,7 @@
 #map {
   width: 600px;
   height: 300px;
-  margin-left: 260px;
+  /* margin-left: 260px; */
 }
 .hm_ftr {
   margin: auto;
@@ -203,7 +211,6 @@
   list-style: none;
   padding-top: 20px;
   margin-left: 50px;
-
   width: 560px;
 }
 #grp_lbl {
@@ -245,5 +252,5 @@ ul.bargraph li.yellow {
 
 ul.bargraph li.greenbright {
   background: #36b669;
-  width: 33.5%;
+  width: 35.5%;
 }

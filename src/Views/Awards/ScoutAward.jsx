@@ -3,26 +3,27 @@ import B2 from "../../Assests/ScoutAward.png";
 import { Button } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 
 function ScoutAward() {
     const navigate = useNavigate();
-    // const navigateToAnotherPage = async (awardId, requirementId) => {
-    //     localStorage.setItem("requirement_id", 1);
-    //     localStorage.setItem("award_id", 2);
-    //     window.location.href = "/requirments";
-    // };
+
+    useEffect(() => {
+        const email = localStorage.getItem("loggedInUserEmail");
+        if (!email) navigate("/login");
+    }, []);
 
     return (
         <div className="bg_awards">
             <section class="table__header">
                 <Button
                     bg="transparent"
-                    textColor="white"
+                    textColor="black"
                     fontWeight="600"
                     width="100px"
                     borderRadius="40px"
                     leftIcon={<FaArrowLeft />}
-                    border="2px solid #ccc"
+                    border="2px solid black"
                     padding="10px"
                     marginRight="220px"
                     onClick={() => window.history.back()}

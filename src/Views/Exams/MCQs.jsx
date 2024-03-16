@@ -1,8 +1,16 @@
 import "./MCQs.css";
 import { Button } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 
 function MCQs() {
+    const navigate = useNavigate();
+    useEffect(() => {
+        const email = localStorage.getItem("loggedInUserEmail");
+        if (!email) navigate("/login");
+    }, []);
+
     return (
         <div className="bg_quiz">
             <h1>Practice Questions</h1>

@@ -1,7 +1,6 @@
 import "./HomePage.css";
 import SideMenu from "../../Components/SideMenu/SideMenu";
 import Map from "../../Assests/worldmap.jpg";
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
@@ -39,35 +38,11 @@ import { useNavigate } from "react-router-dom";
 
 function HomePage() {
     const navigate = useNavigate();
-    const [selectedSlide, setSelectedSlide] = useState("radio1");
-    const handleSlideChange = (event) => {
-        setSelectedSlide(event.target.id);
-    };
-    // useEffect(() => {
-    //     const email = localStorage.getItem("loggedInUserEmail");
-    //     if (!email) navigate("/login");
-    // }, []);
 
     useEffect(() => {
-        const intervalId = setInterval(() => {
-            const nextSlide = getNextSlideId(selectedSlide);
-            setSelectedSlide(nextSlide);
-        }, 6000);
-        return () => clearInterval(intervalId);
-    }, [selectedSlide]);
-
-    const getNextSlideId = (currentSlide) => {
-        switch (currentSlide) {
-            case "radio1":
-                return "radio2";
-            case "radio2":
-                return "radio3";
-            case "radio3":
-                return "radio4";
-            case "radio4":
-                return "radio1";
-        }
-    };
+        const email = localStorage.getItem("loggedInUserEmail");
+        if (!email) navigate("/login");
+    }, []);
 
     const [isOpen, setIsOpen] = useState(true);
 
@@ -116,7 +91,7 @@ function HomePage() {
                     rel="stylesheet"
                 />
                 <SideMenu />
-                <h1>Home Page</h1>
+                <h1 style={{ paddingInlineEnd: "120px" }}>Home Page</h1>
                 <Drawer
                     isOpen={isOpen}
                     placement="right"
@@ -262,15 +237,18 @@ function HomePage() {
                         ))}
                     </div>
 
-                    <TableContainer>
+                    <TableContainer
+                        marginLeft={50}
+                        marginTop={100}
+                        maxWidth="calc(100% - 100px)"
+                        overflowX="auto"
+                    >
                         <Table
                             bgColor="white"
                             variant="striped"
                             colorScheme="blue"
                             size="md"
-                            width={300}
-                            marginLeft={50}
-                            marginTop={100}
+                            width="100%"
                         >
                             <TableCaption textColor="black" fontWeight={700}>
                                 Scouting distribution around the world
@@ -287,7 +265,7 @@ function HomePage() {
                             </Thead>
                             <Tbody>
                                 <Tr>
-                                    <Td>Africa Region</Td>
+                                    <Td textAlign="start">Africa Region</Td>
                                     <Td textAlign="center">40</Td>
                                 </Tr>
                                 <Tr>

@@ -101,3 +101,36 @@
   #last{
     margin-bottom: 50px;
   }
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+  .olcards li {
+    width: 100%;
+  }
+
+  .olcards li .content {
+    width: 100%;
+  }
+
+  .olcards li::before {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .olcards li {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .olcards li::before {
+    margin-bottom: var(--labelOffset);
+    margin-right: 0;
+  }
+
+  .olcards li .content {
+    width: calc(100% - 2 * var(--inlinePadding));
+    padding-inline: var(--inlinePadding);
+}
+}

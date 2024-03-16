@@ -2,6 +2,9 @@
 @import url("https://fonts.googleapis.com/css?family=Bree+Serif&display=swap");
 
 .bg_profile {
+  width: 100%;
+  padding-left: 260px;
+  padding-right: 20px;
   background-image: url("/src/Assests/main_background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -61,12 +64,9 @@
   height: 700px;
   background: #fff;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
-
   font-family: "Bree Serif", serif;
   margin-top: 40px;
   margin-bottom: 100px;
-
-  margin-left: -500px;
   z-index: 99;
 }
 
@@ -111,10 +111,9 @@
 }
 .right-side {
   background-color: #fff;
-  margin-left: -50px;
+  /* margin-left: -50px; */
   margin-bottom: 100px;
-
-  width: 650px;
+  width: 736px;
 }
 
 .nav {
@@ -127,10 +126,9 @@
   justify-content: space-around;
   list-style-type: none;
   height: 40px;
-  width: 1000px;
+  width: 1100px;
   background: #fff;
   margin-left: -450px;
-
   border-radius: 0px;
   border-color: #0a0a0a;
 }
@@ -1092,4 +1090,4 @@
   -o-transform: scale(1.1);
   opacity: 1;
 } */
-/* button panel end */
+/* button panel end */

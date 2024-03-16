@@ -258,3 +258,80 @@
 span a {
   color: #ff4057;
 }
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .bg_landing {
+    background-image: url("/src/Assests/main_background.jpg");
+    /* Adjust background properties as needed for smaller screens */
+  }
+
+  .slides {
+    width: 1000%; /* Adjust width for smaller screens */
+  }
+
+  .slide {
+    width: 100%; /* Adjust slide width for smaller screens */
+  }
+
+  .slide-content {
+    width: 100%;
+    margin: 0;
+    margin-top: -100vh; /* Adjust margin for smaller screens */
+  }
+
+  .slide-content h2 {
+    font-size: 30px; /* Adjust font size for smaller screens */
+    margin-bottom: 30px; /* Adjust margin for smaller screens */
+  }
+
+  .slide-content a {
+    padding: 8px 16px; /* Adjust padding for smaller screens */
+    font-size: 16px; /* Adjust font size for smaller screens */
+  }
+
+  .content h2 {
+    width: 80%; /* Adjust width for smaller screens */
+    font-size: 30px; /* Adjust font size for smaller screens */
+    margin-top: 20px; /* Adjust margin for smaller screens */
+    margin-bottom: 40px; /* Adjust margin for smaller screens */
+  }
+
+  .content p {
+    margin-top: 20px; /* Adjust margin for smaller screens */
+    font-size: 16px; /* Adjust font size for smaller screens */
+    margin-bottom: 60px; /* Adjust margin for smaller screens */
+  }
+
+  #blogs {
+    width: 90%; /* Adjust width for smaller screens */
+    margin-top: 50px; /* Adjust margin for smaller screens */
+  }
+
+  #blogs h1 {
+    font-size: 30px; /* Adjust font size for smaller screens */
+    margin-top: 50px; /* Adjust margin for smaller screens */
+    margin-bottom: 40px; /* Adjust margin for smaller screens */
+  }
+
+  .card {
+    width: 90%; /* Adjust width for smaller screens */
+    height: 250px; /* Adjust height for smaller screens */
+  }
+
+  .card .text {
+    font-size: 40px; /* Adjust font size for smaller screens */
+  }
+
+  .footer {
+    height: auto; /* Adjust height for smaller screens */
+    padding: 20px; /* Adjust padding for smaller screens */
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .social a {
+    font-size: 16px; /* Adjust font size for smaller screens */
+    margin-left: 10px; /* Adjust margin for smaller screens */
+}
+}
+

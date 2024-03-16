@@ -110,3 +110,27 @@
 .links .logout-link {
   margin-top: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 70px;
+  }
+  
+  .sidebar:hover {
+    width: 200px;
+  }
+  
+  .menuname {
+    display: block;
+    font-size: 20px;
+  }
+  
+  .links li span {
+    font-size: 20px;
+  }
+  
+  .links li a {
+    font-size: 16px;
+}
+}
+

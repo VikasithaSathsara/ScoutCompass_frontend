@@ -11,6 +11,9 @@
   overflow: overlay;
 }
 .bg_awards {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
   background-image: url("/src/Assests/main_background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -128,8 +131,41 @@ tbody tr.hide td p {
   background-color: #6fcaea;
 }
 
+/* Media Queries */
+
 @media (max-width: 1000px) {
+  .sevice,
+  .table__body {
+    width: 90%;
+  }
+
   td:not(:first-of-type) {
     min-width: 12.1rem;
   }
 }
+
+@media (max-width: 768px) {
+  .sevice,
+  .table__body {
+    width: 95%;
+  }
+}
+
+@media (max-width: 576px) {
+  .sevice,
+  .table__body {
+    width: 100%;
+    max-height: none;
+    margin-bottom: 30px;
+  }
+
+  .bg_awards {
+    padding-bottom: 30px;
+  }
+
+  .image img {
+    margin-left: 0;
+}
+}
+
+

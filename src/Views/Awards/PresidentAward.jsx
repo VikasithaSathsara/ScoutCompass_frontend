@@ -3,20 +3,27 @@ import B5 from "../../Assests/PresidentsAward.png";
 import { Button } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 
 function PresidentAward() {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const email = localStorage.getItem("loggedInUserEmail");
+        if (!email) navigate("/login");
+    }, []);
+
     return (
         <div className="bg_awards">
             <section class="table__header">
                 <Button
                     bg="transparent"
-                    textColor="white"
+                    textColor="black"
                     fontWeight="600"
                     width="100px"
                     borderRadius="40px"
                     leftIcon={<FaArrowLeft />}
-                    border="2px solid #ccc"
+                    border="2px solid black"
                     padding="10px"
                     marginRight="120px"
                     onClick={() => window.history.back()}

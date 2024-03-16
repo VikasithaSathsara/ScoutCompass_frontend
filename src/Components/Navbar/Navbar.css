@@ -52,5 +52,20 @@
   border-bottom: 3px solid rgb(255, 213, 0);
 }
 
+@media screen and (max-width: 768px) {
+  .menu li {
+    display: block;
+    margin: 0;
+    text-align: center;
+  }
+  .menu li a {
+    display: block;
+    padding: 10px 0;
+  }
+  .max-width {
+    padding-right: 20px; 
+}
+}
+
 
 

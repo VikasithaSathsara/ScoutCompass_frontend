@@ -216,3 +216,23 @@
     transform: translateY(-100%);
   }
 }
+
+@media (max-width: 768px) {
+  /* Adjustments for smaller devices */
+  .container {
+    margin-left: 0;
+    padding: 0 10px; /* Adjusted padding for smaller devices */
+  }
+  
+  .container .passingcard {
+    width: calc(50% - 20px); /* Adjusted width for smaller devices */
+    margin: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further adjustments for even smaller devices */
+  .container .passingcard {
+    width: calc(100% - 20px); /* Adjusted width for smaller devices */
+}
+}

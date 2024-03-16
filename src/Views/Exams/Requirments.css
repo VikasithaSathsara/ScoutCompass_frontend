@@ -87,3 +87,56 @@
   font-size: 25px;
   color: white;
 }
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+    .quiz-container {
+      width: 80%;
+    }
+  
+    .score {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .quizh2 {
+      font-size: 30px;
+    }
+  
+    .quiz-container {
+      width: 90%;
+    }
+  
+    .question-number {
+      font-size: 20px;
+    }
+  
+    .questions {
+      font-size: 16px;
+    }
+  
+    .answers {
+      line-height: 30px;
+      margin-left: 20px;
+    }
+  
+    .quiz-button {
+      font-size: 14px;
+      margin-right: 20px;
+    }
+  
+    .score {
+      width: 95%;
+    }
+  
+    #score-completed {
+      font-size: 25px;
+    }
+  
+    #final-score {
+      font-size: 20px;
+  }
+  }
+  

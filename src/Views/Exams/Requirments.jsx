@@ -2,12 +2,19 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
 import "./Requirments.css";
+import { useNavigate } from "react-router-dom";
 
 const Requirments = () => {
     const [questions, setQuestions] = useState([]);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [userAnswers, setUserAnswers] = useState([]);
     const [finalScore, setFinalScore] = useState(null);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const email = localStorage.getItem("loggedInUserEmail");
+        if (!email) navigate("/login");
+    }, []);
 
     useEffect(() => {
         // Fetch quiz questions from Spring Boot API

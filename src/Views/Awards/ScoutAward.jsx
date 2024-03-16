@@ -3,15 +3,67 @@ import B2 from "../../Assests/ScoutAward.png";
 import { Button } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
+
+import React, { useEffect, useState } from "react";
+
 
 function ScoutAward() {
+
+    const totalRequirements = 23;
+    const initialState = {
+        status: "Attempt",
+        marks: "-"
+    };
+    
+    // Create an array to hold the state variables and setter functions
+    const [stateVariables, setStateVariables] = useState(Array.from({ length: totalRequirements }, () => initialState));
+    
+    // useEffect to fetch requirement data
+    useEffect(() => {
+        const fetchRequirementData = async (awardId, requirementId, setData) => {
+            const userEmail = localStorage.getItem("loggedInUserEmail");
+            try {
+                const response = await fetch(
+                    `http://localhost:8081/api/scoutcompass/requirement/status?userName=${userEmail}&awardId=${awardId}&requirementId=${requirementId}`
+                );
+                if (!response.ok) {
+                    throw new Error("Failed to fetch user data");
+                }
+                const data = await response.json();
+                setData(data);
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+        };
+    
+        // Fetch data for each requirement
+        for (let i = 1; i <= totalRequirements; i++) {
+            const req = {
+                awardId: 2,
+                requirementId: i,
+                setData: setDataAtIndex(i - 1) // Pass index of the state variable in the array
+            };
+            fetchRequirementData(req.awardId, req.requirementId, req.setData);
+        }
+    }, []); // Empty dependency array since we only want to run this once
+    
+    // Function to set data at a specific index in stateVariables array
+    const setDataAtIndex = index => newData => {
+        setStateVariables(prevState => {
+            const newState = [...prevState];
+            newState[index] = newData;
+            return newState;
+        });
+    };
     const navigate = useNavigate();
+
 
     useEffect(() => {
         const email = localStorage.getItem("loggedInUserEmail");
         if (!email) navigate("/login");
     }, []);
+
+
 
     return (
         <div className="bg_awards">
@@ -58,7 +110,7 @@ function ScoutAward() {
                             </td>
                             <td> 17 Dec, 2022 </td>
                             <td>
-                                <a
+                            <button
                                     onClick={() => {
                                         localStorage.setItem(
                                             "requirment_id",
@@ -69,8 +121,10 @@ function ScoutAward() {
                                     }}
                                     class="status attempt"
                                 >
-                                    Attempt
-                                </a>
+                                     {stateVariables[0].status} 
+                             </button>
+                                    {stateVariables[0].marks} 
+
                             </td>
                         </tr>
                         <tr>
@@ -93,8 +147,9 @@ function ScoutAward() {
                                     }}
                                     class="status re-attempt"
                                 >
-                                    Re-Attempt
-                                </button>
+                                     {stateVariables[1].status} 
+                             </button>
+                                    {stateVariables[1].marks} 
                             </td>
                         </tr>
                         <tr>
@@ -118,8 +173,9 @@ function ScoutAward() {
                                     }}
                                     class="status attempt"
                                 >
-                                    Attempt
-                                </button>
+                                     {stateVariables[2].status} 
+                             </button>
+                                    {stateVariables[2].marks} 
                             </td>
                         </tr>
                         <tr>
@@ -132,7 +188,7 @@ function ScoutAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a
+                                <button
                                     onClick={() => {
                                         localStorage.setItem(
                                             "requirment_id",
@@ -144,7 +200,7 @@ function ScoutAward() {
                                     class="status attempt"
                                 >
                                     Attempt
-                                </a>
+                                </button>
                             </td>
                         </tr>
                         <tr>
@@ -157,7 +213,7 @@ function ScoutAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a
+                                <button
                                     onClick={() => {
                                         localStorage.setItem(
                                             "requirment_id",
@@ -169,7 +225,7 @@ function ScoutAward() {
                                     class="status attempt"
                                 >
                                     Attempt
-                                </a>
+                                </button>
                             </td>
                         </tr>
                         <tr>
@@ -181,7 +237,7 @@ function ScoutAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a
+                                <button
                                     onClick={() => {
                                         localStorage.setItem(
                                             "requirment_id",
@@ -193,7 +249,7 @@ function ScoutAward() {
                                     class="status attempt"
                                 >
                                     Attempt
-                                </a>
+                                </button>
                             </td>
                         </tr>
                         <tr>
@@ -205,7 +261,7 @@ function ScoutAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a
+                                <button
                                     onClick={() => {
                                         localStorage.setItem(
                                             "requirment_id",
@@ -217,7 +273,7 @@ function ScoutAward() {
                                     class="status attempt"
                                 >
                                     Attempt
-                                </a>
+                                </button>
                             </td>
                         </tr>
                         <tr>
@@ -229,7 +285,7 @@ function ScoutAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a
+                                <button
                                     onClick={() => {
                                         localStorage.setItem(
                                             "requirment_id",
@@ -241,7 +297,7 @@ function ScoutAward() {
                                     class="status attempt"
                                 >
                                     Attempt
-                                </a>
+                                </button>
                             </td>
                         </tr>
                         <tr>
@@ -253,7 +309,7 @@ function ScoutAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a
+                                <button
                                     onClick={() => {
                                         localStorage.setItem(
                                             "requirment_id",
@@ -265,7 +321,7 @@ function ScoutAward() {
                                     class="status attempt"
                                 >
                                     Attempt
-                                </a>
+                                </button>
                             </td>
                         </tr>
                         <tr>
@@ -277,7 +333,7 @@ function ScoutAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a
+                                <button
                                     onClick={() => {
                                         localStorage.setItem(
                                             "requirment_id",
@@ -289,7 +345,7 @@ function ScoutAward() {
                                     class="status attempt"
                                 >
                                     Attempt
-                                </a>
+                                </button>
                             </td>
                         </tr>
                         <tr>

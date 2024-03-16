@@ -20,11 +20,11 @@ jobs:
 
   deploy: 
     needs: build
-    runs-on: aws-ec2    
+    runs-on: aws-run    
     steps:
       - name: Pull image from docker hub
         run: docker pull vikasitha670/scoutcompass-frontend:latest 
       - name: Delete Old Container
         run: docker rm -f reactContainer
       - name: Run docker container
-        run: docker run -d -p 3000:80 --name reactContainer vikasitha670/scoutcompass-frontend 
+        run: docker run -d -p 3000:80 --name reactContainer vikasitha670/scoutcompass-frontend

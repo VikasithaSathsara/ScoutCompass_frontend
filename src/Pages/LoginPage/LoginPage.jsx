@@ -14,15 +14,12 @@ function LoginPage() {
 
     const handleLogin = async (event) => {
         event.preventDefault();
-
-        // Constructing the JSON body
         const requestBody = {
             email: username,
             password: password,
         };
 
         try {
-            // Sending POST request
             const response = await fetch(
                 "http://localhost:8081/api/scoutcompass/auth/user/authenticate",
                 {
@@ -40,10 +37,15 @@ function LoginPage() {
                 }
             );
             if (response.ok) {
+                localStorage.setItem("loggedInUserEmail", username);
+
                 console.log("Login successful!");
                 toast.success("Login Successful");
                 // navigate("/home");
-                window.location.href = "/home";
+                //window.location.href = "/home";
+                setTimeout(function () {
+                    window.location.replace("/home");
+                }, 1300);
             } else {
                 console.error("Login failed");
                 toast.error("Login failed");

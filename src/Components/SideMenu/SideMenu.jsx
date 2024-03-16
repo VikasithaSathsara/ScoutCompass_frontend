@@ -1,8 +1,10 @@
 import "./SideMenu.css";
 import React from "react";
 import L1 from "../../Assests/logo.png";
+import { useNavigate } from "react-router-dom";
 
 function SideMenu() {
+    const navigate = useNavigate();
     return (
         <div className="page">
             <link
@@ -51,7 +53,15 @@ function SideMenu() {
                         <span className="material-symbols-outlined">
                             logout
                         </span>
-                        <a href="#">Logout</a>
+                        <a
+                            href="#"
+                            onClick={() => {
+                                localStorage.removeItem("loggedInUserEmail");
+                                navigate("/login");
+                            }}
+                        >
+                            Logout
+                        </a>
                     </li>
                 </ul>
             </aside>

@@ -1,0 +1,171 @@
+.sevice {
+  margin-top: 50px;
+  width: 80%;
+  max-height: calc(89% - 1.6rem);
+  background-color: rgba(184, 184, 184, 0.796);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  border-radius: 0.6rem;
+  overflow: auto;
+  overflow: overlay;
+}
+.bg_awards {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-image: url("/src/Assests/main_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 50px;
+}
+
+.table__header {
+  width: 100%;
+  height: 10%;
+
+  padding: 0.8rem 1rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.image img {
+  width: 180px;
+  height: auto;
+  padding: 10px;
+  margin-left: 120px;
+}
+
+.table__body {
+  width: 80%;
+  max-height: calc(89% - 1.6rem);
+  background-color: rgba(184, 184, 184, 0.796);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  border-radius: 0.6rem;
+  overflow: auto;
+  overflow: overlay;
+}
+
+.table__body::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.table__body::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+  background-color: #0004;
+  visibility: hidden;
+}
+
+.table__body:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+table {
+  width: 100%;
+}
+
+table,
+th,
+td {
+  border-collapse: collapse;
+  padding: 1rem;
+  text-align: center;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #09dc37fe;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #0000000b;
+}
+
+tbody tr:hover {
+  background-color: #fff6 !important;
+}
+
+tbody tr td,
+tbody tr td p,
+tbody tr td img {
+  transition: 0.2s ease-in-out;
+}
+
+tbody tr.hide td,
+tbody tr.hide td p {
+  padding: 0;
+  font: 0 / 0 sans-serif;
+  transition: 0.2s ease-in-out 0.5s;
+}
+
+.status {
+  padding: 0.4rem 2rem;
+  border-radius: 2rem;
+  text-align: center;
+}
+
+.status.completed {
+  background-color: #86e49d;
+  color: #006b21;
+}
+
+.status.re-attempt {
+  background-color: #d893a3;
+  color: #b30021;
+}
+
+.status.pending {
+  background-color: #ebc474;
+}
+
+.status.attempt {
+  background-color: #6fcaea;
+}
+
+/* Media Queries */
+
+@media (max-width: 1000px) {
+  .sevice,
+  .table__body {
+    width: 90%;
+  }
+
+  td:not(:first-of-type) {
+    min-width: 12.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sevice,
+  .table__body {
+    width: 95%;
+  }
+}
+
+@media (max-width: 576px) {
+  .sevice,
+  .table__body {
+    width: 100%;
+    max-height: none;
+    margin-bottom: 30px;
+  }
+
+  .bg_awards {
+    padding-bottom: 30px;
+  }
+
+  .image img {
+    margin-left: 0;
+}
+}
+
+

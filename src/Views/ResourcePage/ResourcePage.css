@@ -1,11 +1,21 @@
-.bg1 {
-  background-color: ghostwhite;
+.bg_resource {
+  width: 100%;
+  padding-left: 260px;
+  padding-right: 20px;
+  background-image: url("/src/Assests/main_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-/* .add {
-  margin-left: 45px;
-  margin-top: 50px;
-} */
+
+.resource_container{
+  padding-top: 70px;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: flex-start;
+  gap: 85px;
+}
+
 
 .file-card {
   padding: 1em;
@@ -45,7 +55,6 @@
       align-items: center;
       margin-top: -15px;
       margin-left: 30px;
-
       color: #fff;
       background-color: #f55e30;
       font-size: 1.1rem;
@@ -53,7 +62,6 @@
       border-radius: 4px;
       border: none;
       outline: none;
-      /* padding: 1em; */
       transition: background-color 0.4s;
       box-shadow: 0px 8px 24px rgba(149, 157, 165, 0.5);
     }
@@ -69,16 +77,28 @@
   }
   .upload {
     width: 100%;
-    height: 50px;
+    height: 35px;
     background: goldenrod;
     border: none;
     outline: none;
-    border-radius: 40px;
+    border-radius: 3px;
     box-shadow: 0 0 10 rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    font-size: 17px;
+    font-size: 15px;
     color: black;
-    font-weight: 700;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .upload-file {
+    width: 100%;
+    height: 30px;
+    border: none;
+    font-size: 15px;
+    color: black;
+    font-weight: 550;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -87,266 +107,76 @@
   .upload:hover {
     background: rgb(240, 248, 94);
     color: black;
-    border: 3px solid rgb(6, 6, 6);
+    border: 1px solid rgb(6, 6, 6);
   }
 }
 
-.box1 {
+[class^="box"] {
   width: 200px;
-  height: 220px;
-  margin-left: 300px;
-  border-radius: 20px;
-  border: 2px solid rgb(10, 10, 10);
+  height: 250px;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 2px solid black;
 }
 
-.box1_1 {
-  width: 100px;
-  height: 121.5px;
-  margin-left: 45px;
+.box_image {
+  width: 104px;
+  height: 115px;
   margin-top: -20px;
-  background-image: url("/src/Assests/PDF_file_icon.png");
+  margin: auto;
+  background-image: url("/src/Assests/pdf-img.jpg");
   background-size: 100px;
 }
 
 .name1 {
   margin-top: 130px;
-  margin-left: -30px;
-  width: 170px;
+  margin-left: -45px;
+  width: 190px;
   color: black;
   font-size: 15px;
   text-align: center;
 }
 
-.box2 {
-  width: 200px;
-  height: 220px;
-  margin-left: 585px;
-  margin-top: -215px;
-  border-radius: 20px;
-  border: 2px solid rgb(10, 10, 10);
+@media only screen and (max-width: 768px) {
+  .bg_resource {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .resource_container {
+    gap: 20px;
+  }
+
+  .file-card {
+    min-width: calc(50% - 20px);
+    margin-top: 10px;
+  }
+
+  .box_image {
+    width: 80px;
+    height: 80px;
+    background-size: 60px;
+  }
+
+  .name1 {
+    margin-top: 90px;
+    font-size: 12px;
+  }
 }
 
-.box2_1 {
-  width: 100px;
-  height: 121.5px;
-  margin-left: 45px;
-  margin-top: -20px;
-  background-image: url("/src/Assests/PDF_file_icon.png");
-  background-size: 100px;
-}
+@media only screen and (max-width: 480px) {
+  .file-card {
+    min-width: calc(100% - 20px);
+  }
 
-.name2 {
-  margin-top: 130px;
-  margin-left: -30px;
-  width: 200px;
-  color: black;
-  font-size: 15px;
-}
+  .box_image {
+    width: 60px;
+    height: 60px;
+    background-size: 40px;
+  }
 
-.box3 {
-  width: 200px;
-  height: 220px;
-  margin-left: 855px;
-  margin-top: -215px;
-  border-radius: 20px;
-  border: 2px solid rgb(10, 10, 10);
+  .name1 {
+    margin-top: 70px;
+    font-size: 10px;
 }
-
-.box3_1 {
-  width: 100px;
-  height: 121.5px;
-  margin-left: 45px;
-  margin-top: -20px;
-  background-image: url("/src/Assests/PDF_file_icon.png");
-  background-size: 100px;
-}
-
-.name3 {
-  margin-top: 130px;
-  margin-left: -30px;
-  width: 400px;
-  color: black;
-  font-size: 15px;
-}
-
-.box4 {
-  width: 200px;
-  height: 220px;
-  margin-left: 1135px;
-  margin-top: -215px;
-  border-radius: 20px;
-  border: 2px solid rgb(10, 10, 10);
-}
-
-.box4_1 {
-  width: 100px;
-  height: 121.5px;
-  margin-left: 45px;
-  margin-top: -20px;
-  background-image: url("/src/Assests/PDF_file_icon.png");
-  background-size: 100px;
-}
-
-.name4 {
-  margin-top: 130px;
-  margin-left: -30px;
-  width: 200px;
-  color: black;
-  font-size: 15px;
-}
-
-.box5 {
-  width: 200px;
-  height: 220px;
-  margin-left: 300px;
-  margin-top: 30px;
-  border-radius: 20px;
-  border: 2px solid rgb(10, 10, 10);
-}
-
-.box5_1 {
-  width: 100px;
-  height: 121.5px;
-  margin-left: 45px;
-  margin-top: -20px;
-  background-image: url("/src/Assests/PDF_file_icon.png");
-  background-size: 100px;
-}
-
-.name5 {
-  margin-top: 130px;
-  margin-left: -30px;
-  width: 200px;
-  color: black;
-  font-size: 15px;
-}
-
-.box6 {
-  width: 200px;
-  height: 220px;
-  margin-left: 585px;
-  margin-top: -220px;
-  border-radius: 20px;
-  border: 2px solid rgb(10, 10, 10);
-}
-
-.box6_1 {
-  width: 100px;
-  height: 121.5px;
-  margin-left: 45px;
-  margin-top: -20px;
-  background-image: url("/src/Assests/PDF_file_icon.png");
-  background-size: 100px;
-}
-
-.name6 {
-  margin-top: 130px;
-  margin-left: -30px;
-  width: 200px;
-  color: black;
-  font-size: 15px;
-}
-
-.box7 {
-  width: 200px;
-  height: 220px;
-  margin-left: 855px;
-  margin-top: -220px;
-  border-radius: 20px;
-  border: 2px solid rgb(10, 10, 10);
-}
-
-.box7_1 {
-  width: 100px;
-  height: 121.5px;
-  margin-left: 45px;
-  margin-top: -20px;
-  background-image: url("/src/Assests/PDF_file_icon.png");
-  background-size: 100px;
-}
-
-.name7 {
-  margin-top: 130px;
-  margin-left: -30px;
-  width: 200px;
-  color: black;
-  font-size: 15px;
-}
-
-.box8 {
-  width: 200px;
-  height: 220px;
-  margin-left: 1135px;
-  margin-top: -220px;
-  border-radius: 20px;
-  border: 2px solid rgb(10, 10, 10);
-}
-
-.box8_1 {
-  width: 100px;
-  height: 121.5px;
-  margin-left: 45px;
-  margin-top: -20px;
-  background-image: url("/src/Assests/PDF_file_icon.png");
-  background-size: 100px;
-}
-
-.name8 {
-  margin-top: 130px;
-  margin-left: -30px;
-  width: 200px;
-  color: black;
-  font-size: 15px;
-}
-
-.box9 {
-  width: 200px;
-  height: 220px;
-  margin-left: 300px;
-  margin-top: 50px;
-  border-radius: 20px;
-  border: 2px solid rgb(10, 10, 10);
-}
-
-.box9_1 {
-  width: 100px;
-  height: 121.5px;
-  margin-left: 45px;
-  margin-top: -20px;
-  background-image: url("/src/Assests/PDF_file_icon.png");
-  background-size: 100px;
-}
-
-.name9 {
-  margin-top: 130px;
-  margin-left: -30px;
-  width: 200px;
-  color: black;
-  font-size: 15px;
-}
-
-.box10 {
-  width: 200px;
-  height: 220px;
-  margin-left: 585px;
-  margin-top: -220px;
-  border-radius: 20px;
-  border: 2px solid rgb(10, 10, 10);
-}
-
-.box10_1 {
-  width: 100px;
-  height: 121.5px;
-  margin-left: 45px;
-  margin-top: -20px;
-  background-image: url("/src/Assests/PDF_file_icon.png");
-  background-size: 100px;
-}
-
-.name10 {
-  margin-top: 130px;
-  margin-left: -30px;
-  width: 200px;
-  color: black;
-  font-size: 15px;
 }

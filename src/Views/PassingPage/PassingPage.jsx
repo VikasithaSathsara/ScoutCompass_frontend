@@ -1,9 +1,18 @@
 import "./PassingPage.css";
 import SideMenu from "../../Components/SideMenu/SideMenu";
+import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 
 function PassingPage() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const email = localStorage.getItem("loggedInUserEmail");
+        if (!email) navigate("/login");
+    }, []);
+
     return (
-        <div>
+        <div className="bg_passing">
             <SideMenu />
             <h1>Passings</h1>
             <div class="container">
@@ -17,7 +26,7 @@ function PassingPage() {
                         <h2>01</h2>
                         <h3>MEMBERSHIP AWARD</h3>
                         <p>14 Requirments</p>
-                        <a href="#">Start Passing</a>
+                        <a href="/membershipaward">Start Passing</a>
                     </div>
                 </div>
                 <div class="passingcard" id="passingcard2">
@@ -30,7 +39,7 @@ function PassingPage() {
                         <h2>02</h2>
                         <h3>SCOUT AWARD</h3>
                         <p>23 Requirments</p>
-                        <a href="#">Start Passing</a>
+                        <a href="./scoutaward">Start Passing</a>
                     </div>
                 </div>
                 <div class="passingcard" id="passingcard3">
@@ -43,7 +52,7 @@ function PassingPage() {
                         <h2>03</h2>
                         <h3>CHIEF COMMISIONER AWARD</h3>
                         <p>23 Requirments</p>
-                        <a href="#">Start Passing</a>
+                        <a href="./chiefcommissioneraward">Start Passing</a>
                     </div>
                 </div>
                 <br />
@@ -57,7 +66,7 @@ function PassingPage() {
                         <h2>04</h2>
                         <h3>PRIME MINISTER AWARD</h3>
                         <p>22 Requirments</p>
-                        <a href="#">Start Passing</a>
+                        <a href="./primeministeraward">Start Passing</a>
                     </div>
                 </div>
 
@@ -71,7 +80,7 @@ function PassingPage() {
                         <h2>05</h2>
                         <h3>PRESIDENT'S AWARD</h3>
                         <p>13 Requirments</p>
-                        <a href="#">Start Passing</a>
+                        <a href="./presidentaward">Start Passing</a>
                     </div>
                 </div>
             </div>

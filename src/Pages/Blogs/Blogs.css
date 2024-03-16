@@ -1,0 +1,226 @@
+.fixedbar {
+    background-color: #003153;
+    width: 250px;
+    height: 100vh;
+    padding: 10px 20px;
+    position: fixed;
+    color: #ffffff;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+}
+.bloglogo {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.bloglogo a img {
+    width: 250px;
+    height: 110px;
+}
+.fixedbar li {
+    list-style: none;
+    padding: 5px;
+}
+.fixedbar li a {
+    text-decoration: none;
+    color: #ffffff;
+    transition: all 0.2s ease-in-out;
+}
+.fixedbar li a:hover {
+    color: #7986cb;
+}
+.blog_content,
+.other {
+    margin: 0 0 20px 10px;
+}
+.fixedbarh4 {
+    margin-top: 40px;
+    font-size: 25px;
+    color: #c5cae9;
+}
+.blog_ul {
+    font-size: 18px;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.blog_content_container {
+    width: calc(100% - 320px);
+    position: absolute;
+    left: 260px;
+    padding: 20px 10px;
+}
+
+._header1 {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+._header2 {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 250px;
+}
+.blog_header {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    margin-bottom: 30px;
+    color: #1a237e;
+}
+.blog_header1 {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-right: 150px;
+    margin-left: -150px;
+    color: #1a237e;
+}
+.blog_header2 {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-right: 150px;
+    margin-left: -80px;
+    color: #1a237e;
+}
+.facts {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 100px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.topic-main {
+    font-size: 45px;
+    text-align: center;
+    padding: 20px;
+}
+
+.topic-main1 {
+    font-size: 45px;
+    text-align: center;
+    padding: 0px;
+}
+.auther {
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+.container a {
+    text-decoration: none;
+    color: #5c6bc0;
+}
+
+.blog1 {
+    width: 600px;
+    margin: 0 auto;
+}
+.blog1_para {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 2;
+}
+.blog2_para {
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.sub-topic {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+
+#blogimage1 img {
+    width: 750px;
+    margin-left: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#blogimage2 {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+#blogimage3 img {
+    width: 750px;
+    height: 500px;
+    margin-left: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#blogimage2 figure {
+    text-align: center;
+}
+
+#blogimage2 img {
+    width: 400px;
+    height: 500px;
+    margin-left: 40px;
+}
+#blogimage2 figcaption {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .fixedbar {
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        position: static; 
+    }
+
+    .fixedbar li {
+        padding: 10px 0;
+    }
+
+    .bloglogo a img {
+        width: 200px;
+        height: auto;
+    }
+
+    .blog_header,
+    .blog_header1,
+    .blog_header2 {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    .topic-main,
+    .topic-main1 {
+        font-size: 30px;
+        padding: 10px;
+    }
+
+    #blogimage1 img,
+    #blogimage3 img {
+        width: 100%;
+        margin: 0;
+    }
+
+    #blogimage2 img {
+        width: 100%;
+        height: auto;
+        margin: 0;
+}
+}
+
+

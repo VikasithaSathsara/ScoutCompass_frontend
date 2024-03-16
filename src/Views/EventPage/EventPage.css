@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap");
+.bg_event {
+  width: 100%;
+  padding-left: 260px;
+  padding-right: 20px;
+  background-image: url("/src/Assests/main_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.wrapper6 {
+  max-width: 500px;
+  width: 100%;
+  background: #fff;
+  font-family: "Montserrat", sans-serif;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.125);
+  height: 565px;
+  padding: 20px;
+}
+
+.wrapper6 .title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: -5px;
+  margin-bottom: 25px;
+  color: #0c0c0c;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.wrapper6 .form {
+  width: 100%;
+}
+
+.wrapper6 .form .inputfield {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.wrapper6 .form .inputfield label {
+  width: 200px;
+  font: bold;
+  color: #161515;
+
+  margin-right: 10px;
+  font-size: 17px;
+}
+
+.wrapper6 .form .inputfield .input,
+.wrapper6 .form .inputfield .textarea {
+  width: 100%;
+  outline: none;
+  border: 1px solid #060707;
+  font-size: 15px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.wrapper6 .form .inputfield .textarea {
+  width: 100%;
+  height: 125px;
+  resize: none;
+}
+.upl_img {
+  margin-right: 0px;
+}
+
+.wrapper6 .form .inputfield .input:focus,
+.wrapper6 .form .inputfield .textarea:focus {
+  border: 2px solid goldenrod;
+}
+
+.wrapper6
+  .form
+  .inputfield
+  .check
+  input[type="checkbox"]:checked
+  ~ .checkmark:before {
+  display: block;
+}
+
+.wrapper6 .form .inputfield .btn {
+  width: 100%;
+  margin-top: 5px;
+  padding: 8px 10px;
+  font-size: 15px;
+  font-weight: 700;
+  border: 10px;
+  background: rgb(246, 255, 0);
+  color: #050505;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+}
+
+.wrapper6 .form .inputfield .btn:hover {
+  background: rgb(255, 55, 0);
+  color: white;
+}
+
+.wrapper6 .form .inputfield:last-child {
+  margin-bottom: 0;
+}
+
+[class^="e_box"] {
+  width: 300px;
+  height: 420px;
+  border-radius: 20px;
+  background:white;
+  border: 2px solid black;
+}
+
+.event_container{
+  padding-top: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 60px;
+}
+
+.e_box1_1 {
+  width: 100px;
+  height: 122px;
+  margin: auto;
+  background-image: url("/src/Assests/event.jpg");
+  background-size: 100px;
+}
+
+.e_name1 {
+  margin-top: 15px;
+  padding: 5px;
+  width: 300px;
+  color: black;
+  font-size: 15px;
+  text-align: center;
+  line-height: 25px;
+}
+.e_lbl{
+  color: black;
+  font-weight: 600;
+  padding-left: 20px;
+}
+
+/* Media Queries */
+
+@media (max-width: 1200px) {
+  .bg_event {
+    padding-left: 150px;
+  }
+}
+
+@media (max-width: 992px) {
+  .bg_event {
+    padding-left: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bg_event {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .bg_event {
+    padding-right: 10px;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper6 {
+    height: auto;
+    padding: 10px;
+  }
+
+  .wrapper6 .title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .wrapper6 .form .inputfield label {
+    width: auto;
+  }
+
+  .e_name1 {
+    width: auto;
+    font-size: 14px;
+}
+}

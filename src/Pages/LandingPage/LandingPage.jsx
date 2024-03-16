@@ -7,23 +7,15 @@ import S4 from "../../Assests/Hiking.jpg";
 import React, { useState, useEffect } from "react";
 
 function LandingPage() {
-    // Set the default checked radio button
     const [selectedSlide, setSelectedSlide] = useState("radio1");
-
-    // Event handler for radio button changes
     const handleSlideChange = (event) => {
         setSelectedSlide(event.target.id);
     };
-
-    // Auto slider functionality
     useEffect(() => {
         const intervalId = setInterval(() => {
-            // Determine the next slide ID based on the current selection
             const nextSlide = getNextSlideId(selectedSlide);
             setSelectedSlide(nextSlide);
-        }, 6000); // Change slide every 6 seconds (adjust as needed)
-
-        // Clear the interval when the component unmounts or changes
+        }, 6000);
         return () => clearInterval(intervalId);
     }, [selectedSlide]);
 
@@ -41,7 +33,7 @@ function LandingPage() {
     };
 
     return (
-        <div>
+        <div className="bg_landing">
             <Navbar />
             <div class="slider">
                 <div class="slides">
@@ -145,22 +137,22 @@ function LandingPage() {
                 </div>
                 <div class="blog-content">
                     <div class="card card-1">
-                        <a href="">
+                        <a href="/scoutpromise">
                             <div class="text">Scout Law and Promise</div>
                         </a>
                     </div>
                     <div class="card card-2">
-                        <a href="">
+                        <a href="/scouthistory">
                             <div class="text">Scout History</div>
                         </a>
                     </div>
                     <div class="card card-3">
-                        <a href="">
-                            <div class="text">Scouting Structure</div>
+                        <a href="/scoutingstructure">
+                            <div class="text">Vision and Mission</div>
                         </a>
                     </div>
                     <div class="card card-4">
-                        <a href="">
+                        <a href="/scoutuniform">
                             <div class="text">Scout Uniform</div>
                         </a>
                     </div>
@@ -171,8 +163,9 @@ function LandingPage() {
                 <div>
                     Coppyright &copy; 2024 | <span>ScoutCompass</span> Learning
                     Management System
-                </div>
-                <div class="social">
+                </div>{" "}
+                <br />
+                {/* <div class="social">
                     <a href="#" target="_blank">
                         <i class="fab fa-facebook"></i>
                     </a>
@@ -185,17 +178,17 @@ function LandingPage() {
                     <a href="" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
-                </div>
+                </div> */}
                 <div>
                     Developed By{" "}
                     <span>
-                        <a href="./about.html">ScoutCompass</a>
+                        <a href="#">Team WayFinders</a>
                     </span>{" "}
-                    | ######{" "}
-                    <span>
+                    | Exploring New Skills{" "}
+                    {/* <span>
                         {" "}
                         <a href="">#######</a>{" "}
-                    </span>
+                    </span> */}
                 </div>
             </footer>
         </div>

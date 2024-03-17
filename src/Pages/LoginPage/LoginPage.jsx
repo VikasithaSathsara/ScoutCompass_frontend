@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import "./LoginPage.css";
-import { Link, useNavigate, NavLink } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../Components/Navbar/Navbar";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -44,7 +44,7 @@ function LoginPage() {
         // navigate("/home");
         //window.location.href = "/home";
         setTimeout(function () {
-          <NavLink to="/home"></NavLink>;
+          window.location.replace("/home");
         }, 1300);
       } else {
         console.error("Login failed");

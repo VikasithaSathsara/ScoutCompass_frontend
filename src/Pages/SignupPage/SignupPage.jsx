@@ -3,7 +3,6 @@ import "./SignupPage.css";
 import { Center, ChakraProvider } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import { toast, ToastContainer } from "react-toastify";
-import { NavLink } from "react-router-dom";
 
 import Navbar from "../../Components/Navbar/Navbar";
 
@@ -163,7 +162,7 @@ function SignupPage() {
               },
             });
             setTimeout(function () {
-              <NavLink to="/login"></NavLink>;
+              window.location.replace("/login");
             }, 2500);
           } else {
             console.error("Instructor Registration Fail!");
@@ -229,7 +228,7 @@ function SignupPage() {
               },
             });
             setTimeout(function () {
-              <NavLink to="/login"></NavLink>;
+              window.location.replace("/login");
             }, 2500);
           } else {
             console.error("Scout Registration Fail!");

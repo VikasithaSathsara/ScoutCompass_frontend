@@ -3,6 +3,7 @@ import "./SignupPage.css";
 import { Center, ChakraProvider } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import { toast, ToastContainer } from "react-toastify";
+import { NavLink } from "react-router-dom";
 
 import Navbar from "../../Components/Navbar/Navbar";
 

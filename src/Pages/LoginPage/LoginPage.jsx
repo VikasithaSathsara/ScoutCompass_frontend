@@ -21,12 +21,12 @@ function LoginPage() {
 
         try {
             const response = await fetch(
-                "http://localhost:8081/api/scoutcompass/auth/user/authenticate",
+                "http://13.233.134.21:8081/api/scoutcompass/auth/user/authenticate",
                 {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        Origin: "http://localhost:3000",
+                        Origin: "http://13.233.134.21:3000",
                         "Content-Length": "<calculated when request is sent>",
                         Host: "<calculated when request is sent>",
                         Accept: "*/*",

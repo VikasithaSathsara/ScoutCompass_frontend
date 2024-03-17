@@ -41,7 +41,7 @@ function EventPage() {
     const fetchEventList = async () => {
         try {
             const response = await fetch(
-                "http://localhost:8081/api/scoutcompass/event/eventList"
+                "http://13.233.134.21:8081/api/scoutcompass/event/eventList"
             );
             const data = await response.json();
 
@@ -83,7 +83,7 @@ function EventPage() {
 
         try {
             const response = await fetch(
-                "http://localhost:8081/api/scoutcompass/event/create",
+                "http://13.233.134.21:8081/api/scoutcompass/event/create",
                 {
                     method: "POST",
                     headers: {
@@ -111,7 +111,7 @@ function EventPage() {
         );
         if (confirmed) {
             const baseUrl =
-                "http://localhost:8081/api/scoutcompass/event/delete/";
+                "http://13.233.134.21:8081/api/scoutcompass/event/delete/";
             const url = baseUrl + fileName;
             try {
                 const response = await fetch(url, {

@@ -16,28 +16,26 @@ const Requirments = () => {
         if (!email) navigate("/login");
     }, []);
 
-
     const [requirementData, setRequirementData] = useState({
-        userName: '',
-        awardId: '',
-        requirementId: '',
-        marks: '',
-      });
-
+        userName: "",
+        awardId: "",
+        requirementId: "",
+        marks: "",
+    });
 
     useEffect(() => {
         // Fetch quiz questions from Spring Boot API
         const fetchQuestions = async (awardId, requirementId) => {
             try {
                 const response = await fetch(
-                    `http://localhost:8081/api/scoutcompass/requirement/questions?awardId=${awardId}&requirementId=${requirementId}`
+                    `http://13.233.134.21:8081/api/scoutcompass/requirement/questions?awardId=${awardId}&requirementId=${requirementId}`
                 );
                 const data = await response.json();
                 if (data) {
                     setQuestions(data);
                 }
-             //   localStorage.removeItem("award_id");
-             //   localStorage.removeItem("requirment_id");
+                //   localStorage.removeItem("award_id");
+                //   localStorage.removeItem("requirment_id");
             } catch (error) {
                 console.error("Error fetching questions:", error);
             }
@@ -82,28 +80,29 @@ const Requirments = () => {
 
         setFinalScore(score);
 
-        
         const requirment_id = localStorage.getItem("requirment_id");
         const award_id = localStorage.getItem("award_id");
         const userEmail = localStorage.getItem("loggedInUserEmail");
-    
+
         const dataToSend = {
             userName: userEmail,
             awardId: award_id,
             requirementId: requirment_id,
             marks: score,
-          };
-
+        };
 
         // Example: Send post request to Spring Boot API with the final score
         try {
-            await fetch(`http://localhost:8081/api/scoutcompass/requirement/status/marks/submit`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(dataToSend),
-            });
+            await fetch(
+                `http://13.233.134.21:8081/api/scoutcompass/requirement/status/marks/submit`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(dataToSend),
+                }
+            );
 
             localStorage.removeItem("award_id");
             localStorage.removeItem("requirment_id");

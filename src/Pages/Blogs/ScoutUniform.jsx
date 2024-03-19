@@ -72,13 +72,12 @@ function ScoutUniform() {
                             leftIcon={<FaArrowLeft />}
                             border="2px solid black"
                             padding="10px"
-                            marginRight="80px"
                             onClick={() => window.history.back()}
                             _hover={{ bg: "yellow", textColor: "black" }}
                         >
                             Back
                         </Button>
-                        <h1 class="blog_header2">Scout Uniform</h1>
+                        <h1 class="blog_header">Scout Uniform</h1>
                     </div>
 
                     <div id="blogimage1">{/* <img src={BL2} alt="" /> */}</div>

@@ -81,25 +81,22 @@ function SignupPage() {
         });
     };
 
-    
     const [instructors, setInstructors] = useState([]);
-    const [selectedInstructor, setSelectedInstructor] = useState('');
-    const [selectedInstructorId, setSelectedInstructorId] = useState('');
+    const [selectedInstructor, setSelectedInstructor] = useState("");
+    const [selectedInstructorId, setSelectedInstructorId] = useState("");
 
     useEffect(() => {
         // Fetch data from backend API
-        fetch('http://localhost:8081/api/scoutcompass/auth/instructorList')
-            .then(response => response.json())
-            .then(data => {
+        fetch("http://13.233.134.21:8081/api/scoutcompass/auth/instructorList")
+            .then((response) => response.json())
+            .then((data) => {
                 // Assuming data is an array of instructor objects with properties like id and name
                 setInstructors(data);
             })
-            .catch(error => {
-                console.error('Error fetching instructors:', error);
+            .catch((error) => {
+                console.error("Error fetching instructors:", error);
             });
     }, []); // Empty dependency array ensures this effect runs only once after initial render
-
-
 
     const onDropdownValueChange = (fieldName) => (e) => {
         setSelectedInstructor(e.target.value);
@@ -135,12 +132,12 @@ function SignupPage() {
 
                     // Sending POST request
                     const response = await fetch(
-                        "http://localhost:8081/api/scoutcompass/auth/instruct/register",
+                        "http://13.233.134.21:8081/api/scoutcompass/auth/instruct/register",
                         {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
-                                Origin: "http://localhost:3000",
+                                Origin: "http://13.233.134.21:3000",
                                 "Content-Length":
                                     "<calculated when request is sent>",
                                 Host: "<calculated when request is sent>",
@@ -153,7 +150,6 @@ function SignupPage() {
                     );
                     if (response.ok) {
                         console.log("Instructor Registration successful!");
-
 
                         const examplePromise = new Promise(
                             (resolve, reject) => {
@@ -181,11 +177,11 @@ function SignupPage() {
                         setTimeout(function () {
                             window.location.replace("/login");
                         }, 2500);
-                    } else if(response.status==500){
-                        alert("Instructor already exist!")
-                    }else {
+                    } else if (response.status == 500) {
+                        alert("Instructor already exist!");
+                    } else {
                         console.error("Instructor Registration Fail!");
-                        alert("Instructor Registration Fail!")
+                        alert("Instructor Registration Fail!");
                     }
                 } else if (formData.role === "scout") {
                     const scout_reg_requestBody = {
@@ -203,12 +199,12 @@ function SignupPage() {
 
                     // Sending POST request
                     const response = await fetch(
-                        "http://localhost:8081/api/scoutcompass/auth/scout/register",
+                        "http://13.233.134.21:8081/api/scoutcompass/auth/scout/register",
                         {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
-                                Origin: "http://localhost:3000",
+                                Origin: "http://13.233.134.21:3000",
                                 "Content-Length":
                                     "<calculated when request is sent>",
                                 Host: "<calculated when request is sent>",
@@ -252,12 +248,12 @@ function SignupPage() {
                         setTimeout(function () {
                             window.location.replace("/login");
                         }, 2500);
-                    }  else if(response.status==500){
-                        alert("Scout already exist!")
-                    }else {
+                    } else if (response.status == 500) {
+                        alert("Scout already exist!");
+                    } else {
                         console.error("Scout Registration Fail!");
-                       // toast.error("Scout Registration Fail!");
-                        alert("Scout Registration Fail!")
+                        // toast.error("Scout Registration Fail!");
+                        alert("Scout Registration Fail!");
                     }
                 }
             }
@@ -595,13 +591,27 @@ function SignupPage() {
                                                         color="gray"
                                                         borderColor="white"
                                                         borderRadius={40}
-                                                         value={selectedInstructor}
-                                                        onChange={onDropdownValueChange("instructor")}
+                                                        value={
+                                                            selectedInstructor
+                                                        }
+                                                        onChange={onDropdownValueChange(
+                                                            "instructor"
+                                                        )}
                                                     >
-                                                        {instructors.map(instructor => (
-                                                            <option key={instructor.instructId} value={instructor.instructId}>
-                                                           {`${instructor.instructFirstName} ${instructor.instructLastname}`}                                                            </option>
-                                                        ))}
+                                                        {instructors.map(
+                                                            (instructor) => (
+                                                                <option
+                                                                    key={
+                                                                        instructor.instructId
+                                                                    }
+                                                                    value={
+                                                                        instructor.instructId
+                                                                    }
+                                                                >
+                                                                    {`${instructor.instructFirstName} ${instructor.instructLastname}`}{" "}
+                                                                </option>
+                                                            )
+                                                        )}
                                                     </Select>
                                                 </FormControl>
                                                 <FormControl isRequired>

@@ -122,21 +122,18 @@ tbody tr.hide td p {
 }
 
 .status.completed {
-  background-color: #86e49d;
+  background-color: #86e49d; 
   color: #006b21;
 }
 
 .status.re-attempt {
-  background-color: #d893a3;
+  background-color: #d893a3; 
   color: #b30021;
 }
 
-.status.pending {
-  background-color: #ebc474;
-}
-
 .status.attempt {
-  background-color: #6fcaea;
+  background-color: #6fcaea; 
+  color:#000;
 }
 
 /* Media Queries */

@@ -3,9 +3,57 @@ import B4 from "../../Assests/PrimeMinisters.png";
 import { Button } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function PrimeMinisterAward() {
+  const totalRequirements = 22;
+  const initialState = {
+    status: "Attempt",
+    marks: "-",
+  };
+
+  // Create an array to hold the state variables and setter functions
+  const [stateVariables, setStateVariables] = useState(
+    Array.from({ length: totalRequirements }, () => initialState)
+  );
+
+  // useEffect to fetch requirement data
+  useEffect(() => {
+    const fetchRequirementData = async (awardId, requirementId, setData) => {
+      const userEmail = localStorage.getItem("loggedInUserEmail");
+      try {
+        const response = await fetch(
+          `http://13.233.134.21:8081/api/scoutcompass/requirement/status?userName=${userEmail}&awardId=${awardId}&requirementId=${requirementId}`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    // Fetch data for each requirement
+    for (let i = 1; i <= totalRequirements; i++) {
+      const req = {
+        awardId: 4,
+        requirementId: i,
+        setData: setDataAtIndex(i - 1), // Pass index of the state variable in the array
+      };
+      fetchRequirementData(req.awardId, req.requirementId, req.setData);
+    }
+  }, []); // Empty dependency array since we only want to run this once
+
+  // Function to set data at a specific index in stateVariables array
+  const setDataAtIndex = (index) => (newData) => {
+    setStateVariables((prevState) => {
+      const newState = [...prevState];
+      newState[index] = newData;
+      return newState;
+    });
+  };
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -57,16 +105,23 @@ function PrimeMinisterAward() {
               </td>
               <td> 17 Dec, 2022 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 1);
                     localStorage.setItem("award_id", 4);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[0].marks !== "-"
+                      ? stateVariables[0].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[0].status}
+                </button>
+                <span>{stateVariables[0].marks}</span>            
               </td>
             </tr>
             <tr>
@@ -78,16 +133,23 @@ function PrimeMinisterAward() {
               </td>
               <td> 27 Aug, 2023 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 2);
                     localStorage.setItem("award_id", 4);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[1].marks !== "-"
+                      ? stateVariables[1].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[1].status}
+                </button>
+                <span>{stateVariables[1].marks}</span>            
               </td>
             </tr>
             <tr>
@@ -114,16 +176,23 @@ function PrimeMinisterAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 4);
                     localStorage.setItem("award_id", 4);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[3].marks !== "-"
+                      ? stateVariables[3].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[3].status}
+                </button>
+                <span>{stateVariables[3].marks}</span>            
               </td>
             </tr>
             <tr>
@@ -136,16 +205,23 @@ function PrimeMinisterAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 5);
                     localStorage.setItem("award_id", 4);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[4].marks !== "-"
+                      ? stateVariables[4].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[4].status}
+                </button>
+                <span>{stateVariables[4].marks}</span>            
               </td>
             </tr>
             <tr>
@@ -229,16 +305,23 @@ function PrimeMinisterAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 11);
                     localStorage.setItem("award_id", 4);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[10].marks !== "-"
+                      ? stateVariables[10].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[10].status}
+                </button>
+                <span>{stateVariables[10].marks}</span>            
               </td>
             </tr>
             <tr>
@@ -250,16 +333,23 @@ function PrimeMinisterAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 12);
                     localStorage.setItem("award_id", 4);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[11].marks !== "-"
+                      ? stateVariables[11].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[11].status}
+                </button>
+                <span>{stateVariables[11].marks}</span>            
               </td>
             </tr>
             <tr>
@@ -271,16 +361,23 @@ function PrimeMinisterAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 13);
                     localStorage.setItem("award_id", 4);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[12].marks !== "-"
+                      ? stateVariables[12].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[12].status}
+                </button>
+                <span>{stateVariables[12].marks}</span>            
               </td>
             </tr>
             <tr>
@@ -292,16 +389,23 @@ function PrimeMinisterAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 14);
                     localStorage.setItem("award_id", 4);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[13].marks !== "-"
+                      ? stateVariables[13].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[13].status}
+                </button>
+                <span>{stateVariables[13].marks}</span>            
               </td>
             </tr>
             <tr>
@@ -313,16 +417,23 @@ function PrimeMinisterAward() {
               </td>
               <td> 17 Dec, 2022 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 15);
                     localStorage.setItem("award_id", 4);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[14].marks !== "-"
+                      ? stateVariables[14].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[14].status}
+                </button>
+                <span>{stateVariables[14].marks}</span>            
               </td>
             </tr>
             <tr>
@@ -364,16 +475,23 @@ function PrimeMinisterAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 18);
                     localStorage.setItem("award_id", 4);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[17].marks !== "-"
+                      ? stateVariables[17].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[17].status}
+                </button>
+                <span>{stateVariables[17].marks}</span>            
               </td>
             </tr>
             <tr>
@@ -386,16 +504,23 @@ function PrimeMinisterAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 19);
                     localStorage.setItem("award_id", 4);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[18].marks !== "-"
+                      ? stateVariables[18].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[18].status}
+                </button>
+                <span>{stateVariables[18].marks}</span>            
               </td>
             </tr>
             <tr>

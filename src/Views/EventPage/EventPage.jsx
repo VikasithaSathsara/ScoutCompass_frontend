@@ -164,7 +164,6 @@ function EventPage() {
                                 position="absolute"
                                 top="20"
                                 right="10"
-                                mt="10px"
                             >
                                 Add Event
                             </Button>
@@ -199,7 +198,6 @@ function EventPage() {
                                                 name="date"
                                                 onChange={handleChange}
                                             />
-                                            {/* You can add a date picker here if needed */}
                                         </div>
                                         <div className="inputfield">
                                             <label>Location</label>

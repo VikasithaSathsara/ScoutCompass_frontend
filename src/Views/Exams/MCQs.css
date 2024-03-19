@@ -24,6 +24,7 @@
     margin-top: var(--labelOffset);
     width: 700px;
     margin: auto;
+    justify-content: center;
   }
   
   .olcards li::before {
@@ -61,28 +62,8 @@
       0 calc(100% + var(--cardsGap))
     );
     position: relative;
-    width: 600px;
+    width: 1000px;
   }
-  /* .olcards li .content::before {
-    content: "";
-    position: absolute;
-    width: var(--labelOffset);
-    height: var(--labelOffset);
-    background: var(--cardColor);
-    left: 0;
-    bottom: 0;
-    clip-path: polygon(0 0, 100% 0, 0 100%);
-    filter: brightness(0.75);
-  }
-  .olcards li .content::after {
-    content: "";
-    position: absolute;
-    height: var(--cardsGap);
-    width: var(--cardsGap);
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent 50%);
-    left: 0;
-    top: 100%;
-  } */
   .olcards li .icon {
     grid-area: icon;
     align-self: center;
@@ -103,34 +84,68 @@
   }
 
 /* Media Queries */
-
 @media (max-width: 768px) {
+  .bg_quiz{
+    width: 100vw;
+    height: 100vh;
+  }
+  .olcards {
+    margin-top: 50px;
+    gap: 20px;
+  }
+
   .olcards li {
-    width: 100%;
+    width: auto;
+    margin: auto;
   }
 
   .olcards li .content {
-    width: 100%;
+    width: auto;
   }
 
   .olcards li::before {
-    margin-right: 0;
+    margin-right: 10px;
   }
+
+  .olcards li .content .mcq-title {
+    font-size: 24px;
+  }
+
+  #last {
+    margin-bottom: 30px;
+}
 }
 
-@media (max-width: 576px) {
-  .olcards li {
-    flex-direction: column;
-    align-items: center;
+
+@media (max-width: 431px) {
+  .bg_quiz{
+    width: 100vw;
+    height: 100%;
+  }
+  .olcards {
+    margin-top: 50px;
+    gap: 20px;
   }
 
-  .olcards li::before {
-    margin-bottom: var(--labelOffset);
-    margin-right: 0;
+  .olcards li {
+    width: auto;
+    margin: auto;
   }
 
   .olcards li .content {
-    width: calc(100% - 2 * var(--inlinePadding));
-    padding-inline: var(--inlinePadding);
+    width: auto;
+  }
+
+  .olcards li::before {
+    margin-right: 10px;
+  }
+
+  .olcards li .content .mcq-title {
+    font-size: 20px;
+  }
+
+  #last {
+    margin-bottom: 30px;
 }
 }
+

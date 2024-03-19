@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 
 function ProfilePage() {
     const navigate = useNavigate();
-    useEffect(() => {
-        const email = localStorage.getItem("loggedInUserEmail");
-        if (!email) navigate("/login");
-    }, []);
+    // useEffect(() => {
+    //     const email = localStorage.getItem("loggedInUserEmail");
+    //     if (!email) navigate("/login");
+    // }, []);
 
     const [userData, setUserData] = useState({
         fullName: "",

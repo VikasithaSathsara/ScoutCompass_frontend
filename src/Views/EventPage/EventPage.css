@@ -144,48 +144,67 @@
 
 /* Media Queries */
 
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
   .bg_event {
     padding-left: 150px;
   }
-}
 
-@media (max-width: 992px) {
-  .bg_event {
-    padding-left: 100px;
-  }
-}
-
-@media (max-width: 768px) {
-  .bg_event {
-    padding-left: 0;
-  }
-}
-
-@media (max-width: 576px) {
-  .bg_event {
-    padding-right: 10px;
-    padding-left: 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .wrapper6 {
-    height: auto;
-    padding: 10px;
+  .event_container{
+    display: flex;
+    justify-content: center;
   }
 
   .wrapper6 .title {
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: 22px;
+    margin-bottom: 22px;
   }
 
   .wrapper6 .form .inputfield label {
-    width: auto;
+    width: 180px;
   }
 
   .e_name1 {
-    width: auto;
-    font-size: 14px;
+    width: 280px;
+    font-size: 12px;
+    margin-top: 0;
+}
+}
+
+@media (max-width: 431px) {
+  .bg_event {
+    width: 100vw;
+    padding-left: 100px;
+    padding-right: 0;
+  }
+
+  .event_container{
+    display: flex;
+    justify-content: center;
+  }
+
+  .wrapper6 .title {
+    font-size: 22px;
+    margin-bottom: 22px;
+  }
+
+  .wrapper6 .form .inputfield label {
+    width: 180px;
+  }
+
+  .e_name1 {
+    width: 270px;
+    font-size: 12px;
+    margin-top: 0;
+}
+
+[class^="e_box"] {
+  width: 280px;
+  height: 420px;
+}
+
+.e_box1_1 {
+  width: 70px;
+  height: 100px;
+ 
 }
 }

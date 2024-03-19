@@ -9,9 +9,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .main {
-    padding: 20px;
-  }
+
   .p-8 {
     padding: 1rem;
   }

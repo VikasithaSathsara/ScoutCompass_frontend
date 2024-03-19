@@ -78,17 +78,16 @@ function ScoutAward() {
                     leftIcon={<FaArrowLeft />}
                     border="2px solid black"
                     padding="10px"
-                    marginRight="220px"
                     onClick={() => window.history.back()}
                     _hover={{ bg: "yellow", textColor: "black" }}
                 >
                     Back
                 </Button>
 
-                <div className="image">
+                <div className="image2">
                     <img src={B2} alt="" />
                 </div>
-                <h1>Scout Award</h1>
+                <h1 className="award-name">Scout Award</h1>
             </section>
 
             <section class="table__body">

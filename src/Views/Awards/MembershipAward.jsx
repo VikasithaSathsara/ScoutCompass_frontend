@@ -25,7 +25,6 @@ function MembershipAward() {
                     leftIcon={<FaArrowLeft />}
                     border="2px solid black"
                     padding="10px"
-                    marginRight="120px"
                     onClick={() => window.history.back()}
                     _hover={{ bg: "yellow", textColor: "black" }}
                 >
@@ -35,7 +34,7 @@ function MembershipAward() {
                 <div className="image">
                     <img src={B1} alt="" />
                 </div>
-                <h1>Membership Award</h1>
+                <h1 className="award-name">Membership Award</h1>
             </section>
 
             <section class="table__body">

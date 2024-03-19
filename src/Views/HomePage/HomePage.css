@@ -144,11 +144,10 @@
   gap: var(--item-gap);
   align-items: end;
   padding-inline: var(--item-gap);
-  --padding-block: 1.5rem; /*space for labels*/
+  --padding-block: 1.5rem;
   padding-block: var(--padding-block);
   position: relative;
   isolation: isolate;
-  /* margin-left: 280px; */
   margin-top: 50px;
  
 }
@@ -257,40 +256,146 @@ ul.bargraph li.greenbright {
 
 /* Media queries */
 
-/* Mobile phones (up to 768px) */
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .bg_home {
-    padding-left: 10px;
+    padding-left: 150px;
     padding-right: 10px;
   }
 
   .hm_content {
-    flex-direction: column; /* Stack elements vertically on mobile */
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    height: auto;
   }
 
   .hm_card {
-    width: 80%; /* Adjust card width for better fit */
-    margin: 10px auto; /* Center cards horizontally */
+    margin: 10px;
+    height: auto;
   }
 
-  .chart {
-    flex-direction: column; /* Stack elements vertically on mobile */
-    align-items: center; /* Center content horizontally */
-    gap: 20px; /* Make chart full width on mobile */
+  .hm_icon {
+    margin-top: 0;
+    height: 60px;
+    width: 60px;
+    max-width: none;
+  }
+
+  .hm_card .hm_title {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+
+  .hm_card .hm_text {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+  .simple-bar-chart {
+    width: 77%;
+    
+  }
+  #chart{
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   #map {
-    width: 100%; /* Make map full width on mobile */
+    width: 80%;
+    height: 250px;
   }
 
   .hm_ftr {
-    flex-direction: column; /* Stack elements vertically on mobile */
-    align-items: center; /* Center content horizontally */
-    gap: 20px; /* Reduce gap between elements */
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .bargraph {
-    margin-left: 0; /* Remove margin on mobile */
-    width: 100%; /* Make bar graph full width */
+    margin-left: 0;
+    width: 80%;
+  }
+
+  ul.bargraph li {
+    text-align: center;
+    font-size: 12px;
+  }
+}
+
+
+@media (max-width: 431px) {
+  .bg_home {
+    padding-left: 100px;
+   
+  }
+
+  .hm_content {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    height: auto;
+  }
+
+  .hm_card {
+    margin: 10px;
+    height: auto;
+  }
+
+  .hm_icon {
+    margin-top: 0;
+    height: 60px;
+    width: 60px;
+    max-width: none;
+  }
+
+  .hm_card .hm_title {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+
+  .hm_card .hm_text {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+  #chart{
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+  }
+
+  .simple-bar-chart {
+    width: 100%;
+    padding-inline: 0;
+    margin-top: 30px;
+  }
+
+  .simple-bar-chart::after {
+    display: none;
+  }
+
+  .simple-bar-chart > .item {
+    width:100%;
+}
+
+  #map {
+    width: 90%;
+    height: 250px;
+  }
+
+  .hm_ftr {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .bargraph {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  ul.bargraph li {
+    text-align: start;
+    font-size: 8px;
+  }
+
+  h1{
+    font-size: 30px;
   }
 }

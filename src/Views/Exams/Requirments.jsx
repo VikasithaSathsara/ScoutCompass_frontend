@@ -95,6 +95,7 @@ const Requirments = () => {
         try {
             await fetch(
                 `http://13.233.134.21:8081/api/scoutcompass/requirement/status/marks/submit`,
+
                 {
                     method: "POST",
                     headers: {

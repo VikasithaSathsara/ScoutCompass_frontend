@@ -91,7 +91,7 @@ function HomePage() {
                     rel="stylesheet"
                 />
                 <SideMenu />
-                <h1 style={{ paddingInlineEnd: "120px" }}>Home Page</h1>
+                <h1>Home Page</h1>
                 <Drawer
                     isOpen={isOpen}
                     placement="right"
@@ -208,8 +208,9 @@ function HomePage() {
                             Add or change your contacts and links.
                         </p>
                     </div>
-                    <a href="/mcq">
-                        <div class="hm_card">
+
+                    <div class="hm_card">
+                        <a href="/mcq">
                             <div class="hm_icon">
                                 <i class="material-icons md-36">description</i>
                             </div>
@@ -217,8 +218,8 @@ function HomePage() {
                             <p class="hm_text">
                                 Enhance your scouting knowledge
                             </p>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
                 <section id="chart">
                     <div className="simple-bar-chart">
@@ -240,7 +241,7 @@ function HomePage() {
                     <TableContainer
                         marginLeft={50}
                         marginTop={100}
-                        maxWidth="calc(100% - 100px)"
+                        maxWidth="100%"
                         overflowX="auto"
                     >
                         <Table

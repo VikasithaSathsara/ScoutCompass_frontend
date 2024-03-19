@@ -66,6 +66,7 @@ function ResourcePage() {
     const handleViewResource_ = (fileName) => {
         const baseUrl_ =
             "http://13.233.134.21:8081/api/scoutcompass/resource/download/";
+
         const pdfUrl = baseUrl_ + fileName;
 
         window.open(pdfUrl, "_blank");
@@ -85,6 +86,7 @@ function ResourcePage() {
         try {
             const response = await fetch(
                 "http://13.233.134.21:8081/api/scoutcompass/resource/upload",
+
                 {
                     method: "POST",
                     body: formData,
@@ -113,6 +115,7 @@ function ResourcePage() {
         if (confirmed) {
             const baseUrl =
                 "http://13.233.134.21:8081/api/scoutcompass/resource/delete/";
+
             const url = baseUrl + fileName;
             try {
                 const response = await fetch(url, {

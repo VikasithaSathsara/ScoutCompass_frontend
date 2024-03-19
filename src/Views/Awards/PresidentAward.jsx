@@ -25,7 +25,6 @@ function PresidentAward() {
                     leftIcon={<FaArrowLeft />}
                     border="2px solid black"
                     padding="10px"
-                    marginRight="120px"
                     onClick={() => window.history.back()}
                     _hover={{ bg: "yellow", textColor: "black" }}
                 >

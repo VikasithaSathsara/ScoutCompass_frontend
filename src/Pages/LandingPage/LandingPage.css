@@ -167,11 +167,11 @@
   text-align: center;
 }
 
-#blogs h1 {
+/* #blogs h1 {
   font-size: 45px;
   margin-top: 100px;
   margin-bottom: 60px;
-}
+} */
 
 #blogs .blog-content {
   display: flex;
@@ -263,75 +263,113 @@ span a {
 @media screen and (max-width: 768px) {
   .bg_landing {
     background-image: url("/src/Assests/main_background.jpg");
-    /* Adjust background properties as needed for smaller screens */
-  }
-
-  .slides {
-    width: 1000%; /* Adjust width for smaller screens */
-  }
-
-  .slide {
-    width: 100%; /* Adjust slide width for smaller screens */
-  }
-
-  .slide-content {
-    width: 100%;
-    margin: 0;
-    margin-top: -100vh; /* Adjust margin for smaller screens */
-  }
-
-  .slide-content h2 {
-    font-size: 30px; /* Adjust font size for smaller screens */
-    margin-bottom: 30px; /* Adjust margin for smaller screens */
-  }
-
-  .slide-content a {
-    padding: 8px 16px; /* Adjust padding for smaller screens */
-    font-size: 16px; /* Adjust font size for smaller screens */
+    width: 100vw;
   }
 
   .content h2 {
-    width: 80%; /* Adjust width for smaller screens */
-    font-size: 30px; /* Adjust font size for smaller screens */
-    margin-top: 20px; /* Adjust margin for smaller screens */
-    margin-bottom: 40px; /* Adjust margin for smaller screens */
+    width: 80%; 
+    font-size: 36px; 
+    margin-top: 20px;
+    margin-bottom: 40px; 
   }
 
   .content p {
-    margin-top: 20px; /* Adjust margin for smaller screens */
-    font-size: 16px; /* Adjust font size for smaller screens */
-    margin-bottom: 60px; /* Adjust margin for smaller screens */
+    margin-top: 20px; 
+    margin-bottom: 60px; 
   }
-
-  #blogs {
-    width: 90%; /* Adjust width for smaller screens */
-    margin-top: 50px; /* Adjust margin for smaller screens */
-  }
-
-  #blogs h1 {
-    font-size: 30px; /* Adjust font size for smaller screens */
-    margin-top: 50px; /* Adjust margin for smaller screens */
-    margin-bottom: 40px; /* Adjust margin for smaller screens */
-  }
+  #blogs .blog-content {
+    justify-content: center; 
+}
 
   .card {
-    width: 90%; /* Adjust width for smaller screens */
-    height: 250px; /* Adjust height for smaller screens */
+    width: 80%; 
+    height: 300px; 
   }
 
   .card .text {
-    font-size: 40px; /* Adjust font size for smaller screens */
+    font-size: 40px; 
   }
 
   .footer {
-    height: auto; /* Adjust height for smaller screens */
-    padding: 20px; /* Adjust padding for smaller screens */
-    font-size: 14px; /* Adjust font size for smaller screens */
+    height: auto; 
+    padding: 20px; 
+}
+
+}
+
+
+@media screen and (max-width: 431px) {
+  .bg_landing {
+    background-image: url("/src/Assests/main_background.jpg");
+    width: 100vw;
   }
 
-  .social a {
-    font-size: 16px; /* Adjust font size for smaller screens */
-    margin-left: 10px; /* Adjust margin for smaller screens */
+  .slider {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .slides {
+    width: 500%;
+    height: 70vh;
+    display: flex;
+  }
+  
+  .slides input {
+    display: none;
+  }
+  
+  .slide {
+    width: 20%;
+    height: 70vh;
+    transition: 4s;
+    display: flex;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: 70vh;
+  }
+
+  .navigation-manual {
+    position: absolute;
+    width: 100%;
+    bottom: 35%;
+    display: flex;
+    justify-content: center;
+  }
+  
+
+  .content h2 {
+    width: 80%; 
+    font-size: 36px; 
+    margin-top: 20px;
+    margin-bottom: 40px; 
+  }
+
+  .content p {
+    margin-top: 20px; 
+    margin-bottom: 60px; 
+  }
+  #blogs .blog-content {
+    justify-content: center; 
 }
+
+  .card {
+    width: 80%; 
+    height: 200px; 
+  }
+
+  .card .text {
+    font-size: 40px; 
+  }
+
+  .footer {
+    height: auto; 
+    padding: 20px; 
 }
+
+}
+
 

@@ -50,7 +50,7 @@ function ResourcePage() {
     const fetchResourceList = async () => {
         try {
             const response = await fetch(
-                "http://13.233.134.21:8081/api/scoutcompass/resource/resourceList"
+                "http://localhost:8081/api/scoutcompass/resource/resourceList"
             );
             const data = await response.json();
 
@@ -65,7 +65,7 @@ function ResourcePage() {
 
     const handleViewResource_ = (fileName) => {
         const baseUrl_ =
-            "http://13.233.134.21:8081/api/scoutcompass/resource/download/";
+            "http://localhost:8081/api/scoutcompass/resource/download/";
 
         const pdfUrl = baseUrl_ + fileName;
 
@@ -85,7 +85,7 @@ function ResourcePage() {
 
         try {
             const response = await fetch(
-                "http://13.233.134.21:8081/api/scoutcompass/resource/upload",
+                "http://localhost:8081/api/scoutcompass/resource/upload",
 
                 {
                     method: "POST",
@@ -114,7 +114,7 @@ function ResourcePage() {
         );
         if (confirmed) {
             const baseUrl =
-                "http://13.233.134.21:8081/api/scoutcompass/resource/delete/";
+                "http://localhost:8081/api/scoutcompass/resource/delete/";
 
             const url = baseUrl + fileName;
             try {
@@ -141,7 +141,7 @@ function ResourcePage() {
 
     const handleDownload = (fileName) => {
         const baseUrl =
-            "http://13.233.134.21:8081/api/scoutcompass/resource/download/";
+            "http://localhost:8081/api/scoutcompass/resource/download/";
 
         const url = baseUrl + fileName;
 

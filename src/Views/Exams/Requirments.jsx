@@ -29,7 +29,7 @@ const Requirments = () => {
         const fetchQuestions = async (awardId, requirementId) => {
             try {
                 const response = await fetch(
-                    `http://13.233.134.21:8081/api/scoutcompass/requirement/questions?awardId=${awardId}&requirementId=${requirementId}`
+                    `http://localhost:8081/api/scoutcompass/requirement/questions?awardId=${awardId}&requirementId=${requirementId}`
                 );
                 const data = await response.json();
                 if (data) {
@@ -91,7 +91,7 @@ const Requirments = () => {
 
         try {
             await fetch(
-                `http://13.233.134.21:8081/api/scoutcompass/requirement/status/marks/submit`,
+                `http://localhost:8081/api/scoutcompass/requirement/status/marks/submit`,
                 {
                     method: "POST",
                     headers: {

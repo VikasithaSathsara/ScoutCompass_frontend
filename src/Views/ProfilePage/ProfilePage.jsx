@@ -34,7 +34,7 @@ function ProfilePage() {
 
             try {
                 const response = await fetch(
-                    `http://13.233.134.21:8081/api/scoutcompass/profile/scout/${email}`
+                    `http://localhost:8081/api/scoutcompass/profile/scout/${email}`
                 );
 
                 if (!response.ok) {

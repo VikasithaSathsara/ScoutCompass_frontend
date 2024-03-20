@@ -1,6 +1,6 @@
 import "./Award.css";
 import B1 from "../../Assests/Membership.png";
-import { Button } from "@chakra-ui/react";
+import { Button, background } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
@@ -8,8 +8,8 @@ import React, { useEffect, useState } from "react";
 function MembershipAward() {
     const totalRequirements = 14;
     const initialState = {
-        status: "Attempt",
-        marks: "-",
+        status: "ATTEMPT",
+        marks: "--",
     };
 
     // Create an array to hold the state variables and setter functions
@@ -27,7 +27,7 @@ function MembershipAward() {
             const userEmail = localStorage.getItem("loggedInUserEmail");
             try {
                 const response = await fetch(
-                    `http://13.233.134.21:8081/api/scoutcompass/requirement/status?userName=${userEmail}&awardId=${awardId}&requirementId=${requirementId}`
+                    `http://localhost:8081/api/scoutcompass/requirement/status?userName=${userEmail}&awardId=${awardId}&requirementId=${requirementId}`
                 );
                 if (!response.ok) {
                     throw new Error("Failed to fetch user data");
@@ -65,8 +65,51 @@ function MembershipAward() {
         if (!email) navigate("/login");
     }, []);
 
+    // State variable to control notification box visibility
+    const [showNotification, setShowNotification] = useState(false);
+
+    // Function to handle clicking on attempt buttons
+    const handleAttemptClick = () => {
+        setShowNotification(true);
+    };
+
+    const handleCloseNotification = () => {
+        setShowNotification(false);
+    };
+
     return (
         <div className="bg_awards">
+            {showNotification && (
+                <div>
+                    <div
+                        className="notification-overlay"
+                        onClick={handleCloseNotification}
+                    ></div>
+                    <div className="notification-box">
+                        <h2 id="window-header">Practical Requirment</h2>
+                        <p>
+                            This is a practicle requirement. Press below button
+                            to Send a request to your instructor mentioning that
+                            you want to pass this requirment.
+                        </p>
+                        <div>
+                            <button
+                                className="pr-window-btn"
+                                style={{ backgroundColor: "transparent" }}
+                                onClick={handleCloseNotification}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                className="pr-window-btn"
+                                style={{ backgroundColor: "#b30021" }}
+                            >
+                                Send Request
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
             <section class="table__header">
                 <Button
                     bg="transparent"
@@ -119,7 +162,7 @@ function MembershipAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[0].marks !== "-"
+                                        stateVariables[0].marks !== "--"
                                             ? stateVariables[0].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -128,7 +171,9 @@ function MembershipAward() {
                                 >
                                     {stateVariables[0].status}
                                 </button>
-                                <span>{stateVariables[0].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[0].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -140,7 +185,13 @@ function MembershipAward() {
                             </td>
                             <td> 27 Aug, 2023 </td>
                             <td>
-                                <a class="status attempt">Attempt</a>
+                                <button
+                                    onClick={handleAttemptClick}
+                                    className="status attempt"
+                                >
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -163,7 +214,7 @@ function MembershipAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[2].marks !== "-"
+                                        stateVariables[2].marks !== "--"
                                             ? stateVariables[2].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -172,7 +223,9 @@ function MembershipAward() {
                                 >
                                     {stateVariables[2].status}
                                 </button>
-                                <span>{stateVariables[2].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[2].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -195,7 +248,7 @@ function MembershipAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[3].marks !== "-"
+                                        stateVariables[3].marks !== "--"
                                             ? stateVariables[3].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -204,7 +257,9 @@ function MembershipAward() {
                                 >
                                     {stateVariables[3].status}
                                 </button>
-                                <span>{stateVariables[3].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[3].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -217,7 +272,13 @@ function MembershipAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a class="status attempt">Attempt</a>
+                                <button
+                                    onClick={handleAttemptClick}
+                                    className="status attempt"
+                                >
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -229,9 +290,13 @@ function MembershipAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
+                                <button
+                                    onClick={handleAttemptClick}
+                                    className="status attempt"
+                                >
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -243,9 +308,13 @@ function MembershipAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
+                                <button
+                                    onClick={handleAttemptClick}
+                                    className="status attempt"
+                                >
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -257,9 +326,13 @@ function MembershipAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
+                                <button
+                                    onClick={handleAttemptClick}
+                                    className="status attempt"
+                                >
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -281,7 +354,7 @@ function MembershipAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[8].marks !== "-"
+                                        stateVariables[8].marks !== "--"
                                             ? stateVariables[8].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -290,7 +363,9 @@ function MembershipAward() {
                                 >
                                     {stateVariables[8].status}
                                 </button>
-                                <span>{stateVariables[8].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[8].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -312,7 +387,7 @@ function MembershipAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[9].marks !== "-"
+                                        stateVariables[9].marks !== "--"
                                             ? stateVariables[9].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -321,7 +396,9 @@ function MembershipAward() {
                                 >
                                     {stateVariables[9].status}
                                 </button>
-                                <span>{stateVariables[9].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[9].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -333,9 +410,13 @@ function MembershipAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
+                                <button
+                                    onClick={handleAttemptClick}
+                                    className="status attempt"
+                                >
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -357,7 +438,7 @@ function MembershipAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[11].marks !== "-"
+                                        stateVariables[11].marks !== "--"
                                             ? stateVariables[11].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -366,7 +447,9 @@ function MembershipAward() {
                                 >
                                     {stateVariables[11].status}
                                 </button>
-                                <span>{stateVariables[11].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[11].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -388,7 +471,7 @@ function MembershipAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[12].marks !== "-"
+                                        stateVariables[12].marks !== "--"
                                             ? stateVariables[12].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -397,7 +480,9 @@ function MembershipAward() {
                                 >
                                     {stateVariables[12].status}
                                 </button>
-                                <span>{stateVariables[12].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[12].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -409,9 +494,13 @@ function MembershipAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
+                                <button
+                                    onClick={handleAttemptClick}
+                                    className="status attempt"
+                                >
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                     </tbody>
@@ -427,9 +516,13 @@ function MembershipAward() {
                         </td>
                         <td> 17 Dec, 2022 </td>
                         <td>
-                            <a href="#" class="status completed">
-                                Completed
-                            </a>
+                            <button
+                                onClick={handleAttemptClick}
+                                className="status attempt"
+                            >
+                                ATTEMPT
+                            </button>
+                            <span className="practical">PR</span>
                         </td>
                     </tr>
                 </tbody>

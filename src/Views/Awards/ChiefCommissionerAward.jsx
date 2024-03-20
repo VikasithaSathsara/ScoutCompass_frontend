@@ -8,8 +8,8 @@ import React, { useEffect, useState } from "react";
 function ChiefCommissionerAward() {
     const totalRequirements = 23;
     const initialState = {
-        status: "Attempt",
-        marks: "-",
+        status: "ATTEMPT",
+        marks: "--",
     };
 
     // Create an array to hold the state variables and setter functions
@@ -27,7 +27,7 @@ function ChiefCommissionerAward() {
             const userEmail = localStorage.getItem("loggedInUserEmail");
             try {
                 const response = await fetch(
-                    `http://13.233.134.21:8081/api/scoutcompass/requirement/status?userName=${userEmail}&awardId=${awardId}&requirementId=${requirementId}`
+                    `http://localhost:8081/api/scoutcompass/requirement/status?userName=${userEmail}&awardId=${awardId}&requirementId=${requirementId}`
                 );
                 if (!response.ok) {
                     throw new Error("Failed to fetch user data");
@@ -113,9 +113,10 @@ function ChiefCommissionerAward() {
                             </td>
                             <td> 17 Dec, 2022 </td>
                             <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
+                                <button href="#" class="status attempt">
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -137,7 +138,7 @@ function ChiefCommissionerAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[1].marks !== "-"
+                                        stateVariables[1].marks !== "--"
                                             ? stateVariables[1].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -146,7 +147,9 @@ function ChiefCommissionerAward() {
                                 >
                                     {stateVariables[1].status}
                                 </button>
-                                <span>{stateVariables[1].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[1].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -159,9 +162,10 @@ function ChiefCommissionerAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
+                                <button href="#" class="status attempt">
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -184,7 +188,7 @@ function ChiefCommissionerAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[3].marks !== "-"
+                                        stateVariables[3].marks !== "--"
                                             ? stateVariables[3].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -193,7 +197,9 @@ function ChiefCommissionerAward() {
                                 >
                                     {stateVariables[3].status}
                                 </button>
-                                <span>{stateVariables[3].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[3].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -206,9 +212,10 @@ function ChiefCommissionerAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
+                                <button href="#" class="status attempt">
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -222,9 +229,10 @@ function ChiefCommissionerAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
+                                <button href="#" class="status attempt">
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -246,7 +254,7 @@ function ChiefCommissionerAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[6].marks !== "-"
+                                        stateVariables[6].marks !== "--"
                                             ? stateVariables[6].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -255,7 +263,9 @@ function ChiefCommissionerAward() {
                                 >
                                     {stateVariables[6].status}
                                 </button>
-                                <span>{stateVariables[6].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[6].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -267,9 +277,10 @@ function ChiefCommissionerAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
+                                <button href="#" class="status attempt">
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -281,9 +292,10 @@ function ChiefCommissionerAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
+                                <button href="#" class="status attempt">
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -305,7 +317,7 @@ function ChiefCommissionerAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[9].marks !== "-"
+                                        stateVariables[9].marks !== "--"
                                             ? stateVariables[9].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -314,7 +326,9 @@ function ChiefCommissionerAward() {
                                 >
                                     {stateVariables[9].status}
                                 </button>
-                                <span>{stateVariables[9].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[9].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -326,9 +340,10 @@ function ChiefCommissionerAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
+                                <button href="#" class="status attempt">
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -341,9 +356,10 @@ function ChiefCommissionerAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
+                                <button href="#" class="status attempt">
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -365,7 +381,7 @@ function ChiefCommissionerAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[12].marks !== "-"
+                                        stateVariables[12].marks !== "--"
                                             ? stateVariables[12].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -374,7 +390,9 @@ function ChiefCommissionerAward() {
                                 >
                                     {stateVariables[12].status}
                                 </button>
-                                <span>{stateVariables[12].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[12].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -396,7 +414,7 @@ function ChiefCommissionerAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[13].marks !== "-"
+                                        stateVariables[13].marks !== "--"
                                             ? stateVariables[13].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -405,7 +423,9 @@ function ChiefCommissionerAward() {
                                 >
                                     {stateVariables[13].status}
                                 </button>
-                                <span>{stateVariables[13].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[13].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -427,7 +447,7 @@ function ChiefCommissionerAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[14].marks !== "-"
+                                        stateVariables[14].marks !== "--"
                                             ? stateVariables[14].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -436,7 +456,9 @@ function ChiefCommissionerAward() {
                                 >
                                     {stateVariables[14].status}
                                 </button>
-                                <span>{stateVariables[14].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[14].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -448,9 +470,10 @@ function ChiefCommissionerAward() {
                             </td>
                             <td> 27 Aug, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
+                                <button href="#" class="status attempt">
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -473,7 +496,7 @@ function ChiefCommissionerAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[16].marks !== "-"
+                                        stateVariables[16].marks !== "--"
                                             ? stateVariables[16].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -482,7 +505,9 @@ function ChiefCommissionerAward() {
                                 >
                                     {stateVariables[16].status}
                                 </button>
-                                <span>{stateVariables[16].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[16].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -505,7 +530,7 @@ function ChiefCommissionerAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[17].marks !== "-"
+                                        stateVariables[17].marks !== "--"
                                             ? stateVariables[17].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -514,7 +539,9 @@ function ChiefCommissionerAward() {
                                 >
                                     {stateVariables[17].status}
                                 </button>
-                                <span>{stateVariables[17].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[17].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -537,7 +564,7 @@ function ChiefCommissionerAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[18].marks !== "-"
+                                        stateVariables[18].marks !== "--"
                                             ? stateVariables[18].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -546,7 +573,9 @@ function ChiefCommissionerAward() {
                                 >
                                     {stateVariables[18].status}
                                 </button>
-                                <span>{stateVariables[18].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[18].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -568,7 +597,7 @@ function ChiefCommissionerAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[19].marks !== "-"
+                                        stateVariables[19].marks !== "--"
                                             ? stateVariables[19].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -577,7 +606,9 @@ function ChiefCommissionerAward() {
                                 >
                                     {stateVariables[19].status}
                                 </button>
-                                <span>{stateVariables[19].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[19].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -599,7 +630,7 @@ function ChiefCommissionerAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[20].marks !== "-"
+                                        stateVariables[20].marks !== "--"
                                             ? stateVariables[20].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -608,7 +639,9 @@ function ChiefCommissionerAward() {
                                 >
                                     {stateVariables[20].status}
                                 </button>
-                                <span>{stateVariables[20].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[20].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -620,9 +653,10 @@ function ChiefCommissionerAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
+                                <button href="#" class="status attempt">
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -634,9 +668,10 @@ function ChiefCommissionerAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
+                                <button href="#" class="status attempt">
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                     </tbody>
@@ -652,9 +687,10 @@ function ChiefCommissionerAward() {
                         </td>
                         <td> 17 Dec, 2022 </td>
                         <td>
-                            <a href="#" class="status completed">
-                                Completed
-                            </a>
+                            <button href="#" class="status attempt">
+                                ATTEMPT
+                            </button>
+                            <span className="practical">PR</span>
                         </td>
                     </tr>
                 </tbody>

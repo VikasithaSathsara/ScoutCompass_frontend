@@ -8,8 +8,8 @@ import React, { useEffect, useState } from "react";
 function ScoutAward() {
     const totalRequirements = 23;
     const initialState = {
-        status: "Attempt",
-        marks: "-",
+        status: "ATTEMPT",
+        marks: "--",
     };
 
     // Create an array to hold the state variables and setter functions
@@ -27,7 +27,7 @@ function ScoutAward() {
             const userEmail = localStorage.getItem("loggedInUserEmail");
             try {
                 const response = await fetch(
-                    `http://13.233.134.21:8081/api/scoutcompass/requirement/status?userName=${userEmail}&awardId=${awardId}&requirementId=${requirementId}`
+                    `http://localhost:8081/api/scoutcompass/requirement/status?userName=${userEmail}&awardId=${awardId}&requirementId=${requirementId}`
                 );
                 if (!response.ok) {
                     throw new Error("Failed to fetch user data");
@@ -65,8 +65,51 @@ function ScoutAward() {
         if (!email) navigate("/login");
     }, []);
 
+    // State variable to control notification box visibility
+    const [showNotification, setShowNotification] = useState(false);
+
+    // Function to handle clicking on attempt buttons
+    const handleAttemptClick = () => {
+        setShowNotification(true);
+    };
+
+    const handleCloseNotification = () => {
+        setShowNotification(false);
+    };
+
     return (
         <div className="bg_awards">
+            {showNotification && (
+                <div>
+                    <div
+                        className="notification-overlay"
+                        onClick={handleCloseNotification}
+                    ></div>
+                    <div className="notification-box">
+                        <h2 id="window-header">Practical Requirment</h2>
+                        <p>
+                            This is a practicle requirement. Press below button
+                            to Send a request to your instructor mentioning that
+                            you want to pass this requirment.
+                        </p>
+                        <div>
+                            <button
+                                className="pr-window-btn"
+                                style={{ backgroundColor: "transparent" }}
+                                onClick={handleCloseNotification}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                className="pr-window-btn"
+                                style={{ backgroundColor: "#b30021" }}
+                            >
+                                Send Request
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
             <section class="table__header">
                 <Button
                     bg="transparent"
@@ -119,7 +162,7 @@ function ScoutAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[0].marks !== "-"
+                                        stateVariables[0].marks !== "--"
                                             ? stateVariables[0].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -128,7 +171,9 @@ function ScoutAward() {
                                 >
                                     {stateVariables[0].status}
                                 </button>
-                                <span>{stateVariables[0].marks}</span>{" "}
+                                <span className="marks">
+                                    {stateVariables[0].marks}
+                                </span>{" "}
                             </td>
                         </tr>
                         <tr>
@@ -150,7 +195,7 @@ function ScoutAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[1].marks !== "-"
+                                        stateVariables[1].marks !== "--"
                                             ? stateVariables[1].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -159,7 +204,9 @@ function ScoutAward() {
                                 >
                                     {stateVariables[1].status}
                                 </button>
-                                {stateVariables[1].marks}
+                                <span className="marks">
+                                    {stateVariables[1].marks}
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -182,7 +229,7 @@ function ScoutAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[2].marks !== "-"
+                                        stateVariables[2].marks !== "--"
                                             ? stateVariables[2].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -191,7 +238,9 @@ function ScoutAward() {
                                 >
                                     {stateVariables[2].status}
                                 </button>
-                                {stateVariables[2].marks}
+                                <span className="marks">
+                                    {stateVariables[2].marks}
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -214,7 +263,7 @@ function ScoutAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[3].marks !== "-"
+                                        stateVariables[3].marks !== "--"
                                             ? stateVariables[3].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -223,7 +272,9 @@ function ScoutAward() {
                                 >
                                     {stateVariables[3].status}
                                 </button>
-                                {stateVariables[3].marks}
+                                <span className="marks">
+                                    {stateVariables[3].marks}
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -246,7 +297,7 @@ function ScoutAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[4].marks !== "-"
+                                        stateVariables[4].marks !== "--"
                                             ? stateVariables[4].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -255,7 +306,9 @@ function ScoutAward() {
                                 >
                                     {stateVariables[4].status}
                                 </button>
-                                {stateVariables[4].marks}
+                                <span className="marks">
+                                    {stateVariables[4].marks}
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -277,7 +330,7 @@ function ScoutAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[5].marks !== "-"
+                                        stateVariables[5].marks !== "--"
                                             ? stateVariables[5].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -286,7 +339,9 @@ function ScoutAward() {
                                 >
                                     {stateVariables[5].status}
                                 </button>
-                                {stateVariables[5].marks}
+                                <span className="marks">
+                                    {stateVariables[5].marks}
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -308,7 +363,7 @@ function ScoutAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[7].marks !== "-"
+                                        stateVariables[7].marks !== "--"
                                             ? stateVariables[7].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -317,7 +372,9 @@ function ScoutAward() {
                                 >
                                     {stateVariables[7].status}
                                 </button>
-                                {stateVariables[7].marks}
+                                <span className="marks">
+                                    {stateVariables[7].marks}
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -339,7 +396,7 @@ function ScoutAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[7].marks !== "-"
+                                        stateVariables[7].marks !== "--"
                                             ? stateVariables[7].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -348,7 +405,9 @@ function ScoutAward() {
                                 >
                                     {stateVariables[7].status}
                                 </button>
-                                {stateVariables[7].marks}
+                                <span className="marks">
+                                    {stateVariables[7].marks}
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -370,7 +429,7 @@ function ScoutAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[8].marks !== "-"
+                                        stateVariables[8].marks !== "--"
                                             ? stateVariables[8].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -379,7 +438,9 @@ function ScoutAward() {
                                 >
                                     {stateVariables[8].status}
                                 </button>
-                                {stateVariables[8].marks}
+                                <span className="marks">
+                                    {stateVariables[8].marks}
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -401,7 +462,7 @@ function ScoutAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[9].marks !== "-"
+                                        stateVariables[9].marks !== "--"
                                             ? stateVariables[9].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -410,7 +471,9 @@ function ScoutAward() {
                                 >
                                     {stateVariables[9].status}
                                 </button>
-                                {stateVariables[9].marks}
+                                <span className="marks">
+                                    {stateVariables[9].marks}
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -422,13 +485,13 @@ function ScoutAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a
-                                    href="https://forms.gle/x8iH1vGg94AZzo5NA"
-                                    target="_blank"
-                                    class="status attempt"
+                                <button
+                                    onClick={handleAttemptClick}
+                                    className="status attempt"
                                 >
-                                    Attempt
-                                </a>
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -440,13 +503,13 @@ function ScoutAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a
-                                    href="https://forms.gle/szooQQ9aPByKyiRb7"
-                                    target="_blank"
-                                    class="status attempt"
+                                <button
+                                    onClick={handleAttemptClick}
+                                    className="status attempt"
                                 >
-                                    Attempt
-                                </a>
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -468,7 +531,7 @@ function ScoutAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[12].marks !== "-"
+                                        stateVariables[12].marks !== "--"
                                             ? stateVariables[12].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -477,7 +540,9 @@ function ScoutAward() {
                                 >
                                     {stateVariables[12].status}
                                 </button>
-                                {stateVariables[12].marks}
+                                <span className="marks">
+                                    {stateVariables[12].marks}
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -489,7 +554,13 @@ function ScoutAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a class="status attempt">Attempt</a>
+                                <button
+                                    onClick={handleAttemptClick}
+                                    className="status attempt"
+                                >
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -501,7 +572,13 @@ function ScoutAward() {
                             </td>
                             <td> 17 Dec, 2022 </td>
                             <td>
-                                <a class="status attempt">Attempt</a>
+                                <button
+                                    onClick={handleAttemptClick}
+                                    className="status attempt"
+                                >
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -523,7 +600,7 @@ function ScoutAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[15].marks !== "-"
+                                        stateVariables[15].marks !== "--"
                                             ? stateVariables[15].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -532,7 +609,9 @@ function ScoutAward() {
                                 >
                                     {stateVariables[15].status}
                                 </button>
-                                {stateVariables[15].marks}
+                                <span className="marks">
+                                    {stateVariables[15].marks}
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -545,7 +624,13 @@ function ScoutAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a class="status attempt">Attempt</a>
+                                <button
+                                    onClick={handleAttemptClick}
+                                    className="status attempt"
+                                >
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -568,7 +653,7 @@ function ScoutAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[17].marks !== "-"
+                                        stateVariables[17].marks !== "--"
                                             ? stateVariables[17].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -577,7 +662,9 @@ function ScoutAward() {
                                 >
                                     {stateVariables[17].status}
                                 </button>
-                                {stateVariables[17].marks}
+                                <span className="marks">
+                                    {stateVariables[17].marks}
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -600,7 +687,7 @@ function ScoutAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[18].marks !== "-"
+                                        stateVariables[18].marks !== "--"
                                             ? stateVariables[18].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -609,7 +696,9 @@ function ScoutAward() {
                                 >
                                     {stateVariables[18].status}
                                 </button>
-                                {stateVariables[18].marks}
+                                <span className="marks">
+                                    {stateVariables[18].marks}
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -631,7 +720,7 @@ function ScoutAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[19].marks !== "-"
+                                        stateVariables[19].marks !== "--"
                                             ? stateVariables[19].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -640,7 +729,9 @@ function ScoutAward() {
                                 >
                                     {stateVariables[19].status}
                                 </button>
-                                {stateVariables[19].marks}
+                                <span className="marks">
+                                    {stateVariables[19].marks}
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -662,7 +753,7 @@ function ScoutAward() {
                                         navigate("/requirments");
                                     }}
                                     className={`status ${
-                                        stateVariables[20].marks !== "-"
+                                        stateVariables[20].marks !== "--"
                                             ? stateVariables[20].marks >= 70
                                                 ? "completed"
                                                 : "re-attempt"
@@ -671,7 +762,9 @@ function ScoutAward() {
                                 >
                                     {stateVariables[20].status}
                                 </button>
-                                {stateVariables[20].marks}
+                                <span className="marks">
+                                    {stateVariables[20].marks}
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -683,7 +776,13 @@ function ScoutAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a class="status attempt">Attempt</a>
+                                <button
+                                    onClick={handleAttemptClick}
+                                    className="status attempt"
+                                >
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                         <tr>
@@ -695,7 +794,13 @@ function ScoutAward() {
                             </td>
                             <td> 14 Mar, 2023 </td>
                             <td>
-                                <a class="status attempt">Attempt</a>
+                                <button
+                                    onClick={handleAttemptClick}
+                                    className="status attempt"
+                                >
+                                    ATTEMPT
+                                </button>
+                                <span className="practical">PR</span>
                             </td>
                         </tr>
                     </tbody>
@@ -711,9 +816,13 @@ function ScoutAward() {
                         </td>
                         <td> 17 Dec, 2022 </td>
                         <td>
-                            <a href="#" class="status completed">
-                                Completed
-                            </a>
+                            <button
+                                onClick={handleAttemptClick}
+                                className="status attempt"
+                            >
+                                ATTEMPT
+                            </button>
+                            <span className="practical">PR</span>
                         </td>
                     </tr>
                 </tbody>

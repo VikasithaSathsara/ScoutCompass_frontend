@@ -87,7 +87,7 @@ function SignupPage() {
 
     useEffect(() => {
         // Fetch data from backend API
-        fetch("http://13.233.134.21:8081/api/scoutcompass/auth/instructorList")
+        fetch("http://localhost:8081/api/scoutcompass/auth/instructorList")
             .then((response) => response.json())
             .then((data) => {
                 // Assuming data is an array of instructor objects with properties like id and name
@@ -132,12 +132,12 @@ function SignupPage() {
 
                     // Sending POST request
                     const response = await fetch(
-                        "http://13.233.134.21:8081/api/scoutcompass/auth/instruct/register",
+                        "http://localhost:8081/api/scoutcompass/auth/instruct/register",
                         {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
-                                Origin: "http://13.233.134.21:3000",
+                                Origin: "http://localhost:3000",
                                 "Content-Length":
                                     "<calculated when request is sent>",
                                 Host: "<calculated when request is sent>",
@@ -199,12 +199,12 @@ function SignupPage() {
 
                     // Sending POST request
                     const response = await fetch(
-                        "http://13.233.134.21:8081/api/scoutcompass/auth/scout/register",
+                        "http://localhost:8081/api/scoutcompass/auth/scout/register",
                         {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
-                                Origin: "http://13.233.134.21:3000",
+                                Origin: "http://localhost:3000",
                                 "Content-Length":
                                     "<calculated when request is sent>",
                                 Host: "<calculated when request is sent>",

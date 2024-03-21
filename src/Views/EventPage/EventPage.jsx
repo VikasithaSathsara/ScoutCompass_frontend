@@ -148,6 +148,36 @@ function EventPage() {
         if (!email) navigate("/login");
     }, []);
 
+
+
+
+    
+    const [isAdmin, setIsAdmin] = useState(false);
+    
+    useEffect(() => {
+        // Fetch user entity based on logged-in user's email
+        const fetchUserEntity = async () => {
+            try {
+                const loggedInUserEmail = localStorage.getItem("loggedInUserEmail");
+                const response = await fetch(`http://localhost:8081/api/scoutcompass/auth/user?userEmail=${loggedInUserEmail}`);
+                const userData = await response.json();
+                // Assuming userData has a 'role' key
+                setIsAdmin(userData.role === "ROLE_ADMIN");
+                
+            } catch (error) {
+                console.error("Error fetching user entity:", error);
+            }
+        };
+
+        fetchUserEntity();
+    }, []);
+ 
+  
+
+    
+
+
+
     return (
         <div className="bg_event">
             <SideMenu />
@@ -155,6 +185,7 @@ function EventPage() {
             <h1>Event Page</h1>
             <div>
                 <ChakraProvider>
+                {isAdmin && ( 
                     <Popover isLazy>
                         <PopoverTrigger>
                             <Button
@@ -258,7 +289,7 @@ function EventPage() {
                             <PopoverCloseButton />
                         </PopoverContent>
                     </Popover>
-
+)}
                     <div className="event_container">
                         {eventArrayList.map((item, index) => (
                             <div className={`e_box${index + 1}`}>

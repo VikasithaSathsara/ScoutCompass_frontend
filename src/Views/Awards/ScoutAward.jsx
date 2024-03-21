@@ -11,6 +11,8 @@ function ScoutAward() {
   const initialState = {
     status: "Attempt",
     marks: "-",
+    englishName:"",
+    sinhalaName:""
   };
 
   // Create an array to hold the state variables and setter functions
@@ -101,8 +103,8 @@ function ScoutAward() {
               <td> 1 </td>
               <td>
                 {" "}
-                Scout Movement in Sri Lanka <br />
-                ශ්‍රී ලංකා බාලදක්ෂ ව්‍යාපාරය{" "}
+                {stateVariables[0].englishName}<br />
+                {stateVariables[0].sinhalaName}{" "}
               </td>
               <td> 17 Dec, 2022 </td>
               <td>

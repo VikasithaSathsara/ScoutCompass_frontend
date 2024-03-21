@@ -28,6 +28,7 @@ import {
 } from "react-router-dom";
 import Requirments from "./Views/Exams/Requirments";
 import MCQs from "./Views/Exams/MCQs";
+import ScoutDetailsView from "./Views/ScoutDetailsView/ScoutDetailsView";
 
 
 function RootLayout() {
@@ -59,6 +60,7 @@ const router = createBrowserRouter(
         <Route path="resource" element={<ResourcePage />} />
         <Route path="event" element={<EventPage />} />
         <Route path="profile" element={<ProfilePage />} />
+        <Route path="scoutDetails" element={<ScoutDetailsView />} />
 
         <Route path="membershipaward" element={<MembershipAward />} />
         <Route path="scoutaward" element={<ScoutAward />} />

@@ -171,12 +171,38 @@ function ResourcePage() {
         if (!email) navigate("/login");
     }, []);
 
+
+    const [isAdmin, setIsAdmin] = useState(false);
+    
+    useEffect(() => {
+        // Fetch user entity based on logged-in user's email
+        const fetchUserEntity = async () => {
+            try {
+                const loggedInUserEmail = localStorage.getItem("loggedInUserEmail");
+                const response = await fetch(`http://localhost:8081/api/scoutcompass/auth/user?userEmail=${loggedInUserEmail}`);
+                const userData = await response.json();
+                // Assuming userData has a 'role' key
+                setIsAdmin(userData.role === "ROLE_ADMIN");
+                
+            } catch (error) {
+                console.error("Error fetching user entity:", error);
+            }
+        };
+
+        fetchUserEntity();
+    }, []);
+ 
+  
+
+    
     return (
         <div className="bg_resource">
             <SideMenu />
             <h1>Resource Page</h1>
             <div>
                 <ChakraProvider>
+
+                {isAdmin && ( 
                     <Popover
                         initialFocusRef={initialFocusRef}
                         placement="bottom"
@@ -184,6 +210,8 @@ function ResourcePage() {
                         isOpen={isOpen}
                         onClose={handleOpen}
                     >
+
+
                         <PopoverTrigger>
                             <Button
                                 onClick={handleOpen}
@@ -246,7 +274,7 @@ function ResourcePage() {
                             </PopoverBody>
                         </PopoverContent>
                     </Popover>
-
+)}
                     <div className="resource_container">
                         {resourceArrayList.map((item, index) => (
                             <div className={`box${index + 1}`}>

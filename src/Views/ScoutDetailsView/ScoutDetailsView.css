@@ -166,10 +166,20 @@
     transform: scale(0.6);
     transition: opacity 250ms 250ms ease, transform 300ms 250ms ease;
   }
-  
+  #requirement-div{
+   max-width: 800px;
+  }
+
   .modal-btn:checked ~ .modal .modal-wrap{
     opacity: 1;
     transform: scale(1);
     transition: opacity 250ms 500ms ease, transform 350ms 500ms ease;
   }
   
+
+  .profileh2{
+    font-size: 25px;
+    color: blue;
+    font-weight: 600;
+  }
+

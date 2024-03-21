@@ -3,9 +3,57 @@ import B5 from "../../Assests/PresidentsAward.png";
 import { Button } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function PresidentAward() {
+  const totalRequirements = 13;
+  const initialState = {
+    status: "ATTEMPT",
+    marks: "--",
+  };
+
+  // Create an array to hold the state variables and setter functions
+  const [stateVariables, setStateVariables] = useState(
+    Array.from({ length: totalRequirements }, () => initialState)
+  );
+
+  // useEffect to fetch requirement data
+  useEffect(() => {
+    const fetchRequirementData = async (awardId, requirementId, setData) => {
+      const userEmail = localStorage.getItem("loggedInUserEmail");
+      try {
+        const response = await fetch(
+          `http://localhost:8081/api/scoutcompass/requirement/status?userName=${userEmail}&awardId=${awardId}&requirementId=${requirementId}`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    // Fetch data for each requirement
+    for (let i = 1; i <= totalRequirements; i++) {
+      const req = {
+        awardId: 5,
+        requirementId: i,
+        setData: setDataAtIndex(i - 1), // Pass index of the state variable in the array
+      };
+      fetchRequirementData(req.awardId, req.requirementId, req.setData);
+    }
+  }, []); // Empty dependency array since we only want to run this once
+
+  // Function to set data at a specific index in stateVariables array
+  const setDataAtIndex = (index) => (newData) => {
+    setStateVariables((prevState) => {
+      const newState = [...prevState];
+      newState[index] = newData;
+      return newState;
+    });
+  };
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -13,8 +61,51 @@ function PresidentAward() {
     if (!email) navigate("/login");
   }, []);
 
+  // State variable to control notification box visibility
+  const [showNotification, setShowNotification] = useState(false);
+
+  // Function to handle clicking on attempt buttons
+  const handleAttemptClick = () => {
+    setShowNotification(true);
+  };
+
+  const handleCloseNotification = () => {
+    setShowNotification(false);
+  };
+
   return (
     <div className="bg_awards">
+      {showNotification && (
+        <div>
+          <div
+            className="notification-overlay"
+            onClick={handleCloseNotification}
+          ></div>
+          <div className="notification-box">
+            <h2 id="window-header">Practical Requirment</h2>
+            <p>
+              This is a practicle requirement. Press below button to Send a
+              request to your instructor mentioning that you want to pass this
+              requirment.
+            </p>
+            <div>
+              <button
+                className="pr-window-btn"
+                style={{ backgroundColor: "transparent" }}
+                onClick={handleCloseNotification}
+              >
+                Cancel
+              </button>
+              <button
+                className="pr-window-btn"
+                style={{ backgroundColor: "#b30021" }}
+              >
+                Send Request
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <section class="table__header">
         <Button
           bg="transparent"
@@ -57,16 +148,23 @@ function PresidentAward() {
               </td>
               <td> 17 Dec, 2022 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 1);
                     localStorage.setItem("award_id", 5);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[0].marks !== "--"
+                      ? stateVariables[0].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[0].status}
+                </button>
+                <span className="marks">{stateVariables[0].marks}</span>{" "}
               </td>
             </tr>
             <tr>
@@ -78,9 +176,10 @@ function PresidentAward() {
               </td>
               <td> 27 Aug, 2023 </td>
               <td>
-                <a href="#" class="status attempt">
-                  Attempt
-                </a>
+                <button onClick={handleAttemptClick} className="status attempt">
+                  ATTEMPT
+                </button>
+                <span className="practical">PR</span>
               </td>
             </tr>
             <tr>
@@ -93,16 +192,23 @@ function PresidentAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 3);
                     localStorage.setItem("award_id", 5);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[2].marks !== "--"
+                      ? stateVariables[2].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[2].status}
+                </button>
+                <span className="marks">{stateVariables[2].marks}</span>{" "}
               </td>
             </tr>
             <tr>
@@ -115,9 +221,10 @@ function PresidentAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a href="#" class="status attempt">
-                  Attempt
-                </a>
+                <button onClick={handleAttemptClick} className="status attempt">
+                  ATTEMPT
+                </button>
+                <span className="practical">PR</span>
               </td>
             </tr>
             <tr>
@@ -130,9 +237,10 @@ function PresidentAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a href="#" class="status attempt">
-                  Attempt
-                </a>
+                <button onClick={handleAttemptClick} className="status attempt">
+                  ATTEMPT
+                </button>
+                <span className="practical">PR</span>
               </td>
             </tr>
             <tr>
@@ -144,16 +252,23 @@ function PresidentAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 6);
                     localStorage.setItem("award_id", 5);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[5].marks !== "--"
+                      ? stateVariables[5].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[5].status}
+                </button>
+                <span className="marks">{stateVariables[5].marks}</span>{" "}
               </td>
             </tr>
             <tr>
@@ -165,16 +280,23 @@ function PresidentAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 7);
                     localStorage.setItem("award_id", 5);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[6].marks !== "--"
+                      ? stateVariables[6].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[6].status}
+                </button>
+                <span className="marks">{stateVariables[6].marks}</span>{" "}
               </td>
             </tr>
             <tr>
@@ -186,16 +308,23 @@ function PresidentAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 8);
                     localStorage.setItem("award_id", 5);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[7].marks !== "--"
+                      ? stateVariables[7].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[7].status}
+                </button>
+                <span className="marks">{stateVariables[7].marks}</span>{" "}
               </td>
             </tr>
             <tr>
@@ -207,16 +336,23 @@ function PresidentAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 9);
                     localStorage.setItem("award_id", 5);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[8].marks !== "--"
+                      ? stateVariables[8].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[8].status}
+                </button>
+                <span className="marks">{stateVariables[8].marks}</span>{" "}
               </td>
             </tr>
             <tr>
@@ -228,16 +364,23 @@ function PresidentAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a
+                <button
                   onClick={() => {
                     localStorage.setItem("requirment_id", 10);
                     localStorage.setItem("award_id", 5);
                     navigate("/requirments");
                   }}
-                  class="status attempt"
+                  className={`status ${
+                    stateVariables[9].marks !== "--"
+                      ? stateVariables[9].marks >= 70
+                        ? "completed"
+                        : "re-attempt"
+                      : "attempt"
+                  }`}
                 >
-                  Attempt
-                </a>
+                  {stateVariables[9].status}
+                </button>
+                <span className="marks">{stateVariables[9].marks}</span>{" "}
               </td>
             </tr>
             <tr>
@@ -249,9 +392,10 @@ function PresidentAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a href="#" class="status attempt">
-                  Attempt
-                </a>
+                <button onClick={handleAttemptClick} className="status attempt">
+                  ATTEMPT
+                </button>
+                <span className="practical">PR</span>
               </td>
             </tr>
             <tr>
@@ -263,9 +407,10 @@ function PresidentAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a href="#" class="status attempt">
-                  Attempt
-                </a>
+                <button onClick={handleAttemptClick} className="status attempt">
+                  ATTEMPT
+                </button>
+                <span className="practical">PR</span>
               </td>
             </tr>
             <tr>
@@ -277,9 +422,10 @@ function PresidentAward() {
               </td>
               <td> 14 Mar, 2023 </td>
               <td>
-                <a href="#" class="status attempt">
-                  Attempt
-                </a>
+                <button onClick={handleAttemptClick} className="status attempt">
+                  ATTEMPT
+                </button>
+                <span className="practical">PR</span>
               </td>
             </tr>
           </tbody>
@@ -295,9 +441,10 @@ function PresidentAward() {
             </td>
             <td> 17 Dec, 2022 </td>
             <td>
-              <a href="#" class="status completed">
-                Completed
-              </a>
+              <button onClick={handleAttemptClick} className="status attempt">
+                ATTEMPT
+              </button>
+              <span className="practical">PR</span>
             </td>
           </tr>
         </tbody>

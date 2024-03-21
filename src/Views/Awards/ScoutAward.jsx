@@ -3,7 +3,6 @@ import B2 from "../../Assests/ScoutAward.png";
 import { Button } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-
 import React, { useEffect, useState } from "react";
 
 function ScoutAward() {
@@ -15,78 +14,125 @@ function ScoutAward() {
     sinhalaName:""
   };
 
-  // Create an array to hold the state variables and setter functions
-  const [stateVariables, setStateVariables] = useState(
-    Array.from({ length: totalRequirements }, () => initialState)
-  );
+    // Create an array to hold the state variables and setter functions
+    const [stateVariables, setStateVariables] = useState(
+        Array.from({ length: totalRequirements }, () => initialState)
+    );
 
-  // useEffect to fetch requirement data
-  useEffect(() => {
-    const fetchRequirementData = async (awardId, requirementId, setData) => {
-      const userEmail = localStorage.getItem("loggedInUserEmail");
-      try {
-        const response = await fetch(
-          `http://13.233.134.21:8081/api/scoutcompass/requirement/status?userName=${userEmail}&awardId=${awardId}&requirementId=${requirementId}`
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch user data");
+    // useEffect to fetch requirement data
+    useEffect(() => {
+        const fetchRequirementData = async (
+            awardId,
+            requirementId,
+            setData
+        ) => {
+            const userEmail = localStorage.getItem("loggedInUserEmail");
+            try {
+                const response = await fetch(
+                    `http://localhost:8081/api/scoutcompass/requirement/status?userName=${userEmail}&awardId=${awardId}&requirementId=${requirementId}`
+                );
+                if (!response.ok) {
+                    throw new Error("Failed to fetch user data");
+                }
+                const data = await response.json();
+                setData(data);
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+        };
+
+        // Fetch data for each requirement
+        for (let i = 1; i <= totalRequirements; i++) {
+            const req = {
+                awardId: 2,
+                requirementId: i,
+                setData: setDataAtIndex(i - 1), // Pass index of the state variable in the array
+            };
+            fetchRequirementData(req.awardId, req.requirementId, req.setData);
         }
-        const data = await response.json();
-        setData(data);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
+    }, []); // Empty dependency array since we only want to run this once
+
+    // Function to set data at a specific index in stateVariables array
+    const setDataAtIndex = (index) => (newData) => {
+        setStateVariables((prevState) => {
+            const newState = [...prevState];
+            newState[index] = newData;
+            return newState;
+        });
+    };
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const email = localStorage.getItem("loggedInUserEmail");
+        if (!email) navigate("/login");
+    }, []);
+
+    // State variable to control notification box visibility
+    const [showNotification, setShowNotification] = useState(false);
+
+    // Function to handle clicking on attempt buttons
+    const handleAttemptClick = () => {
+        setShowNotification(true);
     };
 
-    // Fetch data for each requirement
-    for (let i = 1; i <= totalRequirements; i++) {
-      const req = {
-        awardId: 2,
-        requirementId: i,
-        setData: setDataAtIndex(i - 1), // Pass index of the state variable in the array
-      };
-      fetchRequirementData(req.awardId, req.requirementId, req.setData);
-    }
-  }, []); // Empty dependency array since we only want to run this once
+    const handleCloseNotification = () => {
+        setShowNotification(false);
+    };
 
-  // Function to set data at a specific index in stateVariables array
-  const setDataAtIndex = (index) => (newData) => {
-    setStateVariables((prevState) => {
-      const newState = [...prevState];
-      newState[index] = newData;
-      return newState;
-    });
-  };
-  const navigate = useNavigate();
+    return (
+        <div className="bg_awards">
+            {showNotification && (
+                <div>
+                    <div
+                        className="notification-overlay"
+                        onClick={handleCloseNotification}
+                    ></div>
+                    <div className="notification-box">
+                        <h2 id="window-header">Practical Requirment</h2>
+                        <p>
+                            This is a practicle requirement. Press below button
+                            to Send a request to your instructor mentioning that
+                            you want to pass this requirment.
+                        </p>
+                        <div>
+                            <button
+                                className="pr-window-btn"
+                                style={{ backgroundColor: "transparent" }}
+                                onClick={handleCloseNotification}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                className="pr-window-btn"
+                                style={{ backgroundColor: "#b30021" }}
+                            >
+                                Send Request
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            <section class="table__header">
+                <Button
+                    bg="transparent"
+                    textColor="black"
+                    fontWeight="600"
+                    width="100px"
+                    borderRadius="40px"
+                    leftIcon={<FaArrowLeft />}
+                    border="2px solid black"
+                    padding="10px"
+                    onClick={() => window.history.back()}
+                    _hover={{ bg: "yellow", textColor: "black" }}
+                >
+                    Back
+                </Button>
 
-  useEffect(() => {
-    const email = localStorage.getItem("loggedInUserEmail");
-    if (!email) navigate("/login");
-  }, []);
-
-  return (
-    <div className="bg_awards">
-      <section class="table__header">
-        <Button
-          bg="transparent"
-          textColor="black"
-          fontWeight="600"
-          width="100px"
-          borderRadius="40px"
-          leftIcon={<FaArrowLeft />}
-          border="2px solid black"
-          padding="10px"
-          onClick={() => window.history.back()}
-          _hover={{ bg: "yellow", textColor: "black" }}
-        >
-          Back
-        </Button>
-
-        <div className="image2">
-          <img src={B2} alt="" />
-        </div>
-        <h1 className="award-name">Scout Award</h1>
-      </section>
+                <div className="image2">
+                    <img src={B2} alt="" />
+                </div>
+                <h1 className="award-name">Scout Award</h1>
+            </section>
 
       <section class="table__body">
         <table>
@@ -103,8 +149,8 @@ function ScoutAward() {
               <td> 1 </td>
               <td>
                 {" "}
-                {stateVariables[0].englishName}<br />
-                {stateVariables[0].sinhalaName}{" "}
+                Scout Movement in Sri Lanka <br />
+                ශ්‍රී ලංකා බාලදක්ෂ ව්‍යාපාරය{" "}
               </td>
               <td> 17 Dec, 2022 </td>
               <td>

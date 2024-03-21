@@ -58,7 +58,6 @@ function ScoutPromise() {
                             leftIcon={<FaArrowLeft />}
                             border="2px solid black"
                             padding="10px"
-                            marginRight="160px"
                             onClick={() => window.history.back()}
                             _hover={{ bg: "yellow", textColor: "black" }}
                         >

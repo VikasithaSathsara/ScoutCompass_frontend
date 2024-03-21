@@ -69,7 +69,7 @@ function HomePage() {
     const fetchLatestEvent = async () => {
         try {
             const response = await fetch(
-                "http://13.233.134.21:8081/api/scoutcompass/event/latestEvent"
+                "http://localhost:8081/api/scoutcompass/event/latestEvent"
             );
             const data = await response.json();
 

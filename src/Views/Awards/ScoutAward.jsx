@@ -9,7 +9,7 @@ function ScoutAward() {
   const totalRequirements = 23;
   const initialState = {
     status: "Attempt",
-    marks: "-",
+    marks: "--",
     englishName:"",
     sinhalaName:""
   };

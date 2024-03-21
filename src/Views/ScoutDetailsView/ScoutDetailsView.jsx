@@ -136,13 +136,13 @@ function ScoutDetailsView() {
         };
         fetchScoutList();
     }, []);
-    useEffect(() => {
-        const fetchRequirementListByScoutName = async () => {
+ 
+        const fetchRequirementListByScoutName = async (scoutEmail) => {
             const loggedInUserEmail = localStorage.getItem("loggedInUserEmail");
             try {
                 const response = await fetch(
                     
-                    `http://localhost:8081/api/scoutcompass/requirement/status/requirementList?scoutEmail=knchana2.20212055@iit.ac.lk`
+                    `http://localhost:8081/api/scoutcompass/requirement/status/requirementList?scoutEmail=${scoutEmail}`
                 );
                 const data = await response.json();
 
@@ -151,9 +151,11 @@ function ScoutDetailsView() {
                 console.error("Error fetching data:", error);
             }
         };
-        fetchRequirementListByScoutName();
-    }, []);
-
+       // fetchRequirementListByScoutName("knchana2.20212055@iit.ac.lk");
+   
+    const handleButtonClick = (scoutEmail) => {
+        fetchRequirementListByScoutName(scoutEmail);
+    };
 
     return (
         <div className="bg_details">
@@ -189,8 +191,12 @@ function ScoutDetailsView() {
                                                             name="modal-btn"
                                                             checked={isOpenR}
                                                             onChange={toggleModalR}
+                                                            
                                                         />
-                                                        <label htmlFor="requirements-modal-btn">View Requirements</label>
+
+                                                        <label htmlFor="requirements-modal-btn" 
+                                                        onClick={() => handleButtonClick(item.scoutEmail)}
+                                                        >View Requirements</label>
                                                         <div className="modal" onClick={toggleModalR}>
                                                             <div className="modal-wrap">
                                                                 <h2 className="profileh2">Requirements</h2>
@@ -198,15 +204,15 @@ function ScoutDetailsView() {
                                                                     <tbody>
                                                                         <tr className="profileview-tr">
                                                                             
-                                                                            <td>{RequirementList[0].awardId}</td>  <td>{RequirementList[0].requirementId}</td><td>{RequirementList[0].sinhalaName}</td><td>{RequirementList[0].status}</td>
+                                                                            <td>{RequirementList[0]?.awardId}</td>  <td>{RequirementList[0]?.requirementId}</td><td>{RequirementList[0]?.sinhalaName}</td><td>{RequirementList[0]?.status}</td>
                                                                         </tr>
                                                                         <tr className="profileview-tr">
                                                                             
-                                                                            <td>{RequirementList[1].awardId}</td>  <td>{RequirementList[1].requirementId}</td><td>{RequirementList[1].sinhalaName}</td><td>{RequirementList[1].status}</td>
+                                                                            <td>{RequirementList[1]?.awardId}</td>  <td>{RequirementList[1]?.requirementId}</td><td>{RequirementList[1]?.sinhalaName}</td><td>{RequirementList[1]?.status}</td>
                                                                         </tr>
                                                                         <tr className="profileview-tr">
                                                                             
-                                                                            <td>{RequirementList[2].awardId}</td>  <td>{RequirementList[2].requirementId}</td><td>{RequirementList[2].sinhalaName}</td><td>{RequirementList[2].status}</td>
+                                                                            <td>{RequirementList[2]?.awardId}</td>  <td>{RequirementList[2]?.requirementId}</td><td>{RequirementList[2]?.sinhalaName}</td><td>{RequirementList[2]?.status}</td>
                                                                         </tr>
                                                                       
 

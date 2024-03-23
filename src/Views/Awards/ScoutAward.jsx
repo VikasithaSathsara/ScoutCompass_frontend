@@ -171,7 +171,7 @@ function ScoutAward() {
                                             : "attempt"
                                     }`}
                                 >
-                                    {stateVariables[0].status}
+                                 {stateVariables[0].status.toUpperCase()}
                                 </button>
                                 <span className="marks">
                                     {stateVariables[0].marks}
@@ -204,7 +204,7 @@ function ScoutAward() {
                                             : "attempt"
                                     }`}
                                 >
-                                    {stateVariables[1].status}
+                                    {stateVariables[1].status.toUpperCase()}
                                 </button>
                                 <span className="marks">
                                     {stateVariables[1].marks}
@@ -238,7 +238,7 @@ function ScoutAward() {
                                             : "attempt"
                                     }`}
                                 >
-                                    {stateVariables[2].status}
+                                 {stateVariables[2].status.toUpperCase()}
                                 </button>
                                 <span className="marks">
                                     {stateVariables[2].marks}

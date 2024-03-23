@@ -101,6 +101,8 @@ const Requirments = () => {
                 }
             );
 
+            downloadReceipt(award_id,requirementData.sinhalaName,score); 
+
             localStorage.removeItem("award_id");
             localStorage.removeItem("requirment_id");
 
@@ -153,6 +155,32 @@ const Requirments = () => {
         currentQuestion,
         currentQuestion + 5
     );
+
+    const generateReceiptContent = (award_id,requirement_id, _marks) => {
+        const { userName, award_Id, requirement_Id, marks_ } = requirementData;
+        const userEmail = localStorage.getItem("loggedInUserEmail");
+        const awardId = award_id;
+        const requirementId = requirement_id;
+        const marks = _marks;
+        const receiptContent = `
+            User:            ${userEmail}
+            Award ID:        ${awardId}
+            Requirement ID:  ${requirementId}
+            Marks:           ${marks}
+        `;
+        return receiptContent;
+    };
+
+        // Function to download receipt
+        const downloadReceipt = (award_id,requirement_id, _marks) => {
+            const receiptContent = generateReceiptContent(award_id,requirement_id, _marks);
+            const element = document.createElement("a");
+            const file = new Blob([receiptContent], { type: "text/plain" });
+            element.href = URL.createObjectURL(file);
+            element.download = "quiz_receipt.txt";
+            document.body.appendChild(element); // Required for this to work in Firefox
+            element.click();
+        };
 
     return (
         <div>

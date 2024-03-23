@@ -3,6 +3,11 @@ import "./ScoutDetailsView.css";
 import SideMenu from "../../Components/SideMenu/SideMenu";
 
 function ScoutDetailsView() {
+    const [selectedStatus, setSelectedStatus] = useState('PNDING');
+     const [scoutUserName, setScoutUserName] = useState('');
+     const [awardId, setAwardId] = useState('');
+     const [requirementId, setRequiementId] = useState('');
+
     const [isOpenR, setIsOpenR] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [RequirementList, setRequirementList] = useState([]);
@@ -44,7 +49,7 @@ function ScoutDetailsView() {
     }, []);
 
     const fetchRequirementListByScoutName = async (scoutEmail) => {
-        const loggedInUserEmail = localStorage.getItem("loggedInUserEmail");
+  
         try {
             const response = await fetch(
                 `http://localhost:8081/api/scoutcompass/requirement/status/requirementList?scoutEmail=${scoutEmail}`
@@ -73,12 +78,56 @@ function ScoutDetailsView() {
         }
     };
 
+    const dataToSend = {
+        userName: scoutUserName ,
+        awardId: awardId ,
+        requirementId: requirementId,
+        newStatus: selectedStatus
+
+    };
+
+    const handleSubmit = async () => {
+
+
+        fetch(`http://localhost:8081/api/scoutcompass/requirement/status/updateStatus`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dataToSend), // Sending selected status in the request body
+        })
+        .then(response => {
+            if(response.ok){
+                console.log("Requirement updated successfully");
+            }
+         
+        })
+        .catch(error => {
+            // Handle error if needed
+        });
+    };
+
     const handleRequirementButtonClick = (scoutEmail) => {
         fetchRequirementListByScoutName(scoutEmail);
     };
 
     const handleProfileButtonClick = (scoutEmail) => {
         fetchUserProfile(scoutEmail);
+    };
+    const handleStatusChange = (e) => {
+        setSelectedStatus(e.target.value); 
+    };
+
+    
+
+    const handleButtonClick = (scout_user_name, award_id , requirement_id) => {
+        setScoutUserName(scout_user_name);
+        setAwardId(award_id);
+        setRequiementId(requirement_id);
+        dataToSend.userName=scout_user_name;
+        dataToSend.awardId=award_id;
+        dataToSend.requirementId=requirement_id;
+        handleSubmit();
     };
 
     return (
@@ -153,33 +202,33 @@ function ScoutDetailsView() {
                                                     </thead>
                                                     <tbody>
                                                         {RequirementList.map(
-                                                            (item, index) => (
+                                                            (item_, index) => (
                                                                 <tr
                                                                     key={index}
                                                                     className="profileview-tr"
                                                                 >
                                                                     <td>
                                                                         {
-                                                                            item?.awardId
+                                                                            item_?.awardId
                                                                         }
                                                                     </td>
                                                                     <td>
                                                                         {
-                                                                            item?.requirementId
+                                                                            item_?.requirementId
                                                                         }
                                                                     </td>
                                                                     <td>
                                                                         {
-                                                                            item?.sinhalaName
+                                                                            item_?.sinhalaName
                                                                         }
                                                                     </td>
                                                                     <td>
                                                                         {
-                                                                            <select className="dropdown-status">
+                                                                            <select className="dropdown-status"  value={selectedStatus} onChange={handleStatusChange}>
                                                                                 <option value="pending">
-                                                                                    {
-                                                                                        item?.status
-                                                                                    }
+                                                                                    
+                                                                                         {item_?.status.toUpperCase()} 
+                                                                                    
                                                                                 </option>
                                                                                 <option value="completed">
                                                                                     COMPLETED
@@ -188,7 +237,8 @@ function ScoutDetailsView() {
                                                                         }
                                                                     </td>
                                                                     <td>
-                                                                        <button className="accept-btn">
+                                                                       
+                                                                        <button className="accept-btn"  onClick={() => handleButtonClick( item?.scoutEmail, item_?.awardId, item_?.requirementId)}>
                                                                             Submit
                                                                         </button>
                                                                     </td>

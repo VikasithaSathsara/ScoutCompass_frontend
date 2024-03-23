@@ -1,109 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./ScoutDetailsView.css";
-
-function ViewProfile() {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleModal = () => {
-        setIsOpen(!isOpen);
-    };
-
-    return (
-        <div>
-            <input
-                className="modal-btn"
-                type="checkbox"
-                id="profile-modal-btn"
-                name="modal-btn"
-                checked={isOpen}
-                onChange={toggleModal}
-            />
-            <label htmlFor="profile-modal-btn">View Profile</label>
-            <div className="modal" onClick={toggleModal}>
-                <div className="modal-wrap">
-                    <h2 className="profileh2">Profile Details</h2>
-                    <table className="profileview-table">
-                        <tbody>
-                            <tr className="profileview-tr">
-                                <td>Name</td>
-                                <td>:</td>
-                                <td>vikasitha sathsara dambure liyanage</td>
-                            </tr>
-                            <tr className="profileview-tr">
-                                <td className="profileview-td">Email</td>
-                                <td className="profileview-td">:</td>
-                                {/* <td>{userData.email}</td> */}
-                            </tr>
-                            <tr className="profileview-tr">
-                                <td className="profileview-td">
-                                    Date Of Birth
-                                </td>
-                                <td className="profileview-td">:</td>
-                                {/* <td>{userData.dob}</td> */}
-                            </tr>
-                            <tr className="profileview-tr">
-                                <td className="profileview-td">District</td>
-                                <td className="profileview-td">:</td>
-                                {/* <td>{userData.district}</td> */}
-                            </tr>
-                            <tr className="profileview-tr">
-                                <td className="profileview-td">Gender</td>
-                                <td className="profileview-td">:</td>
-                                {/* <td>{userData.gender}</td> */}
-                            </tr>
-                            <tr className="profileview-tr">
-                                <td className="profileview-td">
-                                    Contact Number
-                                </td>
-                                <td className="profileview-td">:</td>
-                                {/* <td>{userData.mobNumber}</td> */}
-                            </tr>
-                            <tr className="profileview-tr">
-                                <td className="profileview-td">School</td>
-                                <td className="profileview-td">:</td>
-                                {/* <td>{userData.school}</td> */}
-                            </tr>
-                            <tr className="profileview-tr">
-                                <td className="profileview-td">
-                                    Assigned Instructor
-                                </td>
-                                <td className="profileview-td">:</td>
-                                {/* <td>{userData.instructor_name}</td> */}
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-function ViewRequirements() {
-    const [isOpenR, setIsOpenR] = useState(false);
-
-    const toggleModal = () => {
-        setIsOpenR(!isOpenR);
-    };
-
-    return (
-        <div>
-            <input
-                className="modal-btn"
-                type="checkbox"
-                id="requirements-modal-btn"
-                name="modal-btn"
-                checked={isOpenR}
-                onChange={toggleModal}
-            />
-            <label htmlFor="requirements-modal-btn">View Requirements</label>
-            <div className="modal" onClick={toggleModal}>
-                <div className="modal-wrap">
-                    <h2 className="profileh2">Requirements</h2>
-                </div>
-            </div>
-        </div>
-    );
-}
+import SideMenu from "../../Components/SideMenu/SideMenu";
 
 function ScoutDetailsView() {
     const [isOpenR, setIsOpenR] = useState(false);
@@ -186,9 +83,9 @@ function ScoutDetailsView() {
 
     return (
         <div className="bg_details">
-            <section className="scoutview-header">
-                <h1>Scouts Details</h1>
-            </section>
+            <SideMenu />
+
+            <h1>Scouts Details</h1>
 
             <section className="scoutview-body">
                 <table className="scoutview-table">
@@ -233,11 +130,27 @@ function ScoutDetailsView() {
                                             className="modal"
                                             onClick={toggleModalR}
                                         >
-                                            <div className="modal-wrap">
-                                                <h2 className="profileh2">
-                                                    Requirements
-                                                </h2>
-                                                <table className="profileview-table">
+                                            <div
+                                                className="modal-wrap"
+                                                id="requirement-div"
+                                                onClick={(e) =>
+                                                    e.stopPropagation()
+                                                }
+                                            >
+                                                <table className="scoutview-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Award Id</th>
+                                                            <th>
+                                                                Requirement Id
+                                                            </th>
+                                                            <th>
+                                                                Requirement Name
+                                                            </th>
+                                                            <th>Status</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
                                                     <tbody>
                                                         {RequirementList.map(
                                                             (item, index) => (
@@ -262,8 +175,22 @@ function ScoutDetailsView() {
                                                                     </td>
                                                                     <td>
                                                                         {
-                                                                            item?.status
+                                                                            <select className="dropdown-status">
+                                                                                <option value="pending">
+                                                                                    {
+                                                                                        item?.status
+                                                                                    }
+                                                                                </option>
+                                                                                <option value="completed">
+                                                                                    COMPLETED
+                                                                                </option>
+                                                                            </select>
                                                                         }
+                                                                    </td>
+                                                                    <td>
+                                                                        <button className="accept-btn">
+                                                                            Submit
+                                                                        </button>
                                                                     </td>
                                                                 </tr>
                                                             )

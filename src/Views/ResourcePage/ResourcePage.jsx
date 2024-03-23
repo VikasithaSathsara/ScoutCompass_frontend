@@ -27,6 +27,7 @@ import {
     DownloadIcon,
     ViewIcon,
 } from "@chakra-ui/icons";
+import Swal from "sweetalert2";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     "pdfjs-dist/build/pdf.worker.min.js",
@@ -109,34 +110,46 @@ function ResourcePage() {
     };
 
     const handleDeleteResource = async (fileName) => {
-        const confirmed = window.confirm(
-            "Are you sure you want to delete this resource?"
-        );
-        if (confirmed) {
-            const baseUrl =
-                "http://localhost:8081/api/scoutcompass/resource/delete/";
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const baseUrl =
+                    "http://localhost:8081/api/scoutcompass/resource/delete/";
 
-            const url = baseUrl + fileName;
-            try {
-                const response = await fetch(url, {
-                    method: "DELETE",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                });
+                const url = baseUrl + fileName;
+                try {
+                    const response = await fetch(url, {
+                        method: "DELETE",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    });
 
-                fetchResourceList();
-                window.location.href = "/resource";
+                    fetchResourceList();
+                    window.location.href = "/resource";
 
-                if (response.ok) {
-                    console.log("File deleted successfully");
-                } else {
-                    console.error("Failed to delete file");
+                    if (response.ok) {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success",
+                        });
+                        console.log("File deleted successfully");
+                    } else {
+                        console.error("Failed to delete file");
+                    }
+                } catch (error) {
+                    console.error("Error:", error.message);
                 }
-            } catch (error) {
-                console.error("Error:", error.message);
             }
-        }
+        });
     };
 
     const handleDownload = (fileName) => {
@@ -171,19 +184,20 @@ function ResourcePage() {
         if (!email) navigate("/login");
     }, []);
 
-
     const [isAdmin, setIsAdmin] = useState(false);
-    
+
     useEffect(() => {
         // Fetch user entity based on logged-in user's email
         const fetchUserEntity = async () => {
             try {
-                const loggedInUserEmail = localStorage.getItem("loggedInUserEmail");
-                const response = await fetch(`http://localhost:8081/api/scoutcompass/auth/user?userEmail=${loggedInUserEmail}`);
+                const loggedInUserEmail =
+                    localStorage.getItem("loggedInUserEmail");
+                const response = await fetch(
+                    `http://localhost:8081/api/scoutcompass/auth/user?userEmail=${loggedInUserEmail}`
+                );
                 const userData = await response.json();
                 // Assuming userData has a 'role' key
                 setIsAdmin(userData.role === "ROLE_ADMIN");
-                
             } catch (error) {
                 console.error("Error fetching user entity:", error);
             }
@@ -191,90 +205,86 @@ function ResourcePage() {
 
         fetchUserEntity();
     }, []);
- 
-  
 
-    
     return (
         <div className="bg_resource">
             <SideMenu />
             <h1>Resource Page</h1>
             <div>
                 <ChakraProvider>
-
-                {isAdmin && ( 
-                    <Popover
-                        initialFocusRef={initialFocusRef}
-                        placement="bottom"
-                        closeOnBlur={false}
-                        isOpen={isOpen}
-                        onClose={handleOpen}
-                    >
-
-
-                        <PopoverTrigger>
-                            <Button
-                                onClick={handleOpen}
-                                leftIcon={<AddIcon />}
-                                colorScheme="blackAlpha"
-                                variant="solid"
-                                position="absolute"
-                                top="20"
-                                right="10"
-                                mt="10px"
-                            >
-                                Add Resources
-                            </Button>
-                        </PopoverTrigger>
-                        <PopoverContent
-                            width={375}
-                            height={390}
-                            color="black"
-                            bg="white"
-                            borderColor="black"
-                            borderWidth={3}
-                            marginRight={25}
+                    {isAdmin && (
+                        <Popover
+                            initialFocusRef={initialFocusRef}
+                            placement="bottom"
+                            closeOnBlur={false}
+                            isOpen={isOpen}
+                            onClose={handleOpen}
                         >
-                            <PopoverArrow bg="white" />
-                            <PopoverCloseButton />
-                            <PopoverBody>
-                                <div className="file-card">
-                                    <form onSubmit={handleSubmit}>
-                                        <div className="file-inputs">
-                                            <input
-                                                type="file"
-                                                id="fileInput"
-                                                onChange={handleFileChange}
-                                            />
-                                            <button>
-                                                <p className="main1">
-                                                    Browse here
-                                                    <br />
-                                                    or
-                                                    <br />
-                                                    Drag & Drop
-                                                </p>
-                                            </button>
-                                        </div>
-                                        <div className="upload-file">
-                                            <input
-                                                type="text"
-                                                value={file_ ? file_.name : ""}
-                                                readOnly
-                                                placeholder="Selected file"
-                                            />
-                                        </div>
-                                        <div className="upload">
-                                            <button type="submit">
-                                                Upload File
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </PopoverBody>
-                        </PopoverContent>
-                    </Popover>
-)}
+                            <PopoverTrigger>
+                                <Button
+                                    onClick={handleOpen}
+                                    leftIcon={<AddIcon />}
+                                    colorScheme="blackAlpha"
+                                    variant="solid"
+                                    position="absolute"
+                                    top="20"
+                                    right="10"
+                                    mt="10px"
+                                >
+                                    Add Resources
+                                </Button>
+                            </PopoverTrigger>
+                            <PopoverContent
+                                width={375}
+                                height={390}
+                                color="black"
+                                bg="white"
+                                borderColor="black"
+                                borderWidth={3}
+                                marginRight={25}
+                            >
+                                <PopoverArrow bg="white" />
+                                <PopoverCloseButton />
+                                <PopoverBody>
+                                    <div className="file-card">
+                                        <form onSubmit={handleSubmit}>
+                                            <div className="file-inputs">
+                                                <input
+                                                    type="file"
+                                                    id="fileInput"
+                                                    onChange={handleFileChange}
+                                                />
+                                                <button>
+                                                    <p className="main1">
+                                                        Browse here
+                                                        <br />
+                                                        or
+                                                        <br />
+                                                        Drag & Drop
+                                                    </p>
+                                                </button>
+                                            </div>
+                                            <div className="upload-file">
+                                                <input
+                                                    type="text"
+                                                    value={
+                                                        file_ ? file_.name : ""
+                                                    }
+                                                    readOnly
+                                                    placeholder="Selected file"
+                                                />
+                                            </div>
+                                            <div className="upload">
+                                                <button type="submit">
+                                                    Upload File
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </PopoverBody>
+                            </PopoverContent>
+                        </Popover>
+                    )}
                     <div className="resource_container">
                         {resourceArrayList.map((item, index) => (
                             <div className={`box${index + 1}`}>

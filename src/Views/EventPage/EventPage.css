@@ -117,6 +117,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 60px;
+  padding-bottom: 200px;
 }
 
 .e_box1_1 {

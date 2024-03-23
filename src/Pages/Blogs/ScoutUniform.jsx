@@ -6,6 +6,7 @@ import BL5 from "../../Assests/jscout_uniform.png";
 import BL6 from "../../Assests/seniorscout_uniform.png";
 import BL7 from "../../Assests/Senior_Air_scout.png";
 import BL8 from "../../Assests/Senior_Sea_Scout.png";
+import BL9 from "../../Assests/uniform.JPG";
 import { NavLink } from "react-router-dom";
 
 function ScoutUniform() {
@@ -80,7 +81,9 @@ function ScoutUniform() {
                         <h1 class="blog_header">Scout Uniform</h1>
                     </div>
 
-                    <div id="blogimage1">{/* <img src={BL2} alt="" /> */}</div>
+                    <div id="blogimage1">
+                        <img src={BL5} alt="" />
+                    </div>
                     <div className="blog2">
                         <h2 class="topic-main">What Scouts wear</h2>
                         <p className="blog2_para">

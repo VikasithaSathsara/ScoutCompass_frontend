@@ -52,7 +52,7 @@ function ScoutDetailsView() {
   
         try {
             const response = await fetch(
-                `http://localhost:8081/api/scoutcompass/requirement/status/requirementList?scoutEmail=${scoutEmail}`
+                `http://localhost:8081/api/scoutcompass/requirement/status/requirementStatusList?scoutEmail=${scoutEmail}`
             );
             const data = await response.json();
 
@@ -224,13 +224,13 @@ function ScoutDetailsView() {
                                                                     </td>
                                                                     <td>
                                                                         {
-                                                                            <select className="dropdown-status"  value={selectedStatus} onChange={handleStatusChange}>
-                                                                                <option value="pending">
+                                                                            <select className="dropdown-status"  onChange={handleStatusChange}>
+                                                                                <option value="PENDING">
                                                                                     
                                                                                          {item_?.status.toUpperCase()} 
                                                                                     
                                                                                 </option>
-                                                                                <option value="completed">
+                                                                                <option value="COMPLETED">
                                                                                     COMPLETED
                                                                                 </option>
                                                                             </select>

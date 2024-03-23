@@ -129,7 +129,7 @@ function EventPage() {
                 });
 
                 fetchEventList();
-                window.location.href = "/event";
+                //window.location.href = "/event";
 
                 if (response.ok) {
                     console.log("Event deleted successfully");

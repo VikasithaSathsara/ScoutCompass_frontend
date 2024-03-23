@@ -100,9 +100,9 @@ function LoginPage() {
                             <FaLock className="icon" />
                         </div>
 
-                        <div className="forgot">
+                        {/* <div className="forgot">
                             <a href="#">Forgot Password?</a>
-                        </div>
+                        </div> */}
 
                         <button type="submit" className="login">
                             Login

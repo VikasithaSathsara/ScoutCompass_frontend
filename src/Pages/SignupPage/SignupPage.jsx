@@ -316,6 +316,7 @@ function SignupPage() {
                                                     <Input
                                                         placeholder="First Name"
                                                         size="md"
+                                                        color="white"
                                                         borderColor="white"
                                                         borderRadius={40}
                                                         onChange={onValueChange(

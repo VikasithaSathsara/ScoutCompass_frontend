@@ -77,7 +77,7 @@ function ResourcePage() {
         e.preventDefault();
 
         if (!file_) {
-            alert("Please select a file");
+            Swal.fire("Please Select a File");
             return;
         }
 
@@ -133,7 +133,7 @@ function ResourcePage() {
                     });
 
                     fetchResourceList();
-                    window.location.href = "/resource";
+                    //window.location.href = "/resource";
 
                     if (response.ok) {
                         Swal.fire({

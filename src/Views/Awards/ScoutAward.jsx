@@ -223,6 +223,22 @@ function ScoutAward() {
                           item_?.requirementId
                         );
                         localStorage.setItem("award_id", 2);
+                        localStorage.setItem(
+                          "requirment_sinhala_name",
+                          item_?.sinhalaName
+                        );
+                        localStorage.setItem(
+                          "requirment_english_name",
+                          item_?.englishName
+                        );
+                        localStorage.setItem(
+                          "requirment_completed_date",
+                          stateVariables[item_?.requirementId-1].completedDate
+                        );
+                        localStorage.setItem(
+                          "award_name",
+                          "Scout Award"
+                        );
                         navigate("/requirments");
                       }}
                       className={`status ${

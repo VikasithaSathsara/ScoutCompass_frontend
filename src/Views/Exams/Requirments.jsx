@@ -158,6 +158,10 @@ const Requirments = () => {
 
   const generateReceiptContent = (award_id, requirement_id, _marks) => {
     const { userName, award_Id, requirement_Id, marks_ } = requirementData;
+    const requirementSinhalaName = localStorage.getItem("requirment_sinhala_name");
+    const requriementEnglisName = localStorage.getItem("requirment_english_name");
+    const requirementCompletedDate=localStorage.getItem("requirment_completed_date");
+    const awardName= localStorage.getItem("award_name");
     const userEmail = localStorage.getItem("loggedInUserEmail");
     const awardId = award_id;
     const requirementId = requirement_id;
@@ -166,17 +170,18 @@ const Requirments = () => {
 
              __Your submission was successful!__
 
-        ===============================================
-        |    ** AWARD REQUIREMENT PASSING RECEIPT **  |
-        ===============================================
-        |                                             |
-        |    User:            ${userEmail}            |
-        |    Award ID:        ${awardId}                       |
-        |    Requirement ID:  ${requirementId}               |
+        =====================================================
+        |    ** AWARD REQUIREMENT PASSING RECEIPT **        |
+        =====================================================
+        |                                                   |
+        |    User:            ${userEmail}                  |
+        |    Award :          ${awardName}                  |
+        |    Requirement   :  ${requirementSinhalaName}     |
+        |                     ${requriementEnglisName}      |
         |    Marks:           ${marks}                      |
-        |                                             |
-        |                                             |
-        |_____________________________________________|
+        |                                                   |
+        |                                                   |
+        |___________________________________________________|
 
         `;
     return receiptContent;
@@ -199,7 +204,7 @@ const Requirments = () => {
 
   return (
     <div>
-      <h2 className="quizh2">Requirement 2 of Award 1</h2>
+      <h2 className="quizh2">Requirement {localStorage.getItem("requirment_id")} of Award {localStorage.getItem("award_id")} </h2>
       <Button
         bg="transparent"
         textColor="black"

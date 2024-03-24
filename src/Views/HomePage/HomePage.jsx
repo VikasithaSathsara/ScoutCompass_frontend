@@ -65,6 +65,10 @@ function HomePage() {
     ];
 
     const [latestEvent, setLatestevent] = useState([]);
+    const [scoutCount, setScoutCount] = useState("");
+    const [instructorCount, setInstroutorCount] = useState("");
+    const [eventCount, setEventCount] = useState("");
+    const [resourceCount, setResourceCount] = useState("");
 
     const fetchLatestEvent = async () => {
         try {
@@ -79,8 +83,62 @@ function HomePage() {
         }
     };
 
+    const fetchEventCount = async () => {
+        try {
+            const response = await fetch(
+                "http://localhost:8081/api/scoutcompass/event/count"
+            );
+            const data = await response.json();
+
+            setEventCount(data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+
+    const fetchResourceCount = async () => {
+        try {
+            const response = await fetch(
+                "http://localhost:8081/api/scoutcompass/resource/count"
+            );
+            const data = await response.json();
+
+            setResourceCount(data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+
+    const fetchScoutCount = async () => {
+        try {
+            const response = await fetch(
+                "http://localhost:8081/api/scoutcompass/auth/scout/count"
+            );
+            const data = await response.json();
+
+            setScoutCount(data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+    const fetchInstructorCount = async () => {
+        try {
+            const response = await fetch(
+                "http://localhost:8081/api/scoutcompass/auth/instructor/count"
+            );
+            const data = await response.json();
+
+            setInstroutorCount(data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
     useEffect(() => {
         fetchLatestEvent();
+        fetchEventCount();
+        fetchResourceCount();
+        fetchInstructorCount();
+        fetchScoutCount();
     }, []);
 
     return (
@@ -183,7 +241,7 @@ function HomePage() {
                             <i class="material-icons md-36">groups</i>
                         </div>
 
-                        <p class="hm_title">SCOUTS</p>
+                        <p class="hm_title">SCOUTS {eventCount} </p>
                         <p class="hm_text">
                             Click to see or edit your profile page.
                         </p>
@@ -193,7 +251,7 @@ function HomePage() {
                         <div class="hm_icon">
                             <i class="material-icons md-36">person</i>
                         </div>
-                        <p class="hm_title">INSTRUCTORS</p>
+                        <p class="hm_title">INSTRUCTORS {instructorCount}</p>
                         <p class="hm_text">
                             Check all your favourites in one place.
                         </p>
@@ -203,7 +261,7 @@ function HomePage() {
                         <div class="hm_icon">
                             <i class="material-icons md-36">event</i>
                         </div>
-                        <p class="hm_title">EVENTS</p>
+                        <p class="hm_title">EVENTS {scoutCount}</p>
                         <p class="hm_text">
                             Add or change your contacts and links.
                         </p>

@@ -261,7 +261,7 @@ function HomePage() {
                         <div class="hm_icon">
                             <i class="material-icons md-36">event</i>
                         </div>
-                        <p class="hm_title">EVENTS {scoutCount}</p>
+                        <p class="hm_title">EVENTS {eventCount}</p>
                         <p class="hm_text">
                             Add or change your contacts and links.
                         </p>

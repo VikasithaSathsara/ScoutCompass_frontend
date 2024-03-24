@@ -14,7 +14,7 @@ function PassingPage() {
     return (
         <div className="bg_passing">
             <SideMenu />
-            <h1>Passings</h1>
+            <h1>Passing Page</h1>
             <div class="container">
                 <div class="passingcard" id="passingcard1">
                     <div className="badge" id="badge1"></div>

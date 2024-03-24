@@ -3,9 +3,60 @@ import B5 from "../../Assests/PresidentsAward.png";
 import { Button } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 function PresidentAward() {
+    const totalRequirements = 13;
+    const initialState = {
+        status: "ATTEMPT",
+        marks: "--",
+        englishName: "",
+        sinhalaName: "",
+    };
+
+    const [stateVariables, setStateVariables] = useState(
+        Array.from({ length: totalRequirements }, () => initialState)
+    );
+
+    useEffect(() => {
+        const fetchRequirementData = async (
+            awardId,
+            requirementId,
+            setData
+        ) => {
+            const userEmail = localStorage.getItem("loggedInUserEmail");
+            try {
+                const response = await fetch(
+                    `http://13.233.134.21:8081/api/scoutcompass/requirement/status?userName=${userEmail}&awardId=${awardId}&requirementId=${requirementId}`
+                );
+                if (!response.ok) {
+                    throw new Error("Failed to fetch user data");
+                }
+                const data = await response.json();
+                setData(data);
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+        };
+
+        for (let i = 1; i <= totalRequirements; i++) {
+            const req = {
+                awardId: 5,
+                requirementId: i,
+                setData: setDataAtIndex(i - 1),
+            };
+            fetchRequirementData(req.awardId, req.requirementId, req.setData);
+        }
+    }, []);
+
+    const setDataAtIndex = (index) => (newData) => {
+        setStateVariables((prevState) => {
+            const newState = [...prevState];
+            newState[index] = newData;
+            return newState;
+        });
+    };
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -13,8 +64,112 @@ function PresidentAward() {
         if (!email) navigate("/login");
     }, []);
 
+    const [showNotification, setShowNotification] = useState(false);
+
+    const handleAttemptClick = () => {
+        setShowNotification(true);
+    };
+
+    const handleCloseNotification = () => {
+        setShowNotification(false);
+    };
+    const [RequirementList, setRequirementList] = useState([]);
+
+    useEffect(() => {
+        const fetchRequirements = async (awardId) => {
+            try {
+                const response = await fetch(
+                    `http://13.233.134.21:8081/api/scoutcompass/requirement/requirements_by_awards?awardId=${awardId}`
+                );
+                const data = await response.json();
+                if (data) {
+                    setRequirementList(data);
+                }
+            } catch (error) {
+                console.error("Error fetching questions:", error);
+            }
+        };
+
+        fetchRequirements(5);
+    }, []);
+
+    const dataToSend = {
+        userName: localStorage.getItem("loggedInUserEmail"),
+        awardId: localStorage.getItem("award_id"),
+        requirementId: localStorage.getItem("requirment_id"),
+        status: "PENDING",
+    };
+
+    const handleSubmitPracticalRequirementStatus = async () => {
+        fetch(
+            `http://13.233.134.21:8081/api/scoutcompass/requirement/status/pracical_req_status`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(dataToSend),
+            }
+        )
+            .then((response) => {
+                if (response.ok) {
+                    console.log("Requirement updated successfully");
+                }
+            })
+            .catch((error) => {});
+    };
+
+    const handlePRequirementSubmitButtonClick = () => {
+        handleSubmitPracticalRequirementStatus();
+    };
+
     return (
         <div className="bg_awards">
+            {showNotification && (
+                <div>
+                    <div
+                        className="notification-overlay"
+                        onClick={handleCloseNotification}
+                    ></div>
+                    <div className="notification-box">
+                        <h2 id="window-header">Practical Requirment</h2>
+                        <p>
+                            This is a practicle requirement. Press below button
+                            to Send a request to your instructor mentioning that
+                            you want to pass this requirment.
+                        </p>
+                        <div>
+                            <button
+                                className="pr-window-btn"
+                                style={{ backgroundColor: "transparent" }}
+                                onClick={handleCloseNotification}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                className="pr-window-btn"
+                                style={{ backgroundColor: "#b30021" }}
+                                onClick={() => {
+                                    handlePRequirementSubmitButtonClick();
+                                    Swal.fire({
+                                        icon: "success",
+                                        title: "Your request has been sent successfully !",
+                                        showConfirmButton: false,
+                                        timer: 1500,
+                                    });
+
+                                    setTimeout(() => {
+                                        window.close();
+                                        window.location.reload();
+                                    }, 1500);
+                                }}
+                            >
+                                Send Request
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
             <section class="table__header">
                 <Button
                     bg="transparent"
@@ -25,17 +180,16 @@ function PresidentAward() {
                     leftIcon={<FaArrowLeft />}
                     border="2px solid black"
                     padding="10px"
-                    marginRight="120px"
                     onClick={() => window.history.back()}
                     _hover={{ bg: "yellow", textColor: "black" }}
                 >
                     Back
                 </Button>
 
-                <div className="image">
+                <div className="image2">
                     <img src={B5} alt="" />
                 </div>
-                <h1>President's Award</h1>
+                <h1 className="award-name">President Award</h1>
             </section>
 
             <section class="table__body">
@@ -49,284 +203,172 @@ function PresidentAward() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td> 1 </td>
-                            <td>
-                                {" "}
-                                Scout Promise and Law 3 <br />
-                                බාලදක්ෂ පොරොන්දුව සහ නීතිය 3{" "}
-                            </td>
-                            <td> 17 Dec, 2022 </td>
-                            <td>
-                                <a
-                                    onClick={() => {
-                                        localStorage.setItem(
-                                            "requirment_id",
-                                            1
-                                        );
-                                        localStorage.setItem("award_id", 5);
-                                        navigate("/requirments");
-                                    }}
-                                    class="status completed"
-                                >
-                                    Completed
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 2 </td>
-                            <td>
-                                {" "}
-                                Log Book 2 <br />
-                                ලොග් පොත 2
-                            </td>
-                            <td> 27 Aug, 2023 </td>
-                            <td>
-                                <a href="#" class="status re-attempt">
-                                    Re-Attempt
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 3</td>
-                            <td>
-                                {" "}
-                                Skills in Art and Hobbies 3
-                                <br />
-                                කලා සහ විනෝදාංශ කුසලතා 3
-                            </td>
-                            <td> 14 Mar, 2023 </td>
-                            <td>
-                                <a
-                                    onClick={() => {
-                                        localStorage.setItem(
-                                            "requirment_id",
-                                            3
-                                        );
-                                        localStorage.setItem("award_id", 5);
-                                        navigate("/requirments");
-                                    }}
-                                    class="status attempt"
-                                >
-                                    Attempt
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 4</td>
-                            <td>
-                                {" "}
-                                Scout Craft
-                                <br />
-                                බාලදක්ෂ ශිල්පය
-                            </td>
-                            <td> 14 Mar, 2023 </td>
-                            <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 5</td>
-                            <td>
-                                {" "}
-                                Pioneering Project 4
-                                <br />
-                                පුරෝගාමී ව්‍යාපෘතිය 4
-                            </td>
-                            <td> 14 Mar, 2023 </td>
-                            <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 6</td>
-                            <td>
-                                {" "}
-                                Leadership in Emergencies and Natural Disasters{" "}
-                                <br />
-                                හදිසි අවස්ථාවකදී ස්වභාවික විපතකදී නායකත්වය දැරීම
-                            </td>
-                            <td> 14 Mar, 2023 </td>
-                            <td>
-                                <a
-                                    onClick={() => {
-                                        localStorage.setItem(
-                                            "requirment_id",
-                                            6
-                                        );
-                                        localStorage.setItem("award_id", 5);
-                                        navigate("/requirments");
-                                    }}
-                                    class="status attempt"
-                                >
-                                    Attempt
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 7</td>
-                            <td>
-                                {" "}
-                                Health Habits <br />
-                                සෞඛ්‍ය පුරුදු
-                            </td>
-                            <td> 14 Mar, 2023 </td>
-                            <td>
-                                <a
-                                    onClick={() => {
-                                        localStorage.setItem(
-                                            "requirment_id",
-                                            7
-                                        );
-                                        localStorage.setItem("award_id", 5);
-                                        navigate("/requirments");
-                                    }}
-                                    class="status attempt"
-                                >
-                                    Attempt
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 8</td>
-                            <td>
-                                {" "}
-                                IT Literacy 4 <br />
-                                තොරතුරු තාක්ෂණ දැනුම 4{" "}
-                            </td>
-                            <td> 14 Mar, 2023 </td>
-                            <td>
-                                <a
-                                    onClick={() => {
-                                        localStorage.setItem(
-                                            "requirment_id",
-                                            8
-                                        );
-                                        localStorage.setItem("award_id", 5);
-                                        navigate("/requirments");
-                                    }}
-                                    class="status attempt"
-                                >
-                                    Attempt
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 9</td>
-                            <td>
-                                {" "}
-                                Link Language Skills 4 <br />
-                                සම්බන්ධීකරන භාෂා කුසලතා 4
-                            </td>
-                            <td> 14 Mar, 2023 </td>
-                            <td>
-                                <a
-                                    onClick={() => {
-                                        localStorage.setItem(
-                                            "requirment_id",
-                                            9
-                                        );
-                                        localStorage.setItem("award_id", 5);
-                                        navigate("/requirments");
-                                    }}
-                                    class="status attempt"
-                                >
-                                    Attempt
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 10</td>
-                            <td>
-                                {" "}
-                                Safe from Harm 11 <br />
-                                හානියෙන් සුරක්ෂාව 11
-                            </td>
-                            <td> 14 Mar, 2023 </td>
-                            <td>
-                                <a
-                                    onClick={() => {
-                                        localStorage.setItem(
-                                            "requirment_id",
-                                            10
-                                        );
-                                        localStorage.setItem("award_id", 5);
-                                        navigate("/requirments");
-                                    }}
-                                    class="status attempt"
-                                >
-                                    Attempt
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 11</td>
-                            <td>
-                                {" "}
-                                Organising a Hike including Scout Skills and
-                                Challenges <br />
-                                බාලදක්ෂ ශිල්පිය දක්ශතා සහ අභියෝග ඇතුළුව පාගමනක්
-                                සංවිධානය කිරීම
-                            </td>
-                            <td> 14 Mar, 2023 </td>
-                            <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 12</td>
-                            <td>
-                                {" "}
-                                Community Service Project <br />
-                                ප්‍රජා සේවා ව්‍යාපෘතිය
-                            </td>
-                            <td> 14 Mar, 2023 </td>
-                            <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 13</td>
-                            <td>
-                                {" "}
-                                Four Nights Camping <br />
-                                කඳවුරු රාත්‍රී 4
-                            </td>
-                            <td> 14 Mar, 2023 </td>
-                            <td>
-                                <a href="#" class="status attempt">
-                                    Attempt
-                                </a>
-                            </td>
-                        </tr>
+                        {RequirementList.map((item_, index) =>
+                            item_.isPracticalRequirement === 0 ? (
+                                <tr>
+                                    <td> {item_?.requirementId} </td>
+                                    <td>
+                                        {" "}
+                                        {item_?.englishName} <br />
+                                        {item_?.sinhalaName}{" "}
+                                    </td>
+                                    <td>
+                                        {
+                                            stateVariables[
+                                                item_?.requirementId - 1
+                                            ].completedDate
+                                        }
+                                    </td>
+                                    <td>
+                                        <button
+                                            onClick={() => {
+                                                localStorage.setItem(
+                                                    "requirment_id",
+                                                    item_?.requirementId
+                                                );
+                                                localStorage.setItem(
+                                                    "award_id",
+                                                    5
+                                                );
+                                                localStorage.setItem(
+                                                    "requirment_sinhala_name",
+                                                    item_?.sinhalaName
+                                                );
+                                                localStorage.setItem(
+                                                    "requirment_english_name",
+                                                    item_?.englishName
+                                                );
+                                                localStorage.setItem(
+                                                    "requirment_completed_date",
+                                                    stateVariables[
+                                                        item_?.requirementId - 1
+                                                    ].completedDate
+                                                );
+                                                localStorage.setItem(
+                                                    "award_name",
+                                                    "Scout Award"
+                                                );
+                                                navigate("/requirments");
+                                            }}
+                                            className={`status ${
+                                                stateVariables[
+                                                    item_?.requirementId - 1
+                                                ].marks !== "--"
+                                                    ? stateVariables[
+                                                          item_?.requirementId -
+                                                              1
+                                                      ].marks >= 70
+                                                        ? "completed"
+                                                        : "re-attempt"
+                                                    : "attempt"
+                                            }`}
+                                            disabled={
+                                                stateVariables[
+                                                    item_?.requirementId - 1
+                                                ].status.toUpperCase() ===
+                                                "COMPLETED"
+                                            }
+                                            style={{
+                                                cursor:
+                                                    stateVariables[
+                                                        item_?.requirementId - 1
+                                                    ].status.toUpperCase() ===
+                                                    "COMPLETED"
+                                                        ? "not-allowed"
+                                                        : "pointer",
+                                            }}
+                                        >
+                                            {stateVariables[
+                                                item_?.requirementId - 1
+                                            ].status.toUpperCase()}
+                                        </button>
+                                        <span className="marks">
+                                            {
+                                                stateVariables[
+                                                    item_?.requirementId - 1
+                                                ].marks
+                                            }
+                                        </span>{" "}
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td> {item_?.requirementId}</td>
+                                    <td>
+                                        {" "}
+                                        {item_?.englishName} <br />
+                                        {item_?.sinhalaName}
+                                    </td>
+                                    <td>
+                                        {
+                                            stateVariables[
+                                                item_?.requirementId - 1
+                                            ].completedDate
+                                        }
+                                    </td>
+                                    <td>
+                                        <button
+                                            onClick={() => {
+                                                localStorage.setItem(
+                                                    "requirment_id",
+                                                    item_?.requirementId
+                                                );
+                                                localStorage.setItem(
+                                                    "award_id",
+                                                    5
+                                                );
+                                                handleAttemptClick();
+                                            }}
+                                            className={`status ${
+                                                stateVariables[
+                                                    item_?.requirementId - 1
+                                                ].status.toUpperCase() ===
+                                                "COMPLETED"
+                                                    ? "completed"
+                                                    : stateVariables[
+                                                          item_?.requirementId -
+                                                              1
+                                                      ].status.toUpperCase() ===
+                                                      "PENDING"
+                                                    ? "pending"
+                                                    : "attempt"
+                                            }`}
+                                            disabled={
+                                                stateVariables[
+                                                    item_?.requirementId - 1
+                                                ].status.toUpperCase() ===
+                                                    "COMPLETED" ||
+                                                stateVariables[
+                                                    item_?.requirementId - 1
+                                                ].status.toUpperCase() ===
+                                                    "PENDING"
+                                            }
+                                            style={{
+                                                cursor:
+                                                    stateVariables[
+                                                        item_?.requirementId - 1
+                                                    ].status.toUpperCase() ===
+                                                        "COMPLETED" ||
+                                                    stateVariables[
+                                                        item_?.requirementId - 1
+                                                    ].status.toUpperCase() ===
+                                                        "PENDING"
+                                                        ? "not-allowed"
+                                                        : "pointer",
+                                            }}
+                                        >
+                                            {stateVariables[
+                                                item_?.requirementId - 1
+                                            ].status.toUpperCase()}
+                                        </button>
+                                        <span className="practical">PR</span>
+                                    </td>
+                                </tr>
+                            )
+                        )}
                     </tbody>
                 </table>
             </section>
-            <table className="sevice">
-                <tbody>
-                    <tr>
-                        <td>***</td>
-                        <td>
-                            9 Months of Service <br />
-                            මාස 9 ක සේවා කාලය
-                        </td>
-                        <td> 17 Dec, 2022 </td>
-                        <td>
-                            <a href="#" class="status completed">
-                                Completed
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     );
 }

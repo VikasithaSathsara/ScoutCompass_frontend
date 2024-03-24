@@ -1,12 +1,13 @@
 .bg_passing {
+  width: 100%;
+  padding-left: 150px;
+  padding-right: 20px;
   background-image: url("/src/Assests/main_background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .container {
-  margin-left: 240px;
-  width: 1100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,8 +26,6 @@
   box-shadow: 0 20px 30px #00000033;
   overflow: hidden;
   border-radius: 20px;
-  /* outline: 1px solid white; */
-
 }
 
 .container .passingcard:hover {
@@ -218,21 +217,72 @@
 }
 
 @media (max-width: 768px) {
-  /* Adjustments for smaller devices */
-  .container {
-    margin-left: 0;
-    padding: 0 10px; /* Adjusted padding for smaller devices */
+  .bg_passing {
+    padding-left: 150px;
+    padding-right: 10px;
   }
   
   .container .passingcard {
-    width: calc(50% - 20px); /* Adjusted width for smaller devices */
-    margin: 10px;
+    width: calc(70% - 20px);
   }
+  .container .passingcard .innercontent h2 {
+    font-size: 3em;
+  }
+  
+  .container .passingcard .innercontent h3 {
+    font-size: 1.5em;
+  }
+  
+  .container .passingcard .innercontent p {
+    font-size: 14px;
+  }
+  
+  .container .passingcard .innercontent a {
+    font-size: 14px;
+    padding: 6px 10px;
+}
 }
 
-@media (max-width: 480px) {
-  /* Further adjustments for even smaller devices */
+@media (max-width: 431px) {
+  .bg_passing {
+    width: 100%;
+    padding-left: 60px;
+    padding-right: 10px;
+  }
+  
   .container .passingcard {
-    width: calc(100% - 20px); /* Adjusted width for smaller devices */
+    width: 200px;
+    height: 260px;
+  }
+  
+  .container .passingcard .innercontent h2 {
+   display: none;
+  }
+  
+  .container .passingcard .innercontent h3 {
+    font-size: 1.5em;
+  }
+  
+  .container .passingcard .innercontent p {
+    font-size: 14px;
+  }
+  
+  .container .passingcard .innercontent a {
+    font-size: 14px;
+    padding: 6px 10px;
+}
+
+.badge {
+  width: 200px;
+  height: 250px;
+  background-size: cover;
+}
+
+#badge1,
+#badge2,
+#badge3,
+#badge4,
+#badge5 {
+  background-size: contain;
 }
 }

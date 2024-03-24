@@ -7,6 +7,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  
 }
 
 .warp {
@@ -114,16 +115,17 @@
   text-align: center;
 }
 
-
-/* Media Queries */
 @media screen and (max-width: 768px) {
   .background {
     justify-content: center;
+    width: 100vw;
   }
 
   .warp {
-    margin: 0;
-    width: 90%;
+    margin-right: 0;
+    margin-top: 20px;
+    width: auto;
+
   }
 
   .heading {
@@ -156,7 +158,54 @@
   .signup p a {
     font-weight: 600;
     color: white;
-    text-decoration: none;
+    text-decoration:none;
+}
+}
+
+@media screen and (max-width: 431px) {
+  .background {
+    justify-content: center;
+    width: 100vw;
+  }
+
+  .warp {
+    margin-right: 0;
+    margin-top: 20px;
+    width: 90%;
+
+  }
+
+  .heading {
+    font-size: 30px;
+  }
+
+  .input-box {
+    margin: 20px 0;
+  }
+
+  .input-box input {
+    padding: 15px 40px 15px 15px;
+  }
+
+  .icon {
+    right: 15px;
+  }
+
+  .login {
+    height: 40px;
+    font-size: 15px;
+  }
+
+  .signup {
+    font-size: 14px;
+    text-align: center;
+    margin: 20px 0 15px;
+  }
+
+  .signup p a {
+    font-weight: 600;
+    color: white;
+    text-decoration:none;
 }
 }
 

@@ -111,26 +111,55 @@
   margin-top: 20px;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .sidebar {
-    width: 70px;
+    width: 150px;
   }
-  
+
   .sidebar:hover {
-    width: 200px;
+    width: 150px;
   }
-  
+
   .menuname {
-    display: block;
-    font-size: 20px;
+    display: none;
   }
-  
+
+  .links li:hover {
+    width: 150px;
+  }
   .links li span {
-    font-size: 20px;
+    font-size: 22px;
   }
-  
+
   .links li a {
-    font-size: 16px;
+    font-size: 14px;
 }
 }
 
+@media (max-width: 431px) {
+  .sidebar {
+    width: 100px;
+  }
+
+  .sidebar:hover {
+    width: 100px;
+  }
+
+  .menuname {
+    display: none;
+  }
+
+  .links li:hover {
+    width: 100px;
+  }
+  .links li span {
+    font-size: 18px;
+  }
+
+  .links li a {
+    font-size:11px;
+}
+h4{
+  padding-left: 10px;
+}
+}

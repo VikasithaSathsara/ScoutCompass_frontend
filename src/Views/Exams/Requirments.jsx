@@ -3,6 +3,7 @@ import { Button } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
 import "./Requirments.css";
 import { useNavigate } from "react-router-dom";
+import { WarningTwoIcon, CheckCircleIcon, InfoIcon } from "@chakra-ui/icons";
 
 const Requirments = () => {
     const [questions, setQuestions] = useState([]);
@@ -24,7 +25,6 @@ const Requirments = () => {
     });
 
     useEffect(() => {
-        // Fetch quiz questions from Spring Boot API
         const fetchQuestions = async (awardId, requirementId) => {
             try {
                 const response = await fetch(
@@ -34,8 +34,6 @@ const Requirments = () => {
                 if (data) {
                     setQuestions(data);
                 }
-                //   localStorage.removeItem("award_id");
-                //   localStorage.removeItem("requirment_id");
             } catch (error) {
                 console.error("Error fetching questions:", error);
             }
@@ -62,16 +60,11 @@ const Requirments = () => {
     const isSubmitDisabled = userAnswers.length !== questions.length;
 
     const handleSubmitQuiz = async () => {
-        // Check if all questions have been answered before submitting
         if (userAnswers.length !== questions.length) {
             alert("Please answer all questions before submitting.");
             return;
         }
 
-        // Calculate final score and send a post request to the server
-        // (Note: You need to implement the Spring Boot API endpoint to handle the post request)
-
-        // Example: Calculate final score
         const score = userAnswers.reduce((totalScore, answer, index) => {
             return answer === questions[index].correctAnswer
                 ? totalScore + 10
@@ -91,7 +84,6 @@ const Requirments = () => {
             marks: score,
         };
 
-        // Example: Send post request to Spring Boot API with the final score
         try {
             await fetch(
                 `http://13.233.134.21:8081/api/scoutcompass/requirement/status/marks/submit`,
@@ -104,12 +96,51 @@ const Requirments = () => {
                 }
             );
 
+            downloadReceipt(award_id, requirementData.sinhalaName, score);
+
             localStorage.removeItem("award_id");
             localStorage.removeItem("requirment_id");
+
+            let textColor = "";
+            let icon = null;
+            let completionStatus = "";
+            let explain = "";
+
+            if (score >= 70) {
+                icon = <CheckCircleIcon w={100} h={100} marginTop={50} />;
+                textColor = "green";
+                completionStatus = "Completed !";
+                explain = "Great work !";
+            } else if (score >= 50) {
+                icon = <InfoIcon w={100} h={100} marginTop={50} />;
+                textColor = "orange";
+                completionStatus = "Failed!";
+                explain = "Nice Try !";
+            } else {
+                icon = <WarningTwoIcon w={100} h={100} marginTop={50} />;
+                textColor = "red";
+                completionStatus = "Failed !";
+                explain = "Not good enough !";
+            }
+
+            setFeedback({
+                text: `Your score is ${score} out of 100`,
+                color: textColor,
+                icon: icon,
+                completionStatus: completionStatus,
+                explain: explain,
+            });
         } catch (error) {
             console.error("Error submitting quiz:", error);
         }
     };
+    const [feedback, setFeedback] = useState({
+        text: "",
+        color: "",
+        icon: null,
+        completionStatus: "",
+        explain: "",
+    });
 
     if (!questions.length) {
         return <div>Loading...</div>;
@@ -120,9 +151,63 @@ const Requirments = () => {
         currentQuestion + 5
     );
 
+    const generateReceiptContent = (award_id, requirement_id, _marks) => {
+        const { userName, award_Id, requirement_Id, marks_ } = requirementData;
+        const requirementSinhalaName = localStorage.getItem(
+            "requirment_sinhala_name"
+        );
+        const requriementEnglisName = localStorage.getItem(
+            "requirment_english_name"
+        );
+        const requirementCompletedDate = localStorage.getItem(
+            "requirment_completed_date"
+        );
+        const awardName = localStorage.getItem("award_name");
+        const userEmail = localStorage.getItem("loggedInUserEmail");
+        const awardId = award_id;
+        const requirementId = requirement_id;
+        const marks = _marks;
+        const receiptContent = `
+
+                             __Your submission was successful!__
+
+        ============================================================================
+        |                   ** AWARD REQUIREMENT PASSING RECEIPT **                |
+        ============================================================================
+                                                                                   
+              User          :     ${userEmail}                                          
+              Award         :     ${awardName}                                          
+              Requirement   :     ${requirementSinhalaName}                             
+                                  ${requriementEnglisName}                              
+              Marks         :     ${marks}                                              
+                                                                                   
+                                                                                   
+        ___________________________________________________________________________
+
+        `;
+        return receiptContent;
+    };
+
+    const downloadReceipt = (award_id, requirement_id, _marks) => {
+        const receiptContent = generateReceiptContent(
+            award_id,
+            requirement_id,
+            _marks
+        );
+        const element = document.createElement("a");
+        const file = new Blob([receiptContent], { type: "text/plain" });
+        element.href = URL.createObjectURL(file);
+        element.download = "Award Reuirement Receipt.txt";
+        document.body.appendChild(element);
+        element.click();
+    };
+
     return (
         <div>
-            <h2 className="quizh2">Requirement 2 of Award 1</h2>
+            <h2 className="quizh2">
+                Requirement {localStorage.getItem("requirment_id")} of Award{" "}
+                {localStorage.getItem("award_id")}{" "}
+            </h2>
             <Button
                 bg="transparent"
                 textColor="black"
@@ -140,8 +225,17 @@ const Requirments = () => {
             </Button>
             {finalScore !== null ? (
                 <div className="score">
-                    <h2 id="score-completed">Quiz Completed!</h2>
-                    <p id="final-score">Your final score is: {finalScore}</p>
+                    <div id="final-score" style={{ color: feedback.color }}>
+                        {feedback.icon}
+                    </div>
+                    <p id="marks">{feedback.text}</p>
+
+                    <h3 id="explain" style={{ color: feedback.color }}>
+                        {feedback.explain}
+                    </h3>
+                    <h2 id="score-completed">
+                        Requirement {feedback.completionStatus}
+                    </h2>
                 </div>
             ) : (
                 <div className="quiz-container">

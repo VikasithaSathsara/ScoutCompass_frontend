@@ -8,12 +8,11 @@ import {
     Popover,
     PopoverTrigger,
     PopoverContent,
-    PopoverBody,
     PopoverArrow,
     PopoverCloseButton,
 } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
-
+import Swal from "sweetalert2";
 import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
 
 function EventPage() {
@@ -58,16 +57,7 @@ function EventPage() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const {
-            eventName,
-            date,
-            location,
-            startTime,
-            duration,
-            description,
-            formLink,
-            photo,
-        } = formData;
+        const { photo } = formData;
 
         const dataToSend = {
             eventName: formData.eventName,
@@ -77,7 +67,6 @@ function EventPage() {
             startTime: formData.startTime,
             description: formData.description,
             formLink: formData.formLink,
-            // Photo should be appended to the formData only if it is not null
             ...(photo && { photo }),
         };
 
@@ -106,10 +95,17 @@ function EventPage() {
     };
 
     const handleDeleteEvent = async (fileName) => {
-        const confirmed = window.confirm(
-            "Are you sure you want to delete this event?"
-        );
-        if (confirmed) {
+        const confirmed = await Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        });
+
+        if (confirmed.isConfirmed) {
             const baseUrl =
                 "http://13.233.134.21:8081/api/scoutcompass/event/delete/";
             const url = baseUrl + fileName;
@@ -122,12 +118,11 @@ function EventPage() {
                 });
 
                 fetchEventList();
-                window.location.href = "/event";
 
                 if (response.ok) {
                     console.log("Event deleted successfully");
                 } else {
-                    console.error("Event to delete file");
+                    console.error("Failed to delete event");
                 }
             } catch (error) {
                 console.error("Error:", error.message);
@@ -148,6 +143,26 @@ function EventPage() {
         if (!email) navigate("/login");
     }, []);
 
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => {
+        const fetchUserEntity = async () => {
+            try {
+                const loggedInUserEmail =
+                    localStorage.getItem("loggedInUserEmail");
+                const response = await fetch(
+                    `http://13.233.134.21:8081/api/scoutcompass/auth/user?userEmail=${loggedInUserEmail}`
+                );
+                const userData = await response.json();
+                setIsAdmin(userData.role === "ROLE_ADMIN");
+            } catch (error) {
+                console.error("Error fetching user entity:", error);
+            }
+        };
+
+        fetchUserEntity();
+    }, []);
+
     return (
         <div className="bg_event">
             <SideMenu />
@@ -155,125 +170,138 @@ function EventPage() {
             <h1>Event Page</h1>
             <div>
                 <ChakraProvider>
-                    <Popover isLazy>
-                        <PopoverTrigger>
-                            <Button
-                                leftIcon={<AddIcon />}
-                                colorScheme="blackAlpha"
-                                variant="solid"
-                                position="absolute"
-                                top="20"
-                                right="10"
-                                mt="10px"
+                    {isAdmin && (
+                        <Popover isLazy>
+                            <PopoverTrigger>
+                                <Button
+                                    leftIcon={<AddIcon />}
+                                    colorScheme="blackAlpha"
+                                    variant="solid"
+                                    position="absolute"
+                                    top="20"
+                                    right="10"
+                                >
+                                    Add Event
+                                </Button>
+                            </PopoverTrigger>
+                            <PopoverContent
+                                width={450}
+                                height={570}
+                                color="black"
+                                bg="white"
+                                borderColor="black"
+                                borderWidth={2}
+                                marginRight={50}
                             >
-                                Add Event
-                            </Button>
-                        </PopoverTrigger>
-                        <PopoverContent
-                            width={450}
-                            height={570}
-                            color="black"
-                            bg="white"
-                            borderColor="black"
-                            borderWidth={2}
-                            marginRight={50}
-                        >
-                            <div class="wrapper6">
-                                <div class="title">Event Details Form</div>
-                                <form onSubmit={handleSubmit}>
-                                    <div className="form">
-                                        <div className="inputfield">
-                                            <label>Event Name</label>
-                                            <input
-                                                type="text"
-                                                className="input"
-                                                name="eventName"
-                                                onChange={handleChange}
-                                            />
+                                <div class="wrapper6">
+                                    <div class="title">Event Details Form</div>
+                                    <form onSubmit={handleSubmit}>
+                                        <div className="form">
+                                            <div className="inputfield">
+                                                <label>Event Name</label>
+                                                <input
+                                                    type="text"
+                                                    className="input"
+                                                    name="eventName"
+                                                    onChange={handleChange}
+                                                />
+                                            </div>
+                                            <div className="inputfield">
+                                                <label>Date</label>
+                                                <input
+                                                    type="text"
+                                                    className="input"
+                                                    name="date"
+                                                    onChange={handleChange}
+                                                />
+                                            </div>
+                                            <div className="inputfield">
+                                                <label>Location</label>
+                                                <input
+                                                    type="text"
+                                                    className="input"
+                                                    name="location"
+                                                    onChange={handleChange}
+                                                />
+                                            </div>
+                                            <div className="inputfield">
+                                                <label>Start Time</label>
+                                                <input
+                                                    type="text"
+                                                    className="input"
+                                                    name="startTime"
+                                                    onChange={handleChange}
+                                                />
+                                            </div>
+                                            <div className="inputfield">
+                                                <label>Duration</label>
+                                                <input
+                                                    type="text"
+                                                    className="input"
+                                                    name="duration"
+                                                    onChange={handleChange}
+                                                />
+                                            </div>
+                                            <div className="inputfield">
+                                                <label>Description</label>
+                                                <textarea
+                                                    className="textarea"
+                                                    name="description"
+                                                    style={{ height: "80px" }}
+                                                    onChange={handleChange}
+                                                ></textarea>
+                                            </div>
+                                            <div className="inputfield">
+                                                <label>Form Link</label>
+                                                <input
+                                                    type="link"
+                                                    className="input"
+                                                    name="formLink"
+                                                    onChange={handleChange}
+                                                />
+                                            </div>
+                                            <div className="inputfield">
+                                                <input
+                                                    type="submit"
+                                                    value="Add Event"
+                                                    className="btn"
+                                                />
+                                            </div>
                                         </div>
-                                        <div className="inputfield">
-                                            <label>Date</label>
-                                            <input
-                                                type="text"
-                                                className="input"
-                                                name="date"
-                                                onChange={handleChange}
-                                            />
-                                            {/* You can add a date picker here if needed */}
-                                        </div>
-                                        <div className="inputfield">
-                                            <label>Location</label>
-                                            <input
-                                                type="text"
-                                                className="input"
-                                                name="location"
-                                                onChange={handleChange}
-                                            />
-                                        </div>
-                                        <div className="inputfield">
-                                            <label>Start Time</label>
-                                            <input
-                                                type="text"
-                                                className="input"
-                                                name="startTime"
-                                                onChange={handleChange}
-                                            />
-                                        </div>
-                                        <div className="inputfield">
-                                            <label>Duration</label>
-                                            <input
-                                                type="text"
-                                                className="input"
-                                                name="duration"
-                                                onChange={handleChange}
-                                            />
-                                        </div>
-                                        <div className="inputfield">
-                                            <label>Description</label>
-                                            <textarea
-                                                className="textarea"
-                                                name="description"
-                                                style={{ height: "80px" }}
-                                                onChange={handleChange}
-                                            ></textarea>
-                                        </div>
-                                        <div className="inputfield">
-                                            <label>Form Link</label>
-                                            <input
-                                                type="link"
-                                                className="input"
-                                                name="formLink"
-                                                onChange={handleChange}
-                                            />
-                                        </div>
-                                        <div className="inputfield">
-                                            <input
-                                                type="submit"
-                                                value="Add Event"
-                                                className="btn"
-                                            />
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <PopoverArrow />
-                            <PopoverCloseButton />
-                        </PopoverContent>
-                    </Popover>
-
+                                    </form>
+                                </div>
+                                <PopoverArrow />
+                                <PopoverCloseButton />
+                            </PopoverContent>
+                        </Popover>
+                    )}
                     <div className="event_container">
                         {eventArrayList.map((item, index) => (
                             <div className={`e_box${index + 1}`}>
-                                <IconButton
-                                    aria-label="delete"
-                                    icon={<DeleteIcon />}
-                                    colorScheme="blackAlpha"
-                                    marginLeft={240}
-                                    marginTop={5}
-                                    onClick={() =>
-                                        handleDeleteEvent(item.eventName)
-                                    }
-                                />
+                                {isAdmin && (
+                                    <IconButton
+                                        aria-label="delete"
+                                        icon={<DeleteIcon />}
+                                        colorScheme="blackAlpha"
+                                        marginLeft={240}
+                                        marginTop={5}
+                                        onClick={() =>
+                                            handleDeleteEvent(item.eventName)
+                                        }
+                                    />
+                                )}
+
+                                {!isAdmin && (
+                                    <IconButton
+                                        aria-label="delete"
+                                        colorScheme="white"
+                                        marginLeft={240}
+                                        marginTop={5}
+                                        onClick={() =>
+                                            handleDeleteEvent(item.eventName)
+                                        }
+                                    />
+                                )}
 
                                 <div className="e_box1_1">
                                     <img

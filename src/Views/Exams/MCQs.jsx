@@ -23,7 +23,7 @@ function MCQs() {
                 leftIcon={<FaArrowLeft />}
                 border="2px solid black"
                 padding="10px"
-                marginLeft="120px"
+                marginLeft="30px"
                 onClick={() => window.history.back()}
                 _hover={{ bg: "yellow", textColor: "black" }}
             >

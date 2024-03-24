@@ -15,19 +15,9 @@
 
 body {
   -webkit-font-smoothing: antialiased;
-  /* overflow-x: hidden; */
-
   -moz-osx-font-smoothing: grayscale;
-  /* background: linear-gradient(
-    -45deg,
-    #00000efc,
-    #020236fc,
-    #30308afc,
-    #1261d8fc
-  ); */
   background-color: LightSteelBlue;
 }
-
 h1 {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;

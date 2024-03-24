@@ -8,7 +8,6 @@ import {
     Table,
     Thead,
     Tbody,
-    Tfoot,
     Tr,
     Th,
     Td,
@@ -30,7 +29,6 @@ import {
     DrawerBody,
     Box,
 } from "@chakra-ui/react";
-
 import { ArrowRightIcon } from "@chakra-ui/icons";
 import { Alert, AlertIcon } from "@chakra-ui/react";
 import { Stack } from "@chakra-ui/react";
@@ -65,6 +63,10 @@ function HomePage() {
     ];
 
     const [latestEvent, setLatestevent] = useState([]);
+    const [scoutCount, setScoutCount] = useState("");
+    const [instructorCount, setInstroutorCount] = useState("");
+    const [eventCount, setEventCount] = useState("");
+    const [resourceCount, setResourceCount] = useState("");
 
     const fetchLatestEvent = async () => {
         try {
@@ -79,8 +81,62 @@ function HomePage() {
         }
     };
 
+    const fetchEventCount = async () => {
+        try {
+            const response = await fetch(
+                "http://13.233.134.21:8081/api/scoutcompass/event/count"
+            );
+            const data = await response.json();
+
+            setEventCount(data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+
+    const fetchResourceCount = async () => {
+        try {
+            const response = await fetch(
+                "http://13.233.134.21:8081/api/scoutcompass/resource/count"
+            );
+            const data = await response.json();
+
+            setResourceCount(data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+
+    const fetchScoutCount = async () => {
+        try {
+            const response = await fetch(
+                "http://13.233.134.21:8081/api/scoutcompass/auth/scout/count"
+            );
+            const data = await response.json();
+
+            setScoutCount(data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+    const fetchInstructorCount = async () => {
+        try {
+            const response = await fetch(
+                "http://13.233.134.21:8081/api/scoutcompass/auth/instructor/count"
+            );
+            const data = await response.json();
+
+            setInstroutorCount(data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
     useEffect(() => {
         fetchLatestEvent();
+        fetchEventCount();
+        fetchResourceCount();
+        fetchInstructorCount();
+        fetchScoutCount();
     }, []);
 
     return (
@@ -91,7 +147,7 @@ function HomePage() {
                     rel="stylesheet"
                 />
                 <SideMenu />
-                <h1 style={{ paddingInlineEnd: "120px" }}>Home Page</h1>
+                <h1>Home Page</h1>
                 <Drawer
                     isOpen={isOpen}
                     placement="right"
@@ -183,33 +239,28 @@ function HomePage() {
                             <i class="material-icons md-36">groups</i>
                         </div>
 
-                        <p class="hm_title">SCOUTS</p>
-                        <p class="hm_text">
-                            Click to see or edit your profile page.
-                        </p>
+                        <p class="hm_title">SCOUTS </p>
+                        <p class="hm_text">{scoutCount}</p>
                     </div>
 
                     <div class="hm_card">
                         <div class="hm_icon">
                             <i class="material-icons md-36">person</i>
                         </div>
-                        <p class="hm_title">INSTRUCTORS</p>
-                        <p class="hm_text">
-                            Check all your favourites in one place.
-                        </p>
+                        <p class="hm_title">INSTRUCTORS </p>
+                        <p class="hm_text">{instructorCount}</p>
                     </div>
 
                     <div class="hm_card">
                         <div class="hm_icon">
                             <i class="material-icons md-36">event</i>
                         </div>
-                        <p class="hm_title">EVENTS</p>
-                        <p class="hm_text">
-                            Add or change your contacts and links.
-                        </p>
+                        <p class="hm_title">EVENTS </p>
+                        <p class="hm_text">{eventCount}</p>
                     </div>
-                    <a href="/mcq">
-                        <div class="hm_card">
+
+                    <div class="hm_card">
+                        <a href="/mcq">
                             <div class="hm_icon">
                                 <i class="material-icons md-36">description</i>
                             </div>
@@ -217,8 +268,8 @@ function HomePage() {
                             <p class="hm_text">
                                 Enhance your scouting knowledge
                             </p>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
                 <section id="chart">
                     <div className="simple-bar-chart">
@@ -240,7 +291,7 @@ function HomePage() {
                     <TableContainer
                         marginLeft={50}
                         marginTop={100}
-                        maxWidth="calc(100% - 100px)"
+                        maxWidth="100%"
                         overflowX="auto"
                     >
                         <Table

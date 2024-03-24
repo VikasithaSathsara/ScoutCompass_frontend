@@ -212,7 +212,9 @@ function ChiefCommissionerAward() {
                     {item_?.englishName} <br />
                     {item_?.sinhalaName}{" "}
                   </td>
-                  <td> 17 Dec, 2022 </td>
+                  <td>
+                    {stateVariables[item_?.requirementId-1].completedDate} 
+                       </td>
                   <td>
                     <button
                       onClick={() => {
@@ -261,7 +263,9 @@ function ChiefCommissionerAward() {
                     {item_?.englishName} <br />
                     {item_?.sinhalaName}
                   </td>
-                  <td> 14 Mar, 2023 </td>
+                  <td>
+                    {stateVariables[item_?.requirementId-1].completedDate} 
+                       </td>
                   <td>
                     <button
                       onClick={() => {

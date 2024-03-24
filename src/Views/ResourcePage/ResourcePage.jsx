@@ -325,7 +325,7 @@ function ResourcePage() {
                                         >
                                             Download Resource
                                         </MenuItem>
-
+                                        {isAdmin && (                                               
                                         <MenuItem
                                             icon={<DeleteIcon />}
                                             bgColor={"whiteAlpha"}
@@ -336,7 +336,8 @@ function ResourcePage() {
                                             }
                                         >
                                             Delete Resource
-                                        </MenuItem>
+                                        </MenuItem>                      )}
+
                                     </MenuList>
                                 </Menu>
                                 <div

@@ -292,7 +292,9 @@ function EventPage() {
                     <div className="event_container">
                         {eventArrayList.map((item, index) => (
                             <div className={`e_box${index + 1}`}>
-                                <IconButton
+                                  {isAdmin && (           
+                                    
+                                    <IconButton
                                     aria-label="delete"
                                     icon={<DeleteIcon />}
                                     colorScheme="blackAlpha"
@@ -302,6 +304,7 @@ function EventPage() {
                                         handleDeleteEvent(item.eventName)
                                     }
                                 />
+                                )}
 
                                 <div className="e_box1_1">
                                     <img

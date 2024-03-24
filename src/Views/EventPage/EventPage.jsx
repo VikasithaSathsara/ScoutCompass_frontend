@@ -8,7 +8,6 @@ import {
     Popover,
     PopoverTrigger,
     PopoverContent,
-    PopoverBody,
     PopoverArrow,
     PopoverCloseButton,
 } from "@chakra-ui/react";
@@ -41,7 +40,7 @@ function EventPage() {
     const fetchEventList = async () => {
         try {
             const response = await fetch(
-                "http://localhost:8081/api/scoutcompass/event/eventList"
+                "http://13.233.134.21:8081/api/scoutcompass/event/eventList"
             );
             const data = await response.json();
 
@@ -58,16 +57,7 @@ function EventPage() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const {
-            eventName,
-            date,
-            location,
-            startTime,
-            duration,
-            description,
-            formLink,
-            photo,
-        } = formData;
+        const { photo } = formData;
 
         const dataToSend = {
             eventName: formData.eventName,
@@ -77,13 +67,12 @@ function EventPage() {
             startTime: formData.startTime,
             description: formData.description,
             formLink: formData.formLink,
-            // Photo should be appended to the formData only if it is not null
             ...(photo && { photo }),
         };
 
         try {
             const response = await fetch(
-                "http://localhost:8081/api/scoutcompass/event/create",
+                "http://13.233.134.21:8081/api/scoutcompass/event/create",
                 {
                     method: "POST",
                     headers: {
@@ -118,7 +107,7 @@ function EventPage() {
 
         if (confirmed.isConfirmed) {
             const baseUrl =
-                "http://localhost:8081/api/scoutcompass/event/delete/";
+                "http://13.233.134.21:8081/api/scoutcompass/event/delete/";
             const url = baseUrl + fileName;
             try {
                 const response = await fetch(url, {
@@ -129,7 +118,6 @@ function EventPage() {
                 });
 
                 fetchEventList();
-                //window.location.href = "/event";
 
                 if (response.ok) {
                     console.log("Event deleted successfully");
@@ -158,16 +146,14 @@ function EventPage() {
     const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
-        // Fetch user entity based on logged-in user's email
         const fetchUserEntity = async () => {
             try {
                 const loggedInUserEmail =
                     localStorage.getItem("loggedInUserEmail");
                 const response = await fetch(
-                    `http://localhost:8081/api/scoutcompass/auth/user?userEmail=${loggedInUserEmail}`
+                    `http://13.233.134.21:8081/api/scoutcompass/auth/user?userEmail=${loggedInUserEmail}`
                 );
                 const userData = await response.json();
-                // Assuming userData has a 'role' key
                 setIsAdmin(userData.role === "ROLE_ADMIN");
             } catch (error) {
                 console.error("Error fetching user entity:", error);
@@ -292,18 +278,29 @@ function EventPage() {
                     <div className="event_container">
                         {eventArrayList.map((item, index) => (
                             <div className={`e_box${index + 1}`}>
-                                  {isAdmin && (           
-                                    
+                                {isAdmin && (
                                     <IconButton
-                                    aria-label="delete"
-                                    icon={<DeleteIcon />}
-                                    colorScheme="blackAlpha"
-                                    marginLeft={240}
-                                    marginTop={5}
-                                    onClick={() =>
-                                        handleDeleteEvent(item.eventName)
-                                    }
-                                />
+                                        aria-label="delete"
+                                        icon={<DeleteIcon />}
+                                        colorScheme="blackAlpha"
+                                        marginLeft={240}
+                                        marginTop={5}
+                                        onClick={() =>
+                                            handleDeleteEvent(item.eventName)
+                                        }
+                                    />
+                                )}
+
+                                {!isAdmin && (
+                                    <IconButton
+                                        aria-label="delete"
+                                        colorScheme="white"
+                                        marginLeft={240}
+                                        marginTop={5}
+                                        onClick={() =>
+                                            handleDeleteEvent(item.eventName)
+                                        }
+                                    />
                                 )}
 
                                 <div className="e_box1_1">

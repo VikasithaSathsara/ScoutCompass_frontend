@@ -8,7 +8,6 @@ import {
     Table,
     Thead,
     Tbody,
-    Tfoot,
     Tr,
     Th,
     Td,
@@ -30,7 +29,6 @@ import {
     DrawerBody,
     Box,
 } from "@chakra-ui/react";
-
 import { ArrowRightIcon } from "@chakra-ui/icons";
 import { Alert, AlertIcon } from "@chakra-ui/react";
 import { Stack } from "@chakra-ui/react";
@@ -73,7 +71,7 @@ function HomePage() {
     const fetchLatestEvent = async () => {
         try {
             const response = await fetch(
-                "http://localhost:8081/api/scoutcompass/event/latestEvent"
+                "http://13.233.134.21:8081/api/scoutcompass/event/latestEvent"
             );
             const data = await response.json();
 
@@ -86,7 +84,7 @@ function HomePage() {
     const fetchEventCount = async () => {
         try {
             const response = await fetch(
-                "http://localhost:8081/api/scoutcompass/event/count"
+                "http://13.233.134.21:8081/api/scoutcompass/event/count"
             );
             const data = await response.json();
 
@@ -99,7 +97,7 @@ function HomePage() {
     const fetchResourceCount = async () => {
         try {
             const response = await fetch(
-                "http://localhost:8081/api/scoutcompass/resource/count"
+                "http://13.233.134.21:8081/api/scoutcompass/resource/count"
             );
             const data = await response.json();
 
@@ -112,7 +110,7 @@ function HomePage() {
     const fetchScoutCount = async () => {
         try {
             const response = await fetch(
-                "http://localhost:8081/api/scoutcompass/auth/scout/count"
+                "http://13.233.134.21:8081/api/scoutcompass/auth/scout/count"
             );
             const data = await response.json();
 
@@ -124,7 +122,7 @@ function HomePage() {
     const fetchInstructorCount = async () => {
         try {
             const response = await fetch(
-                "http://localhost:8081/api/scoutcompass/auth/instructor/count"
+                "http://13.233.134.21:8081/api/scoutcompass/auth/instructor/count"
             );
             const data = await response.json();
 
@@ -241,30 +239,24 @@ function HomePage() {
                             <i class="material-icons md-36">groups</i>
                         </div>
 
-                        <p class="hm_title">SCOUTS {scoutCount} </p>
-                        <p class="hm_text">
-                            Click to see or edit your profile page.
-                        </p>
+                        <p class="hm_title">SCOUTS </p>
+                        <p class="hm_text">{scoutCount}</p>
                     </div>
 
                     <div class="hm_card">
                         <div class="hm_icon">
                             <i class="material-icons md-36">person</i>
                         </div>
-                        <p class="hm_title">INSTRUCTORS {instructorCount}</p>
-                        <p class="hm_text">
-                            Check all your favourites in one place.
-                        </p>
+                        <p class="hm_title">INSTRUCTORS </p>
+                        <p class="hm_text">{instructorCount}</p>
                     </div>
 
                     <div class="hm_card">
                         <div class="hm_icon">
                             <i class="material-icons md-36">event</i>
                         </div>
-                        <p class="hm_title">EVENTS {eventCount}</p>
-                        <p class="hm_text">
-                            Add or change your contacts and links.
-                        </p>
+                        <p class="hm_title">EVENTS </p>
+                        <p class="hm_text">{eventCount}</p>
                     </div>
 
                     <div class="hm_card">

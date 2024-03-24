@@ -21,12 +21,12 @@ function LoginPage() {
 
         try {
             const response = await fetch(
-                "http://localhost:8081/api/scoutcompass/auth/user/authenticate",
+                "http://13.233.134.21:8081/api/scoutcompass/auth/user/authenticate",
                 {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        Origin: "http://localhost:3000",
+                        Origin: "http://13.233.134.21:3000",
                         "Content-Length": "<calculated when request is sent>",
                         Host: "<calculated when request is sent>",
                         Accept: "*/*",
@@ -41,8 +41,6 @@ function LoginPage() {
 
                 console.log("Login successful!");
                 toast.success("Login Successful");
-                // navigate("/home");
-                //window.location.href = "/home";
                 setTimeout(function () {
                     window.location.replace("/home");
                 }, 1300);
@@ -99,10 +97,6 @@ function LoginPage() {
                             />
                             <FaLock className="icon" />
                         </div>
-
-                        {/* <div className="forgot">
-                            <a href="#">Forgot Password?</a>
-                        </div> */}
 
                         <button type="submit" className="login">
                             Login

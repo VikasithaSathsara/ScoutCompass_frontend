@@ -143,8 +143,6 @@
   padding-left: 20px;
 }
 
-/* Media Queries */
-
 @media (max-width: 768px) {
   .bg_event {
     padding-left: 150px;
@@ -194,7 +192,7 @@
 
   .e_name1 {
     width: 270px;
-    font-size: 12px;
+    font-size:12px;
     margin-top: 0;
 }
 

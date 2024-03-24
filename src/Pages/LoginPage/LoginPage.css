@@ -115,8 +115,6 @@
   text-align: center;
 }
 
-
-/* Media Queries */
 @media screen and (max-width: 768px) {
   .background {
     justify-content: center;
@@ -125,7 +123,7 @@
 
   .warp {
     margin-right: 0;
-    margin-top: 20px; /* Adjust margin as needed */
+    margin-top: 20px;
     width: auto;
 
   }
@@ -172,7 +170,7 @@
 
   .warp {
     margin-right: 0;
-    margin-top: 20px; /* Adjust margin as needed */
+    margin-top: 20px;
     width: 90%;
 
   }

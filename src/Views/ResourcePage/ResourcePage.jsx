@@ -2,7 +2,6 @@ import "./ResourcePage.css";
 import SideMenu from "../../Components/SideMenu/SideMenu";
 import React, { useState, useEffect } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
-import { saveAs } from "file-saver";
 import { ChakraProvider } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -19,7 +18,6 @@ import {
     PopoverArrow,
     PopoverCloseButton,
 } from "@chakra-ui/react";
-import { Stack } from "@chakra-ui/react";
 import {
     AddIcon,
     DeleteIcon,
@@ -51,7 +49,7 @@ function ResourcePage() {
     const fetchResourceList = async () => {
         try {
             const response = await fetch(
-                "http://localhost:8081/api/scoutcompass/resource/resourceList"
+                "http://13.233.134.21:8081/api/scoutcompass/resource/resourceList"
             );
             const data = await response.json();
 
@@ -66,7 +64,7 @@ function ResourcePage() {
 
     const handleViewResource_ = (fileName) => {
         const baseUrl_ =
-            "http://localhost:8081/api/scoutcompass/resource/download/";
+            "http://13.233.134.21:8081/api/scoutcompass/resource/download/";
 
         const pdfUrl = baseUrl_ + fileName;
 
@@ -86,7 +84,7 @@ function ResourcePage() {
 
         try {
             const response = await fetch(
-                "http://localhost:8081/api/scoutcompass/resource/upload",
+                "http://13.233.134.21:8081/api/scoutcompass/resource/upload",
 
                 {
                     method: "POST",
@@ -121,7 +119,7 @@ function ResourcePage() {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const baseUrl =
-                    "http://localhost:8081/api/scoutcompass/resource/delete/";
+                    "http://13.233.134.21:8081/api/scoutcompass/resource/delete/";
 
                 const url = baseUrl + fileName;
                 try {
@@ -133,7 +131,6 @@ function ResourcePage() {
                     });
 
                     fetchResourceList();
-                    //window.location.href = "/resource";
 
                     if (response.ok) {
                         Swal.fire({
@@ -154,7 +151,7 @@ function ResourcePage() {
 
     const handleDownload = (fileName) => {
         const baseUrl =
-            "http://localhost:8081/api/scoutcompass/resource/download/";
+            "http://13.233.134.21:8081/api/scoutcompass/resource/download/";
 
         const url = baseUrl + fileName;
 
@@ -187,16 +184,14 @@ function ResourcePage() {
     const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
-        // Fetch user entity based on logged-in user's email
         const fetchUserEntity = async () => {
             try {
                 const loggedInUserEmail =
                     localStorage.getItem("loggedInUserEmail");
                 const response = await fetch(
-                    `http://localhost:8081/api/scoutcompass/auth/user?userEmail=${loggedInUserEmail}`
+                    `http://13.233.134.21:8081/api/scoutcompass/auth/user?userEmail=${loggedInUserEmail}`
                 );
                 const userData = await response.json();
-                // Assuming userData has a 'role' key
                 setIsAdmin(userData.role === "ROLE_ADMIN");
             } catch (error) {
                 console.error("Error fetching user entity:", error);
@@ -325,19 +320,19 @@ function ResourcePage() {
                                         >
                                             Download Resource
                                         </MenuItem>
-                                        {isAdmin && (                                               
-                                        <MenuItem
-                                            icon={<DeleteIcon />}
-                                            bgColor={"whiteAlpha"}
-                                            onClick={() =>
-                                                handleDeleteResource(
-                                                    item.resourceName
-                                                )
-                                            }
-                                        >
-                                            Delete Resource
-                                        </MenuItem>                      )}
-
+                                        {isAdmin && (
+                                            <MenuItem
+                                                icon={<DeleteIcon />}
+                                                bgColor={"whiteAlpha"}
+                                                onClick={() =>
+                                                    handleDeleteResource(
+                                                        item.resourceName
+                                                    )
+                                                }
+                                            >
+                                                Delete Resource
+                                            </MenuItem>
+                                        )}
                                     </MenuList>
                                 </Menu>
                                 <div

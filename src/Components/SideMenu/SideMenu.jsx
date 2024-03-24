@@ -4,7 +4,6 @@ import L1 from "../../Assests/logo.png";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
-
 function SideMenu() {
     const navigate = useNavigate();
     const [userRole, setUserRole] = useState(null);
@@ -15,8 +14,11 @@ function SideMenu() {
         // Fetch user entity based on logged-in user's email
         const fetchUserEntity = async () => {
             try {
-                const loggedInUserEmail = localStorage.getItem("loggedInUserEmail");
-                const response = await fetch(`http://localhost:8081/api/scoutcompass/auth/user?userEmail=${loggedInUserEmail}`);
+                const loggedInUserEmail =
+                    localStorage.getItem("loggedInUserEmail");
+                const response = await fetch(
+                    `http://13.233.134.21:8081/api/scoutcompass/auth/user?userEmail=${loggedInUserEmail}`
+                );
                 const userData = await response.json();
                 // Assuming userData has a 'role' key
                 setIsScout(userData.role === "ROLE_SCOUT");
@@ -29,8 +31,7 @@ function SideMenu() {
 
         fetchUserEntity();
     }, []);
- 
-  
+
     return (
         <div className="page">
             <link
@@ -40,7 +41,7 @@ function SideMenu() {
 
             <aside className="sidebar">
                 <div className="menulogo">
-                    <a href="#">
+                    <a href="/home">
                         <img src={L1} alt="" />
                     </a>
                 </div>
@@ -50,20 +51,22 @@ function SideMenu() {
                         <span className="material-symbols-outlined">home</span>
                         <a href="/home">Home</a>
                     </li>
-                    {isScout && (                   
-                          <li>
-                        <span className="material-symbols-outlined">
-                            show_chart
-                        </span>
-                        <a href="/passing">Passings</a>
-                    </li> )}
-                    {isInstructor && (                  
-                         <li>
-                        <span className="material-symbols-outlined">
-                            Camping
-                        </span>
-                        <a href="/scoutDetails">Scouts</a>
-                    </li>  )}
+                    {isScout && (
+                        <li>
+                            <span className="material-symbols-outlined">
+                                show_chart
+                            </span>
+                            <a href="/passing">Passings</a>
+                        </li>
+                    )}
+                    {isInstructor && (
+                        <li>
+                            <span className="material-symbols-outlined">
+                                Camping
+                            </span>
+                            <a href="/scoutDetails">Scouts</a>
+                        </li>
+                    )}
 
                     <li>
                         <span className="material-symbols-outlined">
@@ -76,14 +79,15 @@ function SideMenu() {
                         <span className="material-symbols-outlined">event</span>
                         <a href="/event">Events</a>
                     </li>
-                    {!isAdmin && (                  
-                         <li>
-                        <span className="material-symbols-outlined">
-                            person
-                        </span>
-                        <a href="/profile">My Profile</a>
-                    </li> )}
-  
+                    {!isAdmin && (
+                        <li>
+                            <span className="material-symbols-outlined">
+                                person
+                            </span>
+                            <a href="/profile">My Profile</a>
+                        </li>
+                    )}
+
                     <hr />
 
                     <li className="logout-link">

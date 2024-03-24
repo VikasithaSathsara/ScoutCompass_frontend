@@ -1,21 +1,15 @@
 import { useState, useEffect } from "react";
 import "./SignupPage.css";
-import { Center, ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
-import { toast, ToastContainer } from "react-toastify";
-
 import Navbar from "../../Components/Navbar/Navbar";
-
 import {
     Container,
     Card,
     CardHeader,
     CardBody,
-    CardFooter,
-    Image,
     Heading,
     Button,
-    Text,
     Input,
     InputGroup,
     InputLeftAddon,
@@ -26,7 +20,6 @@ import {
 } from "@chakra-ui/react";
 import { Stack, HStack, VStack } from "@chakra-ui/react";
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
 
 function SignupPage() {
@@ -49,8 +42,6 @@ function SignupPage() {
         scout_mobNum: "",
     });
 
-    //Create a method to initialize scout and Instructor values to undefined. And call that methods when dropdown value changes.
-
     const [pass, setPass] = useState("");
     const [confirmPass, setConfirmPass] = useState("");
     const [passwordMissMatch, setpasswordMissMatch] = useState(false);
@@ -61,7 +52,7 @@ function SignupPage() {
 
     const isFormFilled = Object.values(formData).every(
         (value) => typeof value === "string" && value.trim() !== ""
-    ); //if value == password, check if pass and comfirm pass is equal
+    );
 
     const onPasswordChange = () => (e) => {
         setpasswordMissMatch(false);
@@ -86,17 +77,15 @@ function SignupPage() {
     const [selectedInstructorId, setSelectedInstructorId] = useState("");
 
     useEffect(() => {
-        // Fetch data from backend API
-        fetch("http://localhost:8081/api/scoutcompass/auth/instructorList")
+        fetch("http://13.233.134.21:8081/api/scoutcompass/auth/instructorList")
             .then((response) => response.json())
             .then((data) => {
-                // Assuming data is an array of instructor objects with properties like id and name
                 setInstructors(data);
             })
             .catch((error) => {
                 console.error("Error fetching instructors:", error);
             });
-    }, []); // Empty dependency array ensures this effect runs only once after initial render
+    }, []);
 
     const onDropdownValueChange = (fieldName) => (e) => {
         setSelectedInstructor(e.target.value);
@@ -129,15 +118,13 @@ function SignupPage() {
                         instructMobNum: formData.instruct_mobNum,
                         instructSchool: formData.instruct_school,
                     };
-
-                    // Sending POST request
                     const response = await fetch(
-                        "http://localhost:8081/api/scoutcompass/auth/instruct/register",
+                        "http://13.233.134.21:8081/api/scoutcompass/auth/instruct/register",
                         {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
-                                Origin: "http://localhost:3000",
+                                Origin: "http://13.233.134.21:3000",
                                 "Content-Length":
                                     "<calculated when request is sent>",
                                 Host: "<calculated when request is sent>",
@@ -197,14 +184,13 @@ function SignupPage() {
                         instructorId: selectedInstructor,
                     };
 
-                    // Sending POST request
                     const response = await fetch(
-                        "http://localhost:8081/api/scoutcompass/auth/scout/register",
+                        "http://13.233.134.21:8081/api/scoutcompass/auth/scout/register",
                         {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
-                                Origin: "http://localhost:3000",
+                                Origin: "http://13.233.134.21:3000",
                                 "Content-Length":
                                     "<calculated when request is sent>",
                                 Host: "<calculated when request is sent>",
@@ -217,17 +203,11 @@ function SignupPage() {
                     );
                     if (response.ok) {
                         console.log("Scout Registration successful!");
-
-                        // navigate("/home");
-                        // window.location.href = "/home";
                         const examplePromise = new Promise(
                             (resolve, reject) => {
                                 setTimeout(() => resolve(200), 800);
                             }
                         );
-
-                        // Will display the loading toast until the promise is either resolved
-                        // or rejected.
                         toast.promise(examplePromise, {
                             success: {
                                 title: "Scout Successfully Registered!",
@@ -252,7 +232,6 @@ function SignupPage() {
                         alert("Scout already exist!");
                     } else {
                         console.error("Scout Registration Fail!");
-                        // toast.error("Scout Registration Fail!");
                         alert("Scout Registration Fail!");
                     }
                 }
@@ -265,7 +244,6 @@ function SignupPage() {
             });
             console.log("sdsdsdsd" + formData);
         } catch (error) {
-            // handle server errors
             setLoading(false);
         }
     };
@@ -278,12 +256,6 @@ function SignupPage() {
                     className=" max-w-[1500px] p-8 m-[2%] mt-[10%] justify-center items-center "
                     bg="rgba(0, 0, 0, 0.65)"
                 >
-                    {/* <Card
-            direction={{ base: "column", sm: "row" }}
-            overflow="hidden"
-            variant="outline"
-            
-          > */}
                     <Stack>
                         <CardHeader>
                             <Heading size="lg" textAlign="Center" color="white">
@@ -821,7 +793,6 @@ function SignupPage() {
                                         )}
                                     </Container>
                                 </Stack>
-                                {/* set condition to isFormFilled to Disable Button till form is filled*/}
                                 {true && (
                                     <Button
                                         variant="solid"
@@ -859,7 +830,6 @@ function SignupPage() {
                             </form>
                         </CardBody>
                     </Stack>
-                    {/* </Card> */}
                 </Card>
             </div>
         </ChakraProvider>

@@ -18,7 +18,6 @@ function Navbar() {
                             Home
                         </NavLink>
                     </li>
-                    {/* <li><NavLink className="nav-link" onClick={scrollToBlogs}>Blogs</NavLink></li> */}
                     <li>
                         <NavLink to="/login" className="nav-link">
                             Login

@@ -27,9 +27,11 @@ function ProfilePage() {
         setCurrentTab(tabIndex);
     };
 
-    useEffect(() => {
-        const userEmail = localStorage.getItem("loggedInUserEmail");
-        const fetchUserProfile = async (email) => {
+   
+     //const userEmail = localStorage.getItem("loggedInUserEmail");
+        const fetchScoutProfile = async (email) => {
+
+
             console.log("email:", email);
 
             try {
@@ -46,11 +48,67 @@ function ProfilePage() {
             } catch (error) {
                 console.error("Error fetching user data:", error);
             }
+
+
         };
 
+
+        const fetchInstructorUserProfile = async (email) => {
+
+
+            console.log("email:", email);
+
+            try {
+                const response = await fetch(
+                    `http://localhost:8081/api/scoutcompass/profile/instructor/${email}`
+                );
+
+                if (!response.ok) {
+                    throw new Error("Failed to fetch user data");
+                }
+
+                const data = await response.json();
+                setUserData(data);
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+
+
+        };
+
+
         // Call the fetchUserProfile function when the component mounts
-        fetchUserProfile(userEmail);
-    }, []); // Empty dependency array ensures the effect runs only once
+    
+  //  }, []); // Empty dependency array ensures the effect runs only once
+    const [isInstructor, setIsInstructor] = useState(false);
+    useEffect(() => {
+        // Fetch user entity based on logged-in user's email
+        const fetchUserEntity = async () => {
+            try {
+                const loggedInUserEmail =
+                    localStorage.getItem("loggedInUserEmail");
+                const response = await fetch(
+                    `http://localhost:8081/api/scoutcompass/auth/user?userEmail=${loggedInUserEmail}`
+                );
+                const userData = await response.json();
+                // Assuming userData has a 'role' key
+                setIsInstructor(userData.role === "ROLE_INSTRUCTOR");
+
+                
+
+                if(userData.role === "ROLE_INSTRUCTOR"){
+                    fetchInstructorUserProfile(loggedInUserEmail)
+                }else{
+                    fetchScoutProfile(loggedInUserEmail);
+                }
+            } catch (error) {
+                console.error("Error fetching user entity:", error);
+            }
+        };
+
+        fetchUserEntity();
+    }, []);
+
     return (
         <div className="bg_profile">
             <SideMenu />
@@ -64,9 +122,9 @@ function ProfilePage() {
                     />
                 </div>
                 <div class="profile-nav-info">
-                    <h3> {userData.fullName}</h3>
-                    <h2 class="school"> {userData.school} </h2>
-                    <h2 class="email">{userData.email}</h2>
+                                                        <h3> {userData.fullName}</h3>
+                                                        <h2 class="school"> {userData.school} </h2>
+                                                        <h2 class="email">{userData.email}</h2>
                 </div>
             </div>
 
@@ -79,48 +137,52 @@ function ProfilePage() {
                                 <div class="card-body5">
                                     <table>
                                         <tbody>
-                                            <tr>
-                                                <td>Name</td>
-                                                <td>:</td>
-                                                <td>{userData.fullName}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Email</td>
-                                                <td>:</td>
-                                                <td>{userData.email}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Date Of Birth</td>
-                                                <td>:</td>
-                                                <td>{userData.dob}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>District</td>
-                                                <td>:</td>
-                                                <td>{userData.district}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Gender</td>
-                                                <td>:</td>
-                                                <td>{userData.gender}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Contact Number</td>
-                                                <td>:</td>
-                                                <td>{userData.mobNumber}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>School</td>
-                                                <td>:</td>
-                                                <td>{userData.school}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Assigned Instructor</td>
-                                                <td>:</td>
-                                                <td>
-                                                    {userData.instructor_name}
-                                                </td>
-                                            </tr>
+                                                                        <tr>
+                                                                            <td>Name</td>
+                                                                            <td>:</td>
+                                                                            <td>{userData.fullName}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Email</td>
+                                                                            <td>:</td>
+                                                                            <td>{userData.email}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Date Of Birth</td>
+                                                                            <td>:</td>
+                                                                            <td>{userData.dob}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>District</td>
+                                                                            <td>:</td>
+                                                                            <td>{userData.district}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Gender</td>
+                                                                            <td>:</td>
+                                                                            <td>{userData.gender}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Contact Number</td>
+                                                                            <td>:</td>
+                                                                            <td>{userData.mobNumber}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>School</td>
+                                                                            <td>:</td>
+                                                                            <td>{userData.school}</td>
+                                                                        </tr>
+
+                                                                        {!isInstructor && (
+                                                                        <tr>
+                                                                            <td>Assigned Instructor</td>
+                                                                            <td>:</td>
+                                                                            <td>
+                                                                                {userData.instructor_name}
+                                                                            </td>
+                                                                        </tr>
+
+                                                                        )}   
                                         </tbody>
                                     </table>
                                 </div>
@@ -128,7 +190,7 @@ function ProfilePage() {
                         </div>
                     </div>
                 </div>
-
+                {!isInstructor && (
                 <div class="right-side">
                     <div class="nav">
                         <ul>
@@ -329,6 +391,10 @@ function ProfilePage() {
                         </div>
                     </div>
                 </div>
+
+
+
+                )}
             </div>
         </div>
     );

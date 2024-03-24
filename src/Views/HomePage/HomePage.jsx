@@ -241,7 +241,7 @@ function HomePage() {
                             <i class="material-icons md-36">groups</i>
                         </div>
 
-                        <p class="hm_title">SCOUTS {eventCount} </p>
+                        <p class="hm_title">SCOUTS {scoutCount} </p>
                         <p class="hm_text">
                             Click to see or edit your profile page.
                         </p>
